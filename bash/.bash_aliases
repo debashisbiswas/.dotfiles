@@ -1,3 +1,6 @@
+alias refresh='source ~/.bashrc'
+
+alias nvim='neovim' # temporary
 alias v='vim'
 alias vim='nvim'
 
