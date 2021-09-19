@@ -149,7 +149,7 @@ function _bash_prompt() {
     fi
 
     PS1="\n${PS1_MAGENTA}\u ${PS1_GREY}at${PS1_YELLOW} \h ${PS1_GREY}in${PS1_GREEN} \w ${GIT_INFO}\
-         \n${SCREEN_ESC}${PS1_WHITE}\\\$${PS1_RESET} "
+         \n${SCREEN_ESC}${PS1_WHITE}>${PS1_RESET} "
 }
 
 # call _bash_prompt() each time the prompt is refreshed
@@ -259,3 +259,4 @@ alias cd='>/dev/null cd'
 shopt -s cdable_vars
 export dotfiles="$HOME/.dotfiles"
 export dev="$HOME/dev"
+
