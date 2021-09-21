@@ -1,8 +1,7 @@
 alias refresh='source ~/.bashrc'
 
-alias nvim='neovim' # temporary
+[ -x /usr/bin/nvim ] && alias vim='nvim'
 alias v='vim'
-alias vim='nvim'
 
 # WSL shortcuts
 alias powershell='powershell.exe'
