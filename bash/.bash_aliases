@@ -1,5 +1,7 @@
 alias refresh='source ~/.bashrc'
 
+[ -x /usr/bin/git ] && alias glo='git log --oneline'
+
 [ -x /usr/bin/nvim ] && alias vim='nvim'
 alias v='vim'
 

@@ -9,7 +9,7 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
     " Declare the list of plugins.
-    Plug 'morhetz/gruvbox'
+    Plug 'gruvbox-community/gruvbox'
     Plug 'ayu-theme/ayu-vim'
     Plug 'preservim/nerdtree'
 
