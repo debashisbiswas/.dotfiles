@@ -17,6 +17,9 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-fugitive'
 
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -56,4 +59,10 @@ map <Leader>h :wincmd h<CR>
 map <Leader>j :wincmd j<CR>
 map <Leader>k :wincmd k<CR>
 map <Leader>l :wincmd l<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
