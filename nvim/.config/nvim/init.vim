@@ -9,8 +9,11 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
     " Declare the list of plugins.
+    " Themes
     Plug 'gruvbox-community/gruvbox'
     Plug 'ayu-theme/ayu-vim'
+
+    " Plugins
     Plug 'preservim/nerdtree'
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -35,8 +38,12 @@ set ignorecase
 set termguicolors     " enable true colors support
 "let ayucolor="light" " for mirage version of theme
 "let ayucolor="mirage" " for mirage version of theme
-let ayucolor="mirage"   " for dark version of theme
+let ayucolor="mirage"
 colorscheme ayu
 
 map <Leader>t :NERDTreeToggle<CR>
+map <Leader>h :wincmd h<CR>
+map <Leader>j :wincmd j<CR>
+map <Leader>k :wincmd k<CR>
+map <Leader>l :wincmd l<CR>
 
