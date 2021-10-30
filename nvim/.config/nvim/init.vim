@@ -12,47 +12,76 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     " Themes
     Plug 'gruvbox-community/gruvbox'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'itchyny/lightline.vim'
+    Plug 'shinchu/lightline-gruvbox.vim'
 
     " Plugins
     Plug 'preservim/nerdtree'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-surround'
 
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
+    if has('nvim')
+        Plug 'nvim-lua/plenary.nvim'
+        Plug 'nvim-telescope/telescope.nvim'
+    endif
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-let mapleader=";"
-set encoding=UTF-8
-syntax on
-filetype on
-set title
-set autoread
 set relativenumber
-set cursorline
+set wrap
+set nojoinspaces
+set expandtab
+set smarttab
 set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+filetype plugin indent on
+
+syntax on
+
+set lazyredraw
+set nospell
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set wildmenu
+
+set vb t_vb=
+
+set splitbelow
+set splitright
+set laststatus=2
+set showcmd
+set showmode
+
+set backspace=indent,eol,start
+set scrolljump=5
+set scrolloff=10
+set autoread
 set autoindent
 set smartindent
-set tabstop=4
-set softtabstop=4
-set expandtab
-set hlsearch incsearch
-set ignorecase
 set nobackup
-set scrolloff=10
+
+let mapleader=" "
+set encoding=UTF-8
+set cursorline
 
 if has('nvim')
     set inccommand=split
 endif
 
 " Colors
-set termguicolors     " enable true colors support
-"let ayucolor="light" " for mirage version of theme
-"let ayucolor="mirage" " for mirage version of theme
+set termguicolors
+"let ayucolor="light"
 let ayucolor="mirage"
-colorscheme ayu
 set background=dark
+
+colorscheme gruvbox
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
 
 map <Leader>t :NERDTreeToggle<CR>
 map <Leader>h :wincmd h<CR>
