@@ -23,6 +23,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     if has('nvim')
         Plug 'nvim-lua/plenary.nvim'
         Plug 'nvim-telescope/telescope.nvim'
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     endif
 
 " List ends here. Plugins become visible to Vim after this call.
