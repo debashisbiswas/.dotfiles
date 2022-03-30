@@ -24,6 +24,10 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
         Plug 'nvim-lua/plenary.nvim'
         Plug 'nvim-telescope/telescope.nvim'
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'hrsh7th/cmp-nvim-lsp'
+        Plug 'hrsh7th/cmp-buffer'
+        Plug 'hrsh7th/nvim-cmp'
     endif
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -93,3 +97,7 @@ map <Leader>l :wincmd l<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> <cmd>Telescope git_files<cr>
 
+" Set up language servers
+if has('nvim')
+    lua require'lspconfig'.tsserver.setup{}
+endif
