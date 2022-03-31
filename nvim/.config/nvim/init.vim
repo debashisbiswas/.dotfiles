@@ -99,16 +99,17 @@ map <Leader>l :wincmd l<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> <cmd>Telescope git_files<cr>
 
-" Set up language servers
-if has('nvim')
-    " Install before:
-    " npm install -g typescript typescript-language-server
-    lua require'lspconfig'.tsserver.setup{}
-    
-    " Install before:
-    " npm i -g vscode-langservers-extracted
-    lua require'lspconfig'.eslint.setup{}
-endif
+" Install before:
+" npm install -g typescript typescript-language-server
+lua require'lspconfig'.tsserver.setup{}
+
+" Install before:
+" npm i -g vscode-langservers-extracted
+lua require'lspconfig'.eslint.setup{}
+
+" Install before:
+" npm i -g vscode-langservers-extracted
+lua require'lspconfig'.html.setup{}
 
 set completeopt=menu,menuone,noselect
 
@@ -179,11 +180,18 @@ lua <<EOF
 
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
   require('lspconfig')['eslint'].setup {
     capabilities = capabilities
+  }
+  require('lspconfig')['html'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig')['cssls'].setup {
+    capabilities = capabilities,
   }
 
     -- Treesitter setup
