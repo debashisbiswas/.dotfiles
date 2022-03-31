@@ -28,7 +28,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
         Plug 'hrsh7th/cmp-buffer'
         Plug 'hrsh7th/nvim-cmp'
 
-        " Snippers
+        " Snippets
         Plug 'L3MON4D3/LuaSnip'
         Plug 'rafamadriz/friendly-snippets'
     endif
@@ -99,18 +99,6 @@ map <Leader>l :wincmd l<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> <cmd>Telescope git_files<cr>
 
-" Install before:
-" npm install -g typescript typescript-language-server
-lua require'lspconfig'.tsserver.setup{}
-
-" Install before:
-" npm i -g vscode-langservers-extracted
-lua require'lspconfig'.eslint.setup{}
-
-" Install before:
-" npm i -g vscode-langservers-extracted
-lua require'lspconfig'.html.setup{}
-
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
@@ -121,8 +109,8 @@ lua <<EOF
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
@@ -142,8 +130,8 @@ lua <<EOF
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'vsnip' }, -- For vsnip users.
+      { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
@@ -181,29 +169,62 @@ lua <<EOF
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  -- npm i -g typescript typescript-language-server
   require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
   }
+
+  -- npm i -g vscode-langservers-extracted
   require('lspconfig')['eslint'].setup {
     capabilities = capabilities
   }
+
+  -- npm i -g vscode-langservers-extracted
   require('lspconfig')['html'].setup {
     capabilities = capabilities
   }
+
+  -- npm i -g vscode-langservers-extracted
   require('lspconfig')['cssls'].setup {
+    capabilities = capabilities
+  }
+
+  -- npm i -g vscode-langservers-extracted
+  require('lspconfig')['jsonls'].setup {
     capabilities = capabilities,
   }
 
-    -- Treesitter setup
-    require'nvim-treesitter.configs'.setup {
-        highlight = {
+  -- Treesitter setup
+  require'nvim-treesitter.configs'.setup {
+    -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = {
+        "javascript",
+        "typescript",
+        "html",
+        "css",
+        "bash",
+        "c",
+        "json",
+        "yaml",
+        "rust",
+        "python"
+    },
+
+    -- Install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+
+      highlight = {
+          enable = true,
+          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+          -- Using this option may slow down your editor, and you may see some duplicate highlights.
+          -- Instead of true it can also be a list of languages
+          additional_vim_regex_highlighting = false,
+      },
+    indent = {
         enable = true,
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-        },
     }
+  }
 EOF
 
