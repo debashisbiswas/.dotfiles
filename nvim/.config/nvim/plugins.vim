@@ -29,6 +29,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
         Plug 'hrsh7th/cmp-nvim-lsp'
         Plug 'hrsh7th/cmp-buffer'
         Plug 'hrsh7th/nvim-cmp'
+        Plug 'saadparwaiz1/cmp_luasnip'
 
         " Snippets
         Plug 'L3MON4D3/LuaSnip'
