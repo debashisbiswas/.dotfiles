@@ -10,10 +10,11 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
     " Declare the list of plugins.
     " Themes
-    Plug 'gruvbox-community/gruvbox'
-    Plug 'ayu-theme/ayu-vim'
     Plug 'itchyny/lightline.vim'
+    Plug 'gruvbox-community/gruvbox'
     Plug 'shinchu/lightline-gruvbox.vim'
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'yarisgutierrez/ayu-lightline'
 
     " Plugins
     Plug 'tpope/vim-fugitive'
@@ -23,6 +24,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
         Plug 'nvim-lua/plenary.nvim'
         Plug 'nvim-telescope/telescope.nvim'
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
         Plug 'neovim/nvim-lspconfig'
         Plug 'hrsh7th/cmp-nvim-lsp'
         Plug 'hrsh7th/cmp-buffer'
