@@ -1,6 +1,7 @@
 alias refresh='source ~/.bashrc'
 
 type git &> /dev/null && alias glo='git log --oneline'
+type git &> /dev/null && alias gs='git status'
 
 type nvim &> /dev/null && alias vim='nvim'
 alias v='vim'
