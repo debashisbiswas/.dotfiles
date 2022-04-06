@@ -46,3 +46,13 @@ set cursorline
 if has('nvim')
     set inccommand=split
 endif
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 75})
+augroup END
+
+augroup trim_whitespace
+    autocmd!
+    autocmd BufWritePre * %s/\s\+$//e
+augroup END

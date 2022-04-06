@@ -21,10 +21,5 @@ highlight Visual guibg=#444444
 "let ayucolor="light"
 let ayucolor="mirage"
 
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 75})
-augroup END
-
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'

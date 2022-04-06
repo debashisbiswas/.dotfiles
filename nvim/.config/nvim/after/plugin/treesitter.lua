@@ -11,7 +11,9 @@ require'nvim-treesitter.configs'.setup {
         "json",
         "yaml",
         "rust",
-        "python"
+        "python",
+        "markdown",
+        "toml"
     },
 
     -- Install languages synchronously (only applied to `ensure_installed`)
