@@ -2,18 +2,19 @@
 require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = {
-        "javascript",
-        "typescript",
-        "html",
-        "css",
-        "bash",
-        "c",
-        "json",
-        "yaml",
         "rust",
         "python",
+        "typescript",
+        "javascript",
+        "svelte",
+        "bash",
+        "c",
+        "html",
+        "css",
+        "json",
+        "yaml",
         "markdown",
-        "toml"
+        "toml",
     },
 
     -- Install languages synchronously (only applied to `ensure_installed`)

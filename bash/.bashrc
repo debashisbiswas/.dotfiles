@@ -260,3 +260,4 @@ shopt -s cdable_vars
 export dotfiles="$HOME/.dotfiles"
 export dev="$HOME/dev"
 
+export PATH="$HOME/.local/bin:$PATH"
