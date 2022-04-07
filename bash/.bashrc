@@ -257,7 +257,7 @@ alias cd='>/dev/null cd'
 # This allows you to bookmark your favorite places across the file system
 # Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
 shopt -s cdable_vars
-export dotfiles="$HOME/.dotfiles"
+export df="$HOME/.dotfiles"
 export dev="$HOME/dev"
 
 export PATH="$HOME/.local/bin:$PATH"
