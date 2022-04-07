@@ -19,7 +19,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
     " Fuzzy finding
     " Telescope depends on plenary
