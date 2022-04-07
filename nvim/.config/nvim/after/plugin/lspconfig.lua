@@ -41,6 +41,7 @@ local servers = {
     'rust_analyzer',
     'svelte',
     'jedi_language_server',
+    'emmet_ls',
 }
 
 for _, lsp in pairs(servers) do
