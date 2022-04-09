@@ -20,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'windwp/nvim-ts-autotag'
 
 " Fuzzy finding
 " Telescope depends on plenary
