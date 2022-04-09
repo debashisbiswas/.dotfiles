@@ -1,8 +1,7 @@
 syntax on
 filetype plugin indent on
 
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=4 softtabstop=4 shiftwidth=4
 set expandtab
 set smarttab
 set smartindent
@@ -24,7 +23,6 @@ set incsearch
 set termguicolors
 set scrolloff=8
 set noshowmode
-set completeopt=menuone,noinsert,noselect
 set colorcolumn=80
 set signcolumn=yes
 
@@ -44,15 +42,15 @@ let mapleader=" "
 set encoding=UTF-8
 set cursorline
 if has('nvim')
-    set inccommand=split
+  set inccommand=split
 endif
 
 augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 75})
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 75})
 augroup END
 
 augroup trim_whitespace
-    autocmd!
-    autocmd BufWritePre * %s/\s\+$//e
+  autocmd!
+  autocmd BufWritePre * %s/\s\+$//e
 augroup END
