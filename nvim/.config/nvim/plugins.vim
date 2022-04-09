@@ -38,6 +38,7 @@ Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lua'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'simrat39/rust-tools.nvim'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'

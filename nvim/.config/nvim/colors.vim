@@ -18,6 +18,13 @@ highlight Visual guibg=#444444
 "highlight netrwDir guifg=#5EACD3
 "highlight TelescopeBorder guifg=#5EACD3
 
+" Completion colors
+highlight! link CmpItemAbbr Comment
+highlight! link CmpItemAbbrDeprecated Error
+highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbr
+highlight! link CmpItemKind Special
+highlight! link CmpItemMenu NonText
+
 "let ayucolor="light"
 let ayucolor="mirage"
 
