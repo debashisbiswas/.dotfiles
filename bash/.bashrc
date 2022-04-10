@@ -261,3 +261,4 @@ export df="$HOME/.dotfiles"
 export dev="$HOME/dev"
 
 export PATH="$HOME/.local/bin:$PATH"
+type yarn &> /dev/null && export PATH="$(yarn global bin):$PATH"

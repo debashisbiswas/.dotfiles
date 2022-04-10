@@ -9,14 +9,19 @@ let g:gruvbox_invert_selection='0'
 set background=dark
 colorscheme gruvbox
 
-"highlight ColorColumn ctermbg=0 guibg=grey
+" https://www.ditig.com/256-colors-cheat-sheet
+highlight ColorColumn guibg=grey
 highlight SignColumn guibg=none
+" Setting the cursorline will still color the current line number.
+highlight CursorLine guibg=none
 highlight CursorLineNR guibg=None
-highlight Normal guibg=None
-highlight Visual guibg=#444444
-"highlight LineNr guifg=#5EACD3
-"highlight netrwDir guifg=#5EACD3
-"highlight TelescopeBorder guifg=#5EACD3
+highlight Normal guibg=none
+" highlight LineNr guifg=#ff8659
+" highlight LineNr guifg=#aed75f
+highlight LineNr guifg=#5EACD3
+highlight netrwDir guifg=#5EACD3
+highlight qfFileName guifg=#AED75F
+highlight TelescopeBorder guifg=#5EACD3
 
 " Completion colors
 highlight! link CmpItemAbbr Comment
