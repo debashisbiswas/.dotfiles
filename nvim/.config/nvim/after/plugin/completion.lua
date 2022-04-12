@@ -104,6 +104,7 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
-    { name = 'cmdline' }
+    -- Command line completion hangs in WSL. Disabling for now.
+    -- { name = 'cmdline', }
   })
 })
