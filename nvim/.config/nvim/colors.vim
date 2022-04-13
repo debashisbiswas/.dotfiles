@@ -10,15 +10,15 @@ set background=dark
 colorscheme gruvbox
 
 " https://www.ditig.com/256-colors-cheat-sheet
-highlight ColorColumn guibg=grey
+" highlight ColorColumn guibg=grey
 highlight SignColumn guibg=none
 " Setting the cursorline will still color the current line number.
-highlight CursorLine guibg=none
+" highlight CursorLine guibg=none
 highlight CursorLineNR guibg=None
 highlight Normal guibg=none
 " highlight LineNr guifg=#ff8659
 " highlight LineNr guifg=#aed75f
-highlight LineNr guifg=#5EACD3
+" highlight LineNr guifg=#5EACD3
 highlight netrwDir guifg=#5EACD3
 highlight qfFileName guifg=#AED75F
 highlight TelescopeBorder guifg=#5EACD3

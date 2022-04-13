@@ -25,6 +25,7 @@ set scrolloff=8
 set noshowmode
 set colorcolumn=80
 set signcolumn=yes
+set autochdir
 
 set nojoinspaces
 set wildmode=longest,list,full
@@ -38,12 +39,11 @@ set wildignore+=*.pyc
 set vb t_vb=
 set backspace=indent,eol,start
 set autoread
-let mapleader=" "
 set encoding=UTF-8
 set cursorline
-if has('nvim')
-  set inccommand=split
-endif
+set inccommand=split
+
+let mapleader=" "
 
 augroup highlight_yank
   autocmd!
