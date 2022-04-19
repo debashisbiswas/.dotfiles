@@ -1,20 +1,23 @@
 set termguicolors
+set background=dark
 
-let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 let g:gruvbox_invert_selection = '0'
-set background=dark
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_sign_column = 'None'
 colorscheme gruvbox
 
 " https://www.ditig.com/256-colors-cheat-sheet
 " highlight ColorColumn guibg=grey
-highlight SignColumn guibg=none
 
-" Setting the cursorline will still color the current line number.
-highlight CursorLine guibg=none
+" Gruvbox setting handles this!
+" highlight SignColumn guibg=none
+
+" Colored line number without cursorline background
+highlight CursorLine guibg=None
 highlight CursorLineNR guibg=None
 
 " Use the terminal's background color. Useful for transparency.
