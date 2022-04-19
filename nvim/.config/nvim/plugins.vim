@@ -18,6 +18,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'windwp/nvim-ts-autotag'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 " Fuzzy finding
 " Telescope depends on plenary
@@ -25,7 +27,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " LSP and completion
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/nvim-cmp'
