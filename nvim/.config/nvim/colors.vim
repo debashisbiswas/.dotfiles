@@ -12,16 +12,21 @@ colorscheme gruvbox
 " https://www.ditig.com/256-colors-cheat-sheet
 " highlight ColorColumn guibg=grey
 highlight SignColumn guibg=none
+
 " Setting the cursorline will still color the current line number.
-" highlight CursorLine guibg=none
+highlight CursorLine guibg=none
 highlight CursorLineNR guibg=None
-highlight Normal guibg=none
+
+" Use the terminal's background color. Useful for transparency.
+" highlight Normal guibg=none
+
+" Primeagen's settings
 " highlight LineNr guifg=#ff8659
 " highlight LineNr guifg=#aed75f
 " highlight LineNr guifg=#5EACD3
-highlight netrwDir guifg=#5EACD3
-highlight qfFileName guifg=#AED75F
-highlight TelescopeBorder guifg=#5EACD3
+" highlight netrwDir guifg=#5EACD3
+" highlight qfFileName guifg=#AED75F
+" highlight TelescopeBorder guifg=#5EACD3
 
 " Completion colors
 highlight! link CmpItemAbbr Comment
@@ -29,9 +34,3 @@ highlight! link CmpItemAbbrDeprecated Error
 highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbr
 highlight! link CmpItemKind Special
 highlight! link CmpItemMenu NonText
-
-"let ayucolor="light"
-let ayucolor="mirage"
-
-let g:lightline = {}
-let g:lightline.colorscheme = 'gruvbox'

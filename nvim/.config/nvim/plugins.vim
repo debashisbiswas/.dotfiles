@@ -9,11 +9,7 @@ endif
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
 " Colors and Themes
-Plug 'itchyny/lightline.vim'
-  Plug 'shinchu/lightline-gruvbox.vim'
-  Plug 'yarisgutierrez/ayu-lightline'
 Plug 'gruvbox-community/gruvbox'
-Plug 'ayu-theme/ayu-vim'
 
 " Plugins
 Plug 'tpope/vim-fugitive'
@@ -41,6 +37,7 @@ Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'simrat39/rust-tools.nvim'
+Plug 'j-hui/fidget.nvim'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'
