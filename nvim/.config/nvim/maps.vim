@@ -9,5 +9,7 @@ nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
 nnoremap <Leader>vh :lua require('telescope.builtin').help_tags()<CR>
 nnoremap <Leader>vc :lua require('telescope.builtin').git_files({ prompt_title = "< VimRC >", cwd = vim.env.DOTFILES, hidden = true })<CR>
 nnoremap <Leader>so :so %<CR>
+nnoremap ( 10zh
+nnoremap ) 10zl
 
 command! PU PlugUpdate | PlugUpgrade
