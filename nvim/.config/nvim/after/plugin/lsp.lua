@@ -13,7 +13,7 @@ local lsp_installer = require "nvim-lsp-installer"
 -- Include the servers you want to have installed by default below
 local servers = {
   "bashls",
-  "jedi_language_server",
+  "pyright", -- python
   "rust_analyzer",
   "yamlls",
   "cssls",
@@ -23,10 +23,12 @@ local servers = {
   "jsonls",
   "tsserver",
   "svelte",
-  "taplo",
+  "taplo", -- toml
   "vimls",
-  "lemminx",
+  "lemminx", -- xml
   "clangd",
+  "jdtls", -- java
+  "powershell_es",
 }
 
 for _, name in pairs(servers) do

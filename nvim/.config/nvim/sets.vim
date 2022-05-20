@@ -25,7 +25,6 @@ set scrolloff=8
 set noshowmode
 set colorcolumn=80
 set signcolumn=yes
-set autochdir
 
 set nojoinspaces
 set wildmode=longest,list,full
