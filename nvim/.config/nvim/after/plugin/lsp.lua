@@ -13,7 +13,8 @@ local lsp_installer = require "nvim-lsp-installer"
 -- Include the servers you want to have installed by default below
 local servers = {
   "bashls",
-  "pyright", -- python
+  "pyright", -- python static checking
+  "jedi_language_server", -- python code actions
   "rust_analyzer",
   "yamlls",
   "cssls",

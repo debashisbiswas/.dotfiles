@@ -6,10 +6,8 @@ set expandtab
 set smarttab
 set smartindent
 
-" always keep cursor as block
 set guicursor=
 
-" line numbers
 set number
 set relativenumber
 
@@ -41,6 +39,7 @@ set autoread
 set encoding=UTF-8
 set cursorline
 set inccommand=split
+set mouse=a
 
 let mapleader=" "
 
