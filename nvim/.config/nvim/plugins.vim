@@ -24,7 +24,6 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'sbdchd/neoformat'
-Plug 'ahmedkhalf/project.nvim'
 Plug 'ThePrimeagen/harpoon'
 
 " Fuzzy finding

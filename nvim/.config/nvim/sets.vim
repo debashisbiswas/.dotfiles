@@ -45,10 +45,17 @@ let mapleader=" "
 
 augroup highlight_yank
   autocmd!
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 75})
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
 augroup trim_whitespace
   autocmd!
   autocmd BufWritePre * %s/\s\+$//e
 augroup END
+
+" Neovide
+set guifont=FiraCode\ Nerd\ Font\ Retina:h15
+let g:neovide_no_idle = v:true
+let g:neovide_cursor_antialiasing = v:true
+let g:neovide_cursor_animation_length = 0.03
+let g:neovide_cursor_trail_length = 0.05
