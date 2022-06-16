@@ -11,16 +11,15 @@ nnoremap <Leader>vrc :lua require('telescope.builtin').git_files({ prompt_title 
 nnoremap <Leader>vc :lua require('telescope.builtin').commands()<CR>
 nnoremap <Leader>vb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <Leader>so :so %<CR>
-nnoremap ( 10zh
-nnoremap ) 10zl
 
 " Harpoon
-nnoremap <Leader>a :lua require("harpoon.mark").add_file()<CR>
-nnoremap <Leader>tc :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
-nnoremap <> :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <> :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <> :lua require("harpoon.ui").nav_file(4)<CR>
+" m for mark, gfdsa on left hand
+nnoremap <Leader>m :lua require("harpoon.mark").add_file()<CR>
+nnoremap <Leader>g :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
+nnoremap <Leader>f :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <Leader>d :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <Leader>s :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <Leader>a :lua require("harpoon.ui").nav_file(4)<CR>
 
 command! PI PlugInstall
 command! PU PlugUpdate | PlugUpgrade

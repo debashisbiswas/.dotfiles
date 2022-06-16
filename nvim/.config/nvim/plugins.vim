@@ -17,37 +17,37 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 Plug 'windwp/nvim-ts-autotag'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ThePrimeagen/harpoon'
-
-" still not sure about these two
-Plug 'sbdchd/neoformat'
-Plug 'simrat39/symbols-outline.nvim'
+Plug 'numToStr/Comment.nvim'
 
 " Fuzzy finding
-" Telescope depends on plenary
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-" LSP and completion
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/playground'
+
+" LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'j-hui/fidget.nvim'
+
+" Completion
 Plug 'hrsh7th/nvim-cmp'
-Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'onsails/lspkind-nvim'
 Plug 'simrat39/rust-tools.nvim'
-Plug 'j-hui/fidget.nvim'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'

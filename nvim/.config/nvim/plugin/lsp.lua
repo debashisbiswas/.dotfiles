@@ -10,23 +10,26 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- LSPINSTALLER SETTINGS --
 local lsp_installer = require "nvim-lsp-installer"
 
+-- TODO: this will need to be handled better. Maybe on filetype, or after a
+-- check for the necessary dependency (npm, pip, etc)
+--
 -- Include the servers you want to have installed by default below
 local servers = {
-  "bashls",
+  -- "bashls",
   "pyright",
-  "rust_analyzer",
-  "yamlls",
-  "cssls",
-  "eslint",
-  "emmet_ls",
-  "html",
+  -- "rust_analyzer",
+  -- "yamlls",
+  -- "cssls",
+  -- "eslint",
+  -- "emmet_ls",
+  -- "html",
   "jsonls",
-  "tsserver",
-  "svelte",
-  "taplo", -- toml
+  -- "tsserver",
+  -- "svelte",
+  -- "taplo", -- toml
   "vimls",
-  "lemminx", -- xml
-  "clangd",
+  -- "lemminx", -- xml
+  -- "clangd",
   "jdtls", -- java
   "powershell_es",
 }
