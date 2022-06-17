@@ -10,7 +10,6 @@ nnoremap <Leader>vh :lua require('telescope.builtin').help_tags()<CR>
 nnoremap <Leader>vrc :lua require('telescope.builtin').git_files({ prompt_title = "< VimRC >", cwd = vim.env.DOTFILES, hidden = true })<CR>
 nnoremap <Leader>vc :lua require('telescope.builtin').commands()<CR>
 nnoremap <Leader>vb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <Leader>so :so %<CR>
 
 " Harpoon
 " m for mark, gfdsa on left hand
@@ -21,5 +20,6 @@ nnoremap <Leader>d :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <Leader>s :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <Leader>a :lua require("harpoon.ui").nav_file(4)<CR>
 
-command! PI PlugInstall
-command! PU PlugUpdate | PlugUpgrade
+command! Pi PlugInstall
+command! Pup PlugUpdate | PlugUpgrade
+command! Pc PlugClean

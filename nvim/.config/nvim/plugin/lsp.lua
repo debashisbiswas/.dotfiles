@@ -10,28 +10,9 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- LSPINSTALLER SETTINGS --
 local lsp_installer = require "nvim-lsp-installer"
 
--- TODO: this will need to be handled better. Maybe on filetype, or after a
--- check for the necessary dependency (npm, pip, etc)
---
 -- Include the servers you want to have installed by default below
 local servers = {
-  -- "bashls",
-  "pyright",
-  -- "rust_analyzer",
-  -- "yamlls",
-  -- "cssls",
-  -- "eslint",
-  -- "emmet_ls",
-  -- "html",
-  "jsonls",
-  -- "tsserver",
-  -- "svelte",
-  -- "taplo", -- toml
   "vimls",
-  -- "lemminx", -- xml
-  -- "clangd",
-  "jdtls", -- java
-  "powershell_es",
 }
 
 for _, name in pairs(servers) do
@@ -56,7 +37,6 @@ function common_on_attach(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Leader>vd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 end
 
@@ -82,6 +62,7 @@ lsp_installer.on_server_ready(function(server)
       format = { enable = true }, -- this will enable formatting
     }
   end
+
   if server.name == "rust_analyzer" then
     -- Initialize the LSP via rust-tools instead
     require("rust-tools").setup {
