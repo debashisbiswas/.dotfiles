@@ -18,6 +18,8 @@ set nowrap
 set noswapfile
 set nobackup
 set incsearch
+set ignorecase
+set smartcase
 set termguicolors
 set scrolloff=8
 set noshowmode
@@ -52,3 +54,11 @@ augroup trim_whitespace
   autocmd!
   autocmd BufWritePre * %s/\s\+$//e
 augroup END
+
+augroup quit_help
+  autocmd!
+  autocmd FileType help noremap <buffer> q :q<cr>
+augroup END
+
+set guifont=JetBrainsMono\ NF:h13
+let g:neovide_cursor_animation_length = 0
