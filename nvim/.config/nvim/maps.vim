@@ -22,6 +22,9 @@ nnoremap <silent><Leader>d :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <silent><Leader>s :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <silent><Leader>a :lua require("harpoon.ui").nav_file(4)<CR>
 
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 command! Pi PlugInstall
 command! Pup PlugUpdate | PlugUpgrade
 command! Pc PlugClean
