@@ -35,7 +35,8 @@ Plug 'nvim-treesitter/playground'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer' " mason.nvim may replace this
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'j-hui/fidget.nvim'
 
 " Completion
