@@ -17,9 +17,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 Plug 'windwp/nvim-ts-autotag'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ThePrimeagen/harpoon'
