@@ -260,5 +260,6 @@ shopt -s cdable_vars
 export DOTFILES="$HOME/.dotfiles"
 export dev="$HOME/dev"
 
+export EDITOR=vi
 export PATH="$HOME/.local/bin:$PATH"
 type yarn &> /dev/null && export PATH="$(yarn global bin):$PATH"
