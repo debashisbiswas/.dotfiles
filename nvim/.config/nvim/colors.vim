@@ -22,7 +22,7 @@ highlight CursorLine guibg=None
 highlight CursorLineNR guibg=None
 
 " Use the terminal's background color. Useful for transparency.
-" highlight Normal guibg=none
+highlight Normal guibg=none
 
 " Primeagen's settings
 " highlight LineNr guifg=#ff8659
