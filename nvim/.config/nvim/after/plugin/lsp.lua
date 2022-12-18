@@ -61,27 +61,38 @@ require('mason').setup()
 local servers = { 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua' }
 
 -- Ensure the servers above are installed
-require('mason-lspconfig').setup {
+require('mason-lspconfig').setup({
   ensure_installed = servers,
-}
+})
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
+  require('lspconfig')[lsp].setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 end
 
 -- Turn on lsp status information
 require('fidget').setup({
   window = {
     -- Transparent background
-    blend = 0
-  }
+    blend = 0,
+  },
+})
+
+local null_ls = require('null-ls')
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.completion.spell,
+  },
 })
 
 -- Example custom configuration for lua
@@ -91,7 +102,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').sumneko_lua.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -110,26 +121,26 @@ require('lspconfig').sumneko_lua.setup {
       telemetry = { enable = false },
     },
   },
-}
+})
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert {
+  mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
-    },
+    }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -148,12 +159,12 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-  },
+  }),
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
   experimental = {
-    ghost_text = true
-  }
-}
+    ghost_text = true,
+  },
+})

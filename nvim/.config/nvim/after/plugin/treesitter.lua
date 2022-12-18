@@ -1,11 +1,21 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
-    'c', 'cpp', 'lua', 'html', 'python',
-    'rust', 'javascript', 'css', 'svelte', 'typescript',
-    'help', 'astro', 'vim'
+    'c',
+    'cpp',
+    'lua',
+    'html',
+    'python',
+    'rust',
+    'javascript',
+    'css',
+    'svelte',
+    'typescript',
+    'help',
+    'astro',
+    'vim',
   },
   highlight = { enable = true },
   indent = { enable = true },
@@ -38,5 +48,5 @@ require('nvim-treesitter.configs').setup {
       goto_node = '<cr>',
       show_help = '?',
     },
-  }
-}
+  },
+})

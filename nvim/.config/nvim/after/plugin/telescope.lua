@@ -1,17 +1,17 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
-local actions = require("telescope.actions")
-require('telescope').setup {
+local actions = require('telescope.actions')
+require('telescope').setup({
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
-        ["<esc>"] = actions.close
+        ['<esc>'] = actions.close,
       },
     },
   },
-}
+})
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -30,8 +30,8 @@ keymap('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S
 keymap('n', '<leader>vc', require('telescope.builtin').commands, { desc = '[V]iew [C]ommands' })
 keymap('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
     winblend = 10,
     previewer = false,
-  })
+  }))
 end, { desc = '[/] Fuzzily search in current buffer]' })

@@ -1,70 +1,75 @@
 -- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   is_bootstrap = true
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-  vim.cmd [[packadd packer.nvim]]
+  vim.cmd([[packadd packer.nvim]])
 end
 
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use('wbthomason/packer.nvim')
 
-  use { -- LSP
+  use({ -- LSP
     'neovim/nvim-lspconfig',
     requires = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'j-hui/fidget.nvim',
     },
-  }
+  })
 
-  use { -- Completion
+  use({ -- Completion
     'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip'
+      'saadparwaiz1/cmp_luasnip',
     },
-  }
+  })
 
-  use {
+  use({
+    'https://github.com/jose-elias-alvarez/null-ls.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  })
+
+  use({
     'nvim-treesitter/nvim-treesitter',
     run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
+      pcall(require('nvim-treesitter.install').update({ with_sync = true }))
     end,
-  }
+  })
 
-  use {
+  use({
     'nvim-treesitter/playground',
-    requires = 'nvim-treesitter/nvim-treesitter'
-  }
+    requires = 'nvim-treesitter/nvim-treesitter',
+  })
 
-  use {
+  use({
     'ThePrimeagen/harpoon',
-    requires = 'nvim-lua/plenary.nvim'
-  }
+    requires = 'nvim-lua/plenary.nvim',
+  })
 
   -- Git related plugins
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
-  use 'lewis6991/gitsigns.nvim'
+  use('tpope/vim-fugitive')
+  use('tpope/vim-rhubarb')
+  use('tpope/vim-surround')
+  use('tpope/vim-repeat')
+  use('lewis6991/gitsigns.nvim')
 
-  use 'folke/tokyonight.nvim'
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use('folke/tokyonight.nvim')
+  use('nvim-lualine/lualine.nvim') -- Fancier statusline
+  use('lukas-reineke/indent-blankline.nvim') -- Add indentation guides even on blank lines
+  use('numToStr/Comment.nvim') -- "gc" to comment visual regions/lines
+  use('tpope/vim-sleuth') -- Detect tabstop and shiftwidth automatically
 
   -- Fuzzy Finder (files, lsp, etc)
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+  use({ 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } })
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable('make') == 1 })
 
-  use 'windwp/nvim-ts-autotag'
+  use('windwp/nvim-ts-autotag')
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -81,11 +86,12 @@ end)
 -- make sense to execute the rest of the init.lua.
 -- You'll need to restart nvim, and then it will work.
 if is_bootstrap then
-  print '=================================='
-  print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
-  print '       then restart nvim'
-  print '=================================='
+  print([[
+==================================
+    Plugins are being installed
+    Wait until Packer completes,
+       then restart nvim
+==================================]])
   return
 end
 
@@ -94,7 +100,7 @@ local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
   command = 'source <afile> | PackerCompile',
   group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
+  pattern = vim.fn.expand('$MYVIMRC'),
 })
 
 --
@@ -140,21 +146,21 @@ local keymap = vim.keymap.set
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 keymap('n', '<leader>h', '<C-w>h')
-keymap('n', '<leader>j', "<C-w>j")
-keymap('n', '<leader>k', "<C-w>k")
-keymap('n', '<leader>l', "<C-w>l")
+keymap('n', '<leader>j', '<C-w>j')
+keymap('n', '<leader>k', '<C-w>k')
+keymap('n', '<leader>l', '<C-w>l')
 keymap('n', '<leader>t', vim.cmd.Ex)
 
 keymap('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 keymap('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
-keymap('n', '<C-d>', "<C-d>zz", { silent = true })
-keymap('n', '<C-u>', "<C-u>zz", { silent = true })
+keymap('n', '<C-d>', '<C-d>zz', { silent = true })
+keymap('n', '<C-u>', '<C-u>zz', { silent = true })
 
-keymap("n", "n", "nzzzv", { silent = true })
-keymap("n", "N", "Nzzzv", { silent = true })
+keymap('n', 'n', 'nzzzv', { silent = true })
+keymap('n', 'N', 'Nzzzv', { silent = true })
 
-keymap("x", "<leader>p", [["_dP]])
+keymap('x', '<leader>p', [["_dP]])
 
 -- Remap for dealing with word wrap
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
