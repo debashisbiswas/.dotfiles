@@ -3,7 +3,8 @@ local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.n
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   is_bootstrap = true
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+  -- Quotes for spaces on Windows
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim "' .. install_path .. '"')
   vim.cmd([[packadd packer.nvim]])
 end
 
@@ -29,7 +30,7 @@ require('packer').startup(function(use)
   })
 
   use({
-    'https://github.com/jose-elias-alvarez/null-ls.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
     requires = 'nvim-lua/plenary.nvim',
   })
 
