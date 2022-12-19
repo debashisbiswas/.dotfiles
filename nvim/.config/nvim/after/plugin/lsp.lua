@@ -51,13 +51,6 @@ lsp.on_attach(function(_, bufnr)
     end
   end, { desc = 'Format current buffer with LSP' })
   local opts = { buffer = bufnr, remap = false }
-
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_next, opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
-  vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
-  vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
-  vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 end)
 
 -- nvim-cmp setup
@@ -116,12 +109,27 @@ require('fidget').setup({
 })
 
 local null_ls = require('null-ls')
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier.with({
+      extra_filetypes = { 'svelte' },
+    }),
     null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.completion.spell,
   },
+
+  -- you can reuse a shared lspconfig on_attach callback here
+  on_attach = function(client, bufnr)
+    if client.supports_method('textDocument/formatting') then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = augroup,
+        buffer = bufnr,
+        command = 'Format',
+      })
+    end
+  end,
 })
