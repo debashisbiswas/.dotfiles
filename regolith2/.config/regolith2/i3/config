@@ -83,7 +83,7 @@ bindsym $mod+v split vertical
 bindsym $mod+g split horizontal
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+f floating toggle
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle splith splitv
 
 ## Modify // Move Window to Workspace 1 - 10 // <><Shift> 0..9 ##
 bindsym $mod+Shift+1 move container to workspace number 1
@@ -187,7 +187,7 @@ gaps outer $default_outer
 bindsym $mod+Delete gaps inner all set $default_inner
 
 # Only enable gaps on a workspace when there is at least one container
-smart_gaps off
+smart_gaps on
 
 ###############################################################################
 # i3 Bar
