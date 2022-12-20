@@ -210,8 +210,8 @@ bar {
 # Launcher dialogs
 ###############################################################################
 
-bindsym $mod+Return exec --no-startup-id /usr/bin/x-terminal-emulator
-bindsym $mod+Shift+Return exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+bindsym $mod+t exec --no-startup-id /usr/bin/x-terminal-emulator
+bindsym $mod+b exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
 
 # Start the installed regolith-compositor
 exec_always --no-startup-id /usr/share/regolith-compositor/init
