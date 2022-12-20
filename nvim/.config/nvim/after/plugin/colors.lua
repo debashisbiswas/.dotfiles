@@ -66,7 +66,9 @@ require('gruvbox').setup({
 vim.cmd('colorscheme rose-pine')
 
 --  Colored line number without cursorline background
+vim.o.cursorline = true
 vim.cmd('highlight CursorLine guibg=None')
 vim.cmd('highlight CursorLineNR guibg=None')
+
 --  Use the terminal's background color. Useful for transparency.
 vim.cmd('highlight Normal guibg=none')

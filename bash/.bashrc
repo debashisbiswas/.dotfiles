@@ -106,6 +106,7 @@ export PS1_YELLOW="\[$(tput bold; tput setaf 3)\]"
 export PS1_MAGENTA="\[$(tput bold; tput setaf 5)\]"
 export PS1_CYAN="\[$(tput bold; tput setaf 6)\]"
 export PS1_WHITE="\[$(tput bold; tput setaf 7)\]"
+export PS1_WHITE_PLAIN="\[$(tput sgr0; tput setaf 7)\]"
 export PS1_RED="\[$(tput bold; tput setaf 1)\]"
 export PS1_RESET="\[$(tput sgr0)\]"
 
@@ -139,7 +140,7 @@ __parse_git_status () {
 # function to set PS1
 function _bash_prompt() {
     # git info
-    local GIT_INFO=$(git branch &>/dev/null && echo "${PS1_GREY}on ${PS1_CYAN}$(__git_ps1 '%s')${PS1_WHITE}$(__parse_git_status)")
+    local GIT_INFO=$(git branch &>/dev/null && echo "${PS1_WHITE_PLAIN}on ${PS1_CYAN}$(__git_ps1 '%s')${PS1_WHITE_PLAIN}$(__parse_git_status)")
     # add <esc>k<esc>\ to PS1 if screen is running
     # see man(1) screen, section TITLES for more
     if [[ "$TERM" == screen* ]]; then
@@ -148,8 +149,8 @@ function _bash_prompt() {
         local SCREEN_ESC=''
     fi
 
-    PS1="\n${PS1_MAGENTA}\u ${PS1_GREY}at${PS1_YELLOW} \h ${PS1_GREY}in${PS1_GREEN} \w ${GIT_INFO}\
-         \n${SCREEN_ESC}${PS1_WHITE}>${PS1_RESET} "
+    PS1="\n${PS1_MAGENTA}\u ${PS1_WHITE_PLAIN}at${PS1_YELLOW} \h ${PS1_WHITE_PLAIN}in${PS1_GREEN} \w ${GIT_INFO}\
+         \n${SCREEN_ESC}${PS1_WHITE_PLAIN}>${PS1_RESET} "
 }
 
 # call _bash_prompt() each time the prompt is refreshed
