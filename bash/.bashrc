@@ -264,3 +264,5 @@ export dev="$HOME/dev"
 export EDITOR=vi
 export PATH="$HOME/.local/bin:$PATH"
 type yarn &> /dev/null && export PATH="$(yarn global bin):$PATH"
+
+[[ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]] && source "/usr/share/doc/fzf/examples/key-bindings.bash"
