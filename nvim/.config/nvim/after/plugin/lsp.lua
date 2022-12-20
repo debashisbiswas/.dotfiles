@@ -50,7 +50,6 @@ lsp.on_attach(function(_, bufnr)
       vim.lsp.buf.formatting()
     end
   end, { desc = 'Format current buffer with LSP' })
-  local opts = { buffer = bufnr, remap = false }
 end)
 
 -- nvim-cmp setup
@@ -123,7 +122,6 @@ null_ls.setup({
 
   -- you can reuse a shared lspconfig on_attach callback here
   on_attach = function(client, bufnr)
-
     if client.supports_method('textDocument/formatting') then
       -- format on save
       -- vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -133,8 +131,7 @@ null_ls.setup({
       --   command = 'Format',
       -- })
 
-      vim.keymap.set('n', '<Leader>f', ":Format")
+      vim.keymap.set('n', '<Leader>f', ':Format<CR>')
     end
-
   end,
 })
