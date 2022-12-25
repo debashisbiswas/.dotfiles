@@ -63,7 +63,7 @@ require('gruvbox').setup({
 })
 
 -- set colorscheme after options
-vim.cmd('colorscheme rose-pine')
+vim.cmd('colorscheme tokyonight')
 
 --  Colored line number without cursorline background
 vim.o.cursorline = true

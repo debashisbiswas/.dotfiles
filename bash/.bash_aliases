@@ -17,9 +17,8 @@ if command -v git >/dev/null 2>&1; then
     alias gc='git commit'
 fi
 
-if command -v nvim >/dev/null 2>&1; then
-    alias vim='nvim'
-fi
+command -v neofetch >/dev/null 2>&1 && alias nf='neofetch'
+command -v nvim >/dev/null 2>&1 && alias vim='nvim'
 alias v='vim'
 
 # WSL2 settings

@@ -35,6 +35,8 @@ require('packer').startup(function(use)
     },
   })
 
+  use('folke/neodev.nvim')
+
   use({
     'jose-elias-alvarez/null-ls.nvim',
     requires = 'nvim-lua/plenary.nvim',
@@ -79,6 +81,7 @@ require('packer').startup(function(use)
   use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable('make') == 1 })
 
   use('windwp/nvim-ts-autotag')
+  use('windwp/nvim-autopairs')
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -189,10 +192,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Trim trailing whitespace
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   group = autocmd_group,
   command = [[%s/\s\+$//e]],
+})
+
+-- Trim empty lines from end of file
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  group = autocmd_group,
+  command = [[%s#\($\n\s*\)\+\%$##e]],
 })
 
 vim.api.nvim_create_autocmd('FileType', {

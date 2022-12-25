@@ -33,3 +33,5 @@ require('gitsigns').setup({
     changedelete = { text = '~' },
   },
 })
+
+require('nvim-autopairs').setup()
