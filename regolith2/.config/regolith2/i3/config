@@ -228,17 +228,10 @@ exec_always --no-startup-id /usr/bin/feh --bg-center --randomize ~/Pictures/Wall
 # Ilia
 ###############################################################################
 
-# Load stylesheet if exists
-set_from_resource $ilia.stylesheet ilia.stylesheet
-
-set_from_resource $i3-wm.binding.launcher.app i3-wm.binding.launcher.app slash
-set_from_resource $i3-wm.program.launcher.app i3-wm.program.launcher.app ilia -p apps
-bindsym $mod+$i3-wm.binding.launcher.app exec --no-startup-id $i3-wm.program.launcher.app -t $ilia.stylesheet
+bindsym $mod+s exec --no-startup-id ilia -p apps
 
 ## Launch // Notification Viewer // <> n ##
-set_from_resource $i3-wm.binding.notification_ui i3-wm.binding.notification_ui n
-set_from_resource $i3-wm.program.notification_ui i3-wm.program.notification_ui ilia -p notifications
-bindsym $mod+$i3-wm.binding.notification_ui exec --no-startup-id $i3-wm.program.notification_ui
+bindsym $mod+n exec --no-startup-id ilia -p notifications
 
 # Start Rofication for notifications
 set_from_resource $i3-wm.program.notifications i3-wm.program.notifications /usr/bin/rofication-daemon
