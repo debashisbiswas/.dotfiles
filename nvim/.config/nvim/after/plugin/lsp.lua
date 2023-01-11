@@ -134,7 +134,7 @@ null_ls.setup({
       --   command = 'Format',
       -- })
 
-      vim.keymap.set('n', ';', ':Format<CR>')
+      vim.keymap.set('n', '<leader>;', ':Format<CR>')
     end
   end,
 })
