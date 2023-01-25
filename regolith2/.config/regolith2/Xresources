@@ -1,6 +1,0 @@
-gtk.font_name: Fira Sans Book 10
-gtk.monospace_font_name: Fira Mono Regular 10
-gnome.terminal.font: Fira Mono Regular 16
-gnome.terminal.background-transparency-percent: 10
-gnome.terminal.use-transparent-background: true
-regolith.look.path: /usr/share/regolith-look/i3-default
