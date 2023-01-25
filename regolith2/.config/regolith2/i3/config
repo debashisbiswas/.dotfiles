@@ -113,9 +113,6 @@ bindsym $mod+$alt+q [con_id="__focused__"] exec --no-startup-id kill -9 $(xdotoo
 ## Session // Reload i3 Config // <><Shift> c ##
 bindsym $mod+Shift+c reload
 
-## Session // Refresh Session // <><Shift> r ##
-bindsym $mod+Shift+r exec --no-startup-id /usr/bin/regolith-look refresh
-
 ## Session // Restart i3 // <><Ctrl> r ##
 bindsym $mod+Ctrl+r restart
 
@@ -137,18 +134,6 @@ bindsym $mod+Shift+p exec /usr/bin/gnome-session-quit --power-off
 # set_from_resource $i3-wm.program.settings i3-wm.program.settings regolith-control-center
 # bindsym $mod+$i3-wm.binding.settings exec --no-startup-id $i3-wm.program.settings
 for_window [class="regolith-control-center"] floating enable
-
-###############################################################################
-# i3-gaps Window Resize
-###############################################################################
-
-## Resize // Window Gaps // <> + - ##
-bindsym $mod+minus gaps inner current minus 6
-bindsym $mod+plus gaps inner current plus 6
-
-## Resize // Big Window Gaps // <><Shift> + - ##
-bindsym $mod+Shift+minus gaps inner current minus 12
-bindsym $mod+Shift+plus gaps inner current plus 12
 
 ## Resize // Enter Resize Mode // <> r ##
 mode "Resize Mode" {
@@ -173,26 +158,6 @@ mode "Resize Mode" {
 }
 bindsym $mod+r mode "Resize Mode"
 
-###############################################################################
-# i3-gaps Appearance and Behavior
-###############################################################################
-
-set $default_inner 8
-set $default_outer 0
-# Specify the distance between windows in pixels. (i3-gaps)
-gaps inner $default_inner
-gaps outer $default_outer
-
-## Resize // Big Window Gaps // <><Shift> + - ##
-bindsym $mod+Delete gaps inner all set $default_inner
-
-# Only enable gaps on a workspace when there is at least one container
-smart_gaps on
-
-###############################################################################
-# i3 Bar
-###############################################################################
-
 # The bar configuration
 bar {
   font pango:Fira Sans Book 12
@@ -200,29 +165,15 @@ bar {
   tray_output primary
 }
 
-###############################################################################
-# Launcher dialogs
-###############################################################################
-
 bindsym $mod+t exec --no-startup-id /usr/bin/x-terminal-emulator
 bindsym $mod+b exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+
+bindsym $mod+s exec --no-startup-id i3-dmenu-desktop
 
 # Start the installed regolith-compositor
 exec_always --no-startup-id /usr/share/regolith-compositor/init
 
-# Hide the mouse pointer if unused for a duration
-exec --no-startup-id /usr/bin/unclutter -b
-
+exec_always --no-startup-id /usr/bin/feh --bg-center --randomize ~/Pictures/Wallpapers
 # Load nm-applet to provide auth dialogs for network access
 exec --no-startup-id /usr/bin/nm-applet
-
-exec_always --no-startup-id /usr/bin/feh --bg-center --randomize ~/Pictures/Wallpapers
-
-bindsym $mod+s exec --no-startup-id i3-dmenu-desktop
-
-## Launch // Notification Viewer // <> n ##
-# bindsym $mod+n exec --no-startup-id ilia -p notifications
-
-# Start Rofication for notifications
-set_from_resource $i3-wm.program.notifications i3-wm.program.notifications /usr/bin/rofication-daemon
-exec --no-startup-id $i3-wm.program.notifications
+exec --no-startup-id /usr/bin/dunst
