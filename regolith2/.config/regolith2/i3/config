@@ -224,14 +224,10 @@ exec --no-startup-id /usr/bin/nm-applet
 
 exec_always --no-startup-id /usr/bin/feh --bg-center --randomize ~/Pictures/Wallpapers
 
-###############################################################################
-# Ilia
-###############################################################################
-
-bindsym $mod+s exec --no-startup-id ilia -p apps
+bindsym $mod+s exec --no-startup-id i3-dmenu-desktop
 
 ## Launch // Notification Viewer // <> n ##
-bindsym $mod+n exec --no-startup-id ilia -p notifications
+# bindsym $mod+n exec --no-startup-id ilia -p notifications
 
 # Start Rofication for notifications
 set_from_resource $i3-wm.program.notifications i3-wm.program.notifications /usr/bin/rofication-daemon
