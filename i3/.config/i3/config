@@ -170,7 +170,8 @@ bindsym $mod+b exec --no-startup-id gtk-launch $(xdg-settings get default-web-br
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 bindsym $mod+s exec --no-startup-id i3-dmenu-desktop
 
-exec_always --no-startup-id /usr/bin/picom
+# Required for v9, but v10 should both autostart and use experimental backends by default
+exec_always --no-startup-id /usr/bin/picom -b --experimental-backends
 
 exec_always --no-startup-id /usr/bin/feh --bg-center --randomize ~/Pictures/Wallpapers
 exec --no-startup-id /usr/bin/dunst
