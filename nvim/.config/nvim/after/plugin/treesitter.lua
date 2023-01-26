@@ -17,6 +17,7 @@ require('nvim-treesitter.configs').setup({
     'astro',
     'vim',
     'bash',
+    'fish',
   },
   highlight = { enable = true },
   indent = { enable = true },
