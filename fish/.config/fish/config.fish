@@ -1,13 +1,17 @@
-set -U fish_greeting
+function _add_to_path
+    if test (count $argv) -gt 0
+        set -gx PATH $argv $PATH
+    else
+        echo "warning: _add_to_path called without argument"
+    end
+end
 
 set -gx EDITOR nvim
-set PATH $PATH ~/.cargo/bin
+set -gx VOLTA_HOME "$HOME/.volta"
 
-set -U nvm_default_version lts
+_add_to_path "$VOLTA_HOME/bin" "$HOME/.cargo/bin"
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
-
     if type -q git
         abbr gd "git diff"
         abbr glo "git log --oneline"

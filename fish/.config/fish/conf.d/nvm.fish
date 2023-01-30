@@ -1,3 +1,5 @@
+set -g nvm_data ~/.local/nvm
+
 function _nvm_install --on-event nvm_install
     set --query nvm_mirror || set --universal nvm_mirror https://nodejs.org/dist
     set --query XDG_DATA_HOME || set --local XDG_DATA_HOME ~/.local/share
