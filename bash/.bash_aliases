@@ -26,4 +26,3 @@ if grep -q "microsoft" /proc/version &>/dev/null; then
     alias powershell='powershell.exe'
     alias cmd='cmd.exe'
 fi
-
