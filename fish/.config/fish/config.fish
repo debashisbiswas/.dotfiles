@@ -2,6 +2,7 @@ set -U fish_greeting
 
 set -gx EDITOR nvim
 set PATH $PATH ~/.cargo/bin
+
 set -U nvm_default_version lts
 
 if status is-interactive
