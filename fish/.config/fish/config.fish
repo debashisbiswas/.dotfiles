@@ -18,4 +18,16 @@ if status is-interactive
     if type -q nvim
         alias v nvim
     end
+
+    alias ls "ls -p"
+    alias la "ls -A"
+    alias ll "ls -l"
+    alias lla "ll -A"
+
+    if type -q exa
+      alias ls "exa"
+      alias la "exa -a"
+      alias ll "exa -l"
+      alias lla "ll -a"
+    end
 end
