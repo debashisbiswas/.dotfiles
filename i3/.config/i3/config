@@ -202,5 +202,5 @@ bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t ima
 bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/$(date)"
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 # Select
-bindsym Shift+Print exec --no-startup-id maim --select "$HOME/Pictures/$(date)"
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Shift+Print exec --no-startup-id maim --hidecursor --select "$HOME/Pictures/$(date)"
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --hidecursor --select | xclip -selection clipboard -t image/png
