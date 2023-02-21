@@ -1,4 +1,8 @@
-xrandr --output DisplayPort-0 --off --output DisplayPort-1 --primary --mode 3440x1440 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 1024x768 --pos 3440x672 --rotate normal --output HDMI-A-1 --off --output DVI-D-0 --off
+xrandr --output DisplayPort-0 --primary --mode 3440x1440 --pos 0x0 --rotate normal --output DisplayPort-1 --off
+
+# in seconds
+xset s 900
+xset dpms 0 0 1200
 
 # https://github.com/alacritty/alacritty/issues/3465
 export WINIT_X11_SCALE_FACTOR=1
