@@ -18,7 +18,6 @@ require('rose-pine').setup({
   dim_nc_background = false,
   disable_background = true,
   disable_italics = true,
-
   --- @usage string hex value or named color from rosepinetheme.com/palette
   groups = {
     background = 'base',
@@ -44,7 +43,6 @@ require('rose-pine').setup({
     -- or set all headings at once
     headings = 'subtle',
   },
-
   -- Change specific vim highlight groups
   highlight_groups = {
     ColorColumn = { bg = 'rose' },
@@ -52,7 +50,12 @@ require('rose-pine').setup({
 })
 
 require('gruvbox').setup({
-  italic = false,
+  italic = {
+    strings = false,
+    comments = false,
+    operators = false,
+    folds = false,
+  },
   strikethrough = true,
   invert_selection = false,
   invert_signs = false,
