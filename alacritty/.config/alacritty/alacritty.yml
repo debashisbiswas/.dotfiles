@@ -62,10 +62,10 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: monospace
+    family: SFMono
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Medium
 
   size: 16.0
 
