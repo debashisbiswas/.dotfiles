@@ -45,27 +45,31 @@ function exists($cmdname)
 }
 
 function gd {
-	git diff
+    git diff
 }
 
 function glo {
-	git log --oneline
+    git log --oneline
 }
 
 function glg {
-	git log --all --decorate --oneline --graph
+    git log --all --decorate --oneline --graph
 }
 
 function gs {
-	git status
+    git status
 }
 
 function gad {
-	git add .
+    git add .
 }
 
 function gc {
-	git commit
+    git commit
+}
+
+function which($command) {
+    Get-Command $command | Select -ExpandProperty Source
 }
 
 if (exists starship) {
