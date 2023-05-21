@@ -14,9 +14,11 @@ function cd {
     }
 }
 
+# For these features, ensure PowerShell 7+
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource History
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 Import-Module ZLocation
 Import-Module PSFzf
@@ -37,4 +39,8 @@ function fcd {
     }
 }
 
-Invoke-Expression (&starship init powershell)
+if (Get-Command starship -errorAction SilentlyContinue) {
+    Invoke-Expression (&starship init powershell)
+} else {
+    Write-Host "Could not find starship in path."
+}
