@@ -39,8 +39,41 @@ function fcd {
     }
 }
 
-if (Get-Command starship -errorAction SilentlyContinue) {
+function exists($cmdname)
+{
+    return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
+}
+
+function gd {
+	git diff
+}
+
+function glo {
+	git log --oneline
+}
+
+function glg {
+	git log --all --decorate --oneline --graph
+}
+
+function gs {
+	git status
+}
+
+function gad {
+	git add .
+}
+
+function gc {
+	git commit
+}
+
+if (exists starship) {
     Invoke-Expression (&starship init powershell)
 } else {
     Write-Host "Could not find starship in path."
+}
+
+if (exists volta) {
+    (& volta completions powershell) | Out-String | Invoke-Expression
 }
