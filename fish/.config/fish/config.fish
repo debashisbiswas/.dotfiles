@@ -37,3 +37,5 @@ if status is-interactive
       alias lla "ll -a"
     end
 end
+
+starship init fish | source
