@@ -78,6 +78,6 @@ if (exists starship) {
     Write-Host "Could not find starship in path."
 }
 
-if (exists volta) {
-    (& volta completions powershell) | Out-String | Invoke-Expression
+if (exists fnm) {
+    fnm env --use-on-cd | Out-String | Invoke-Expression
 }

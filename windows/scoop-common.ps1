@@ -1,8 +1,11 @@
+scoop bucket add extras
+
 scoop install `
     bat `
     dark `
     fd `
     file `
+    fnm `
     fzf `
     gcc `
     gh `
@@ -14,6 +17,3 @@ scoop install `
     sed `
     starship `
     sudo `
-
-# Volta must be installed as admin.
-sudo scoop install volta
