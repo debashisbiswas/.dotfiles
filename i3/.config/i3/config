@@ -7,8 +7,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Meta Key - Alt key is Mod1, and Windows key is Mod4
-set $mod Mod4
-set $alt Mod1
+set $mod Mod1
 
 font pango:monospace 10
 
@@ -56,12 +55,6 @@ bindsym $mod+Shift+Ctrl+Right move container to output right
 bindsym $mod+Shift+Ctrl+Up move container to output up
 bindsym $mod+Shift+Ctrl+Down move container to output down
 
-## Navigate // Next Workspace // <> Tab ##
-bindsym $mod+Tab workspace next
-
-## Navigate // Next Workspace // <><Alt> → ##
-bindsym $mod+$alt+Tab workspace next
-
 bindsym $mod+v split vertical
 bindsym $mod+g split horizontal
 bindsym $mod+f fullscreen toggle
@@ -106,9 +99,6 @@ floating_modifier $mod
 
 # kill focused window
 bindsym $mod+c kill
-
-## Session // Terminate App // <><Alt> q ##
-bindsym $mod+$alt+q exec --no-startup-id kill -9 $(xdotool getwindowfocus getwindowpid)
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Ctrl+r restart
