@@ -9,7 +9,7 @@ bar:
   height: "32px"
   opacity: 0.75
   background: "#20242cc4"
-  font_family: "SFMono Nerd Font"
+  font_family: "Iosevka"
   font_size: "13px"
   padding: "4px 6px"
   offset_x: "0"
@@ -63,6 +63,16 @@ window_rules:
   # Some applications (eg. Steam) have borders that extend past the normal border size.
   - command: "resize borders 0px -7px -7px -7px"
     match_process_name: "steam"
+
+  # Windows for specific workspaces
+  - command: "move to workspace 1"
+    match_title: "spotify"
+
+  - command: "move to workspace 2"
+    match_process_name: "(firefox|chrome)"
+
+  - command: "move to workspace 3"
+    match_process_name: "WindowsTerminal"
 
 binding_modes:
   - name: "resize"

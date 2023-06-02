@@ -17,10 +17,14 @@ function cd {
 # For these features, ensure PowerShell 7+
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
-Set-PSReadLineOption -PredictionSource History
+try {
+  Set-PSReadLineOption -PredictionSource History
+}
+catch {
+  # Just continue without enabling the feature.
+}
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-Import-Module ZLocation
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 
