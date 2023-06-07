@@ -7,6 +7,9 @@ return {
   { "noice.nvim", enabled = false },
   { "nvim-notify", enabled = false },
   { "dressing.nvim", enabled = false },
+  { "alpha-nvim", enabled = false },
+  { "bufferline.nvim", enabled = false },
+  { "nvim-navic", enabled = false },
 
   { "neo-tree.nvim", enabled = false },
   { "nui.nvim", enabled = false },
