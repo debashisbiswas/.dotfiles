@@ -155,6 +155,32 @@ require('lazy').setup({
 
   { 'windwp/nvim-autopairs', config = true },
 
+  {
+    'ThePrimeagen/harpoon',
+    config = function()
+      require('harpoon').setup()
+
+      local mark = require 'harpoon.mark'
+      local ui = require 'harpoon.ui'
+
+      vim.keymap.set('n', 'gh', mark.add_file)
+      vim.keymap.set('n', 'gH', ui.toggle_quick_menu)
+
+      vim.keymap.set('n', '<leader>f', function()
+        ui.nav_file(1)
+      end)
+      vim.keymap.set('n', '<leader>d', function()
+        ui.nav_file(2)
+      end)
+      vim.keymap.set('n', '<leader>s', function()
+        ui.nav_file(3)
+      end)
+      vim.keymap.set('n', '<leader>a', function()
+        ui.nav_file(4)
+      end)
+    end,
+  },
+
   -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
 }, {})
@@ -307,7 +333,7 @@ local on_attach = function(_, bufnr)
   end, '[W]orkspace [L]ist Folders')
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+  local format_buffer = function(_)
     vim.lsp.buf.format {
       filter = function(client)
         -- apply whatever logic you want (in this example, we'll only use null-ls)
@@ -315,7 +341,10 @@ local on_attach = function(_, bufnr)
       end,
       bufnr = bufnr,
     }
-  end, { desc = 'Format current buffer with LSP' })
+  end
+
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', format_buffer, { desc = 'Format current buffer with LSP' })
+  vim.keymap.set('n', '<leader>;', format_buffer, {})
 end
 
 -- Enable the following language servers
