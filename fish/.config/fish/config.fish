@@ -7,9 +7,8 @@ function _add_to_path
 end
 
 set -gx EDITOR nvim
-set -gx VOLTA_HOME "$HOME/.volta"
 
-_add_to_path "$VOLTA_HOME/bin" "$HOME/.cargo/bin" "$HOME/.local/bin"
+_add_to_path "$HOME/.cargo/bin" "$HOME/.local/bin"
 
 if status is-interactive
     if type -q git
@@ -38,4 +37,5 @@ if status is-interactive
     end
 end
 
+fnm env --use-on-cd | source
 starship init fish | source
