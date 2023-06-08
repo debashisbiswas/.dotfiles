@@ -56,6 +56,7 @@ require('lazy').setup({
           null_ls.builtins.formatting.fish_indent,
           null_ls.builtins.formatting.isort,
           null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.rustfmt,
           null_ls.builtins.formatting.stylua,
         },
       }
@@ -180,6 +181,13 @@ require('lazy').setup({
       end)
     end,
   },
+  {
+    'nvim-orgmode/orgmode',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('orgmode').setup {}
+    end,
+  },
 
   -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
@@ -269,6 +277,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+require('orgmode').setup_ts_grammar() -- orgmode
+
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
@@ -276,6 +286,7 @@ require('nvim-treesitter.configs').setup {
     'cpp',
     'json',
     'markdown',
+    'org', -- orgmode
     'python',
     'rust',
     'toml',
@@ -289,7 +300,7 @@ require('nvim-treesitter.configs').setup {
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
 
-  highlight = { enable = true },
+  highlight = { enable = true, additional_vim_regex_highlighting = { 'org' } }, --orgmode
   indent = { enable = true, disable = { 'python' } },
 }
 
@@ -433,6 +444,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
+    { name = 'orgmode' }, -- orgmode
   },
 }
 
