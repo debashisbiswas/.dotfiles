@@ -32,6 +32,7 @@ require('lazy').setup({
 
       {
         'j-hui/fidget.nvim',
+        tag = 'legacy',
         opts = {
           window = {
             blend = 0, -- Transparent background
