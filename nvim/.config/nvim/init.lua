@@ -165,7 +165,10 @@ require('lazy').setup({
       local mark = require 'harpoon.mark'
       local ui = require 'harpoon.ui'
 
-      vim.keymap.set('n', 'gh', mark.add_file)
+      vim.keymap.set('n', 'gh', function()
+        mark.add_file()
+        print 'Marked current file.'
+      end)
       vim.keymap.set('n', 'gH', ui.toggle_quick_menu)
 
       vim.keymap.set('n', '<leader>f', function()
@@ -234,13 +237,28 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  group = highlight_group,
+  pattern = '*',
   callback = function()
     vim.highlight.on_yank {
       timeout = 100,
     }
   end,
-  group = highlight_group,
+})
+
+local ConfigGroup = vim.api.nvim_create_augroup('ConfigGroup', {})
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  group = ConfigGroup,
   pattern = '*',
+  -- save/restore search term, remove trailing whitespace, remove trailing empty lines
+  -- TODO: this should save your place with a mark or something
+  command = [[
+    let _s=@/
+    %s/\s\+$//e
+    %s#\($\n\)\+\%$##e
+    let @/=_s
+  ]],
 })
 
 -- [[ Configure Telescope ]]
@@ -469,5 +487,13 @@ cmp.setup {
     ghost_text = true,
   },
 }
+
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- vim: ts=2 sts=2 sw=2 et
