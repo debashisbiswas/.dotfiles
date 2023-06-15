@@ -68,8 +68,16 @@ function gad {
     git add .
 }
 
+if (Test-Path alias:\gc) {
+    Remove-Item alias:\gc -Force
+}
+
 function gc {
     git commit
+}
+
+function dot {
+    cd "$HOME/.dotfiles/"
 }
 
 function which($command) {
