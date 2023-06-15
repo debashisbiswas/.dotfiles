@@ -17,7 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'tpope/vim-vinegar',
@@ -51,12 +50,16 @@ require('lazy').setup({
       return {
         sources = {
           null_ls.builtins.completion.spell,
-          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.diagnostics.eslint.with {
+            extra_filetypes = { 'astro' },
+          },
           null_ls.builtins.diagnostics.fish,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.fish_indent,
           null_ls.builtins.formatting.isort,
-          null_ls.builtins.formatting.prettier,
+          null_ls.builtins.formatting.prettierd.with {
+            extra_filetypes = { 'astro' },
+          },
           null_ls.builtins.formatting.rustfmt,
           null_ls.builtins.formatting.stylua,
         },
@@ -209,6 +212,11 @@ vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
 vim.o.undofile = true
 
@@ -365,6 +373,7 @@ local on_attach = function(_, bufnr)
   -- Create a command `:Format` local to the LSP buffer
   local format_buffer = function(_)
     vim.lsp.buf.format {
+      timeout = 2000,
       filter = function(client)
         -- apply whatever logic you want (in this example, we'll only use null-ls)
         return client.name == 'null-ls'
