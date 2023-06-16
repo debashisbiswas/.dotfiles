@@ -11,6 +11,8 @@ set -gx EDITOR nvim
 _add_to_path "$HOME/.cargo/bin" "$HOME/.local/bin"
 
 if status is-interactive
+    alias dot "cd ~/.dotfiles"
+
     if type -q git
         abbr gd "git diff"
         abbr glo "git log --oneline"
