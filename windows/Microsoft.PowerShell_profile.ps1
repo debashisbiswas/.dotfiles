@@ -81,7 +81,7 @@ function dot {
 }
 
 function which($command) {
-    Get-Command $command | Select -ExpandProperty Source
+    Get-Command $command | Select-Object -ExpandProperty Source
 }
 
 if (exists starship) {

@@ -51,14 +51,37 @@ require('lazy').setup({
         sources = {
           null_ls.builtins.completion.spell,
           null_ls.builtins.diagnostics.eslint.with {
-            extra_filetypes = { 'astro' },
+            extra_filetypes = { 'astro', 'svelte' },
+            condition = function(utils)
+              return utils.root_has_file {
+                '.eslintrc.js',
+                '.eslintrc.cjs',
+                '.eslintrc.yaml',
+                '.eslintrc.yml',
+                '.eslintrc.json',
+              }
+            end,
           },
           null_ls.builtins.diagnostics.fish,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.fish_indent,
           null_ls.builtins.formatting.isort,
           null_ls.builtins.formatting.prettierd.with {
-            extra_filetypes = { 'astro' },
+            extra_filetypes = { 'astro', 'svelte' },
+            condition = function(utils)
+              return utils.root_has_file {
+                '.prettierrc',
+                '.prettierrc.json',
+                '.prettierrc.yml',
+                '.prettierrc.yaml',
+                '.prettierrc.json5',
+                '.prettierrc.js',
+                '.prettierrc.cjs',
+                '.prettierrc.toml',
+                'prettier.config.js',
+                'prettier.config.cjs',
+              }
+            end,
           },
           null_ls.builtins.formatting.rustfmt,
           null_ls.builtins.formatting.stylua,
@@ -217,6 +240,8 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
+
+vim.o.scrolloff = 5
 
 vim.o.undofile = true
 
@@ -504,5 +529,9 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+
+vim.keymap.set('n', '<leader>vc', function()
+  vim.cmd 'tabedit $MYVIMRC'
+end, { desc = 'Edit config' })
 
 -- vim: ts=2 sts=2 sw=2 et
