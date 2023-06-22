@@ -50,18 +50,18 @@ require('lazy').setup({
       return {
         sources = {
           null_ls.builtins.completion.spell,
-          null_ls.builtins.diagnostics.eslint.with {
-            extra_filetypes = { 'astro', 'svelte' },
-            condition = function(utils)
-              return utils.root_has_file {
-                '.eslintrc.js',
-                '.eslintrc.cjs',
-                '.eslintrc.yaml',
-                '.eslintrc.yml',
-                '.eslintrc.json',
-              }
-            end,
-          },
+          -- null_ls.builtins.diagnostics.eslint.with {
+          --   extra_filetypes = { 'astro', 'svelte' },
+          --   condition = function(utils)
+          --     return utils.root_has_file {
+          --       '.eslintrc.js',
+          --       '.eslintrc.cjs',
+          --       '.eslintrc.yaml',
+          --       '.eslintrc.yml',
+          --       '.eslintrc.json',
+          --     }
+          --   end,
+          -- },
           null_ls.builtins.diagnostics.fish,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.fish_indent,
@@ -326,6 +326,7 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
     'c',
+    'comment',
     'cpp',
     'json',
     'markdown',
@@ -343,6 +344,10 @@ require('nvim-treesitter.configs').setup {
   auto_install = false,
 
   indent = { enable = true, disable = { 'python' } },
+
+  highlight = {
+    enable = true,
+  },
 }
 
 -- Diagnostic keymaps
@@ -386,11 +391,15 @@ local on_attach = function(_, bufnr)
 
   -- Create a command `:Format` local to the LSP buffer
   local format_buffer = function(_)
+    -- TODO: this has extra error message from null-ls
+    if vim.fn.exists ':EslintFixAll' > 0 then
+      vim.cmd 'EslintFixAll'
+    end
+
     vim.lsp.buf.format {
       timeout = 2000,
       filter = function(client)
-        -- apply whatever logic you want (in this example, we'll only use null-ls)
-        return client.name == 'null-ls'
+        return client.name ~= 'tsserver'
       end,
       bufnr = bufnr,
     }
@@ -410,6 +419,7 @@ local servers = {
   pyright = {},
   rust_analyzer = {},
   tsserver = {},
+  eslint = {},
 
   lua_ls = {
     Lua = {
