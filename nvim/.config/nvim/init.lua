@@ -420,6 +420,11 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   eslint = {},
+  stylelint_lsp = {
+    stylelintplus = {
+      autoFixOnFormat = true,
+    }
+  },
 
   lua_ls = {
     Lua = {
