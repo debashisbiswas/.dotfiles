@@ -27,7 +27,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
-      { 'folke/neodev.nvim', config = true },
+      { 'folke/neodev.nvim',       config = true },
 
       {
         'j-hui/fidget.nvim',
@@ -104,7 +104,7 @@ require('lazy').setup({
     },
   },
 
-  { 'folke/which-key.nvim', config = true },
+  { 'folke/which-key.nvim',                        config = true },
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -120,7 +120,7 @@ require('lazy').setup({
 
   {
     'projekt0n/github-nvim-theme',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('github-theme').setup {
@@ -160,10 +160,10 @@ require('lazy').setup({
   },
 
   { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',                       opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim',               branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -181,7 +181,7 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  { 'windwp/nvim-autopairs', config = true },
+  { 'windwp/nvim-autopairs',  config = true },
 
   {
     'ThePrimeagen/harpoon',
@@ -210,6 +210,13 @@ require('lazy').setup({
         ui.nav_file(4)
       end)
     end,
+  },
+
+  {
+    'folke/trouble.nvim',
+    opts = {
+      icons = false,
+    },
   },
 
   -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
@@ -332,6 +339,7 @@ require('nvim-treesitter.configs').setup {
     'markdown',
     'python',
     'rust',
+    'svelte',
     'toml',
     'tsx',
     'typescript',
@@ -423,7 +431,7 @@ local servers = {
   stylelint_lsp = {
     stylelintplus = {
       autoFixOnFormat = true,
-    }
+    },
   },
 
   lua_ls = {
@@ -532,6 +540,9 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+
+vim.keymap.set('n', '[q', ':cprevious<CR>')
+vim.keymap.set('n', ']q', ':cnext<CR>')
 
 vim.keymap.set('n', '<leader>vc', function()
   vim.cmd 'tabedit $MYVIMRC'
