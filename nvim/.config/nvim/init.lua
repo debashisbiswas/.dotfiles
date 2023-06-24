@@ -219,6 +219,23 @@ require('lazy').setup({
     },
   },
 
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
+    },
+    config = {
+      -- prompt for a refactor to apply when the remap is triggered
+      vim.api.nvim_set_keymap(
+        "v",
+        "<leader>rr",
+        ":lua require('refactoring').select_refactor()<CR>",
+        { noremap = true, silent = true, expr = false }
+      )
+    }
+  },
+
   -- For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   { import = 'custom.plugins' },
 }, {})
@@ -397,20 +414,17 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  -- Create a command `:Format` local to the LSP buffer
-  local format_buffer = function(_)
-    -- TODO: this has extra error message from null-ls
+  local format_buffer = function()
+    local eslintSuccess = false
     if vim.fn.exists ':EslintFixAll' > 0 then
-      vim.cmd 'EslintFixAll'
+      eslintSuccess = pcall(vim.cmd, 'EslintFixAll')
     end
 
-    vim.lsp.buf.format {
-      timeout = 2000,
-      filter = function(client)
-        return client.name ~= 'tsserver'
-      end,
-      bufnr = bufnr,
-    }
+    local formatSuccess, error = pcall(vim.lsp.buf.format)
+
+    if not (eslintSuccess or formatSuccess) then
+      print(error)
+    end
   end
 
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', format_buffer, { desc = 'Format current buffer with LSP' })
