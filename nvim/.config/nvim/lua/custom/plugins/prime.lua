@@ -6,10 +6,9 @@ return {
       local mark = require 'harpoon.mark'
       local ui = require 'harpoon.ui'
 
+      -- stylua: ignore
       local nav = function(number)
-        return function()
-          ui.nav_file(number)
-        end
+        return function() ui.nav_file(number) end
       end
 
       vim.keymap.set('n', 'gh', function()

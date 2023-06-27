@@ -29,13 +29,22 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
+  local do_format = function()
+    vim.lsp.buf.format {
+      filter = function(client)
+        -- TODO: should use these as fallbacks when the main formatter is not available
+        return client.name ~= 'lua_ls' and client.name ~= 'tsserver'
+      end,
+    }
+  end
+
   local format_buffer = function()
     local eslintSuccess = false
     if vim.fn.exists ':EslintFixAll' > 0 then
       eslintSuccess = pcall(vim.cmd, 'EslintFixAll')
     end
 
-    local formatSuccess, error = pcall(vim.lsp.buf.format)
+    local formatSuccess, error = pcall(do_format)
 
     if not (eslintSuccess or formatSuccess) then
       print(error)
