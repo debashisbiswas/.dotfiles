@@ -21,7 +21,7 @@ require('lazy').setup({
   'tpope/vim-repeat',
   'tpope/vim-vinegar',
 
-  { 'folke/which-key.nvim',                        config = true },
+  { 'folke/which-key.nvim', config = true },
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -37,7 +37,7 @@ require('lazy').setup({
 
   {
     'projekt0n/github-nvim-theme',
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('github-theme').setup {
@@ -77,7 +77,7 @@ require('lazy').setup({
   },
 
   { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true },
-  { 'numToStr/Comment.nvim',                       opts = {} },
+  { 'numToStr/Comment.nvim', opts = {} },
 
   {
     'folke/trouble.nvim',
@@ -159,7 +159,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   ]],
 })
 
-vim.diagnostic.config({ float = { source = "always" } })
+vim.diagnostic.config { float = { source = 'always' } }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
