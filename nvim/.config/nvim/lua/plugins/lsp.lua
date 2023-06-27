@@ -60,9 +60,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
-
-      { 'folke/neodev.nvim', config = true },
+      { 'williamboman/mason-lspconfig.nvim' },
 
       {
         'j-hui/fidget.nvim',
@@ -73,8 +71,14 @@ return {
           },
         },
       },
+
+      { 'folke/neodev.nvim' },
+      { 'b0o/schemastore.nvim' },
     },
     config = function()
+      -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+      require('neodev').setup {}
+
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
@@ -86,6 +90,25 @@ return {
         rust_analyzer = {},
         tsserver = {},
         eslint = {},
+
+        jsonls = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          },
+        },
+
+        yamlls = {
+          yaml = {
+            schemaStore = {
+              -- You must disable built-in schemaStore support if you want to use
+              -- this plugin and its advanced options like `ignore`.
+              enable = false,
+            },
+            schemas = require('schemastore').yaml.schemas(),
+          },
+        },
+
         stylelint_lsp = {
           stylelintplus = {
             autoFixOnFormat = true,
