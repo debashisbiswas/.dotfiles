@@ -5,7 +5,7 @@ return {
   build = ':TSUpdate',
   config = function()
     -- I've had a better experience on windows with clang, less breakage
-    if vim.fn.has 'win32' then
+    if vim.fn.has 'win32' == 1 then
       require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
     end
 
