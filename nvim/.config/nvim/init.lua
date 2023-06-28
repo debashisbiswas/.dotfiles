@@ -123,6 +123,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- this fixes some treesitter errors on windows
+vim.o.shellslash = true
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
