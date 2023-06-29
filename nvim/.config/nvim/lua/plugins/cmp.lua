@@ -7,11 +7,14 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-nvim-lsp',
+    'lukas-reineke/cmp-under-comparator',
 
     'rafamadriz/friendly-snippets',
   },
   config = function()
     local cmp = require 'cmp'
+    local compare = cmp.config.compare
+
     local luasnip = require 'luasnip'
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup {}
@@ -75,6 +78,23 @@ return {
       }, {
         { name = 'buffer' },
       }),
+
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          compare.offset,
+          compare.exact,
+          -- compare.scopes,
+          compare.score,
+          compare.recently_used,
+          require('cmp-under-comparator').under,
+          -- compare.locality,
+          compare.kind,
+          -- compare.sort_text,
+          -- compare.length,
+          -- compare.order,
+        },
+      },
 
       experimental = {
         ghost_text = true,
