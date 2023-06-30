@@ -15,12 +15,12 @@ return {
         mark.add_file()
         print 'Marked current file.'
       end)
-      vim.keymap.set('n', 'gH', ui.toggle_quick_menu)
+      vim.keymap.set('n', '<leader>jj', ui.toggle_quick_menu)
 
-      vim.keymap.set('n', '<leader>f', nav(1))
-      vim.keymap.set('n', '<leader>d', nav(2))
-      vim.keymap.set('n', '<leader>s', nav(3))
-      vim.keymap.set('n', '<leader>a', nav(4))
+      vim.keymap.set('n', '<leader>jf', nav(1))
+      vim.keymap.set('n', '<leader>jd', nav(2))
+      vim.keymap.set('n', '<leader>js', nav(3))
+      vim.keymap.set('n', '<leader>ja', nav(4))
     end,
   },
 
