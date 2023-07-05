@@ -179,6 +179,9 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '[q', ':cprevious<CR>')
 vim.keymap.set('n', ']q', ':cnext<CR>')
 
+vim.keymap.set('n', '[e', ':m --<CR>')
+vim.keymap.set('n', ']e', ':m +<CR>')
+
 vim.keymap.set('n', '<leader>vc', function()
   vim.cmd 'tabedit $MYVIMRC'
 end, { desc = 'Edit config' })
