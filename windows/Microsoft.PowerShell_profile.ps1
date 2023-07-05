@@ -1,7 +1,7 @@
 $env:Path += ";C:\bin"
 
 if (Test-Path alias:\cd) {
-    Remove-Item alias:\cd
+    Remove-Item alias:\cd -Force
 }
 
 function cd {
@@ -77,7 +77,7 @@ function gc {
 }
 
 function dot {
-    cd "$HOME/.dotfiles/"
+    Set-Location "$HOME/.dotfiles/"
 }
 
 function which($command) {
