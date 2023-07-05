@@ -15,8 +15,8 @@ font pango:monospace 10
 client.focused          #77dd77 #285577 #ffffff #2e9ef4   #ffbf00
 
 # Set titlebar mode
-default_floating_border pixel 1
-default_border pixel 1
+default_floating_border pixel 2
+default_border pixel 2
 
 # Enable popup during fullscreen
 popup_during_fullscreen smart
@@ -58,7 +58,7 @@ bindsym $mod+Shift+Ctrl+Down move container to output down
 bindsym $mod+v split vertical
 bindsym $mod+g split horizontal
 bindsym $mod+f fullscreen toggle
-bindsym $mod+Shift+f floating toggle
+bindsym $mod+space floating toggle
 bindsym $mod+e layout toggle splith splitv
 
 set $ws1 "1"
@@ -182,9 +182,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+bindsym $mod+y floating enable; resize set 55ppt 75ppt; move position center
+
 # https://gist.github.com/dianjuar/ee774561a8bc02b077989bc17424a19f
 # Screenshots
-
 # Fullscreen
 bindsym Print exec --no-startup-id maim "$HOME/Pictures/$(date)"
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
@@ -194,3 +195,12 @@ bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewi
 # Select
 bindsym Shift+Print exec --no-startup-id maim --hidecursor --select "$HOME/Pictures/$(date)"
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --hidecursor --select | xclip -selection clipboard -t image/png
+
+gaps inner 8
+
+# single window settings
+smart_borders on
+smart_gaps inverse_outer
+# outer border settings for single window
+gaps vertical 150
+gaps horizontal 750
