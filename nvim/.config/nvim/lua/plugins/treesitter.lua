@@ -13,7 +13,7 @@ return {
       -- Add languages to be installed here that you want installed for treesitter
       ensure_installed = 'all',
 
-      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
+      -- Automatically install missing parsers when entering buffer
       auto_install = false,
 
       indent = { enable = true, disable = { 'python' } },

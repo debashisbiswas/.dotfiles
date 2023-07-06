@@ -95,7 +95,6 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.o.mouse = 'a'
 
--- Enable break indent
 vim.o.breakindent = true
 
 vim.o.tabstop = 4
@@ -112,7 +111,6 @@ vim.o.smartcase = true
 
 vim.wo.signcolumn = 'yes'
 
--- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
@@ -121,13 +119,9 @@ vim.o.termguicolors = true
 -- this fixes some treesitter errors on windows
 vim.o.shellslash = true
 
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- Remap for dealing with word wrap
+-- TODO: this should not apply for harpoon buffers
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
@@ -163,22 +157,22 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move visual selection up', silent = true })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move visual selection down', silent = true })
+
+-- TODO: respect formatting, like with visual move
+vim.keymap.set('n', '[e', ':m --<CR>', { desc = 'Move current line up', silent = true })
+vim.keymap.set('n', ']e', ':m +<CR>', { desc = 'Move current line down', silent = true })
+
+vim.keymap.set('n', '[q', ':cprevious<CR>', { desc = 'Next quickfix list entry', silent = true })
+vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Previous quickfix list entry', silent = true })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.keymap.set('n', '[q', ':cprevious<CR>')
-vim.keymap.set('n', ']q', ':cnext<CR>')
-
-vim.keymap.set('n', '[e', ':m --<CR>')
-vim.keymap.set('n', ']e', ':m +<CR>')
-
-vim.keymap.set('n', '<leader>vc', function()
-  vim.cmd 'tabedit $MYVIMRC'
-end, { desc = 'Edit config' })
+vim.keymap.set('n', '<leader>vc', ':tabedit $MYVIMRC<CR>', { desc = 'Edit config', silent = true })
+vim.keymap.set('n', '<leader>so', ':source<CR>', { desc = 'Source current file' })
 
 -- vim: ts=2 sts=2 sw=2 et
