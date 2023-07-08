@@ -21,6 +21,13 @@ require('lazy').setup({
   'tpope/vim-repeat',
   'tpope/vim-vinegar',
 
+  {
+    'junegunn/vim-easy-align',
+    config = function()
+      vim.keymap.set({ 'n', 'x' }, 'gl', '<Plug>(EasyAlign)', { desc = 'EasyAlign' })
+    end,
+  },
+
   { 'folke/which-key.nvim', config = true },
   {
     'lewis6991/gitsigns.nvim',
@@ -73,6 +80,7 @@ require('lazy').setup({
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,
+      show_current_context = true,
     },
   },
 
@@ -157,12 +165,11 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move visual selection up', silent = true })
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move visual selection down', silent = true })
+vim.keymap.set('v', 'K', ":m '<--<CR>gv=gv", { desc = 'Move visual selection up', silent = true })
+vim.keymap.set('v', 'J', ":m '>+<CR>gv=gv", { desc = 'Move visual selection down', silent = true })
 
--- TODO: respect formatting, like with visual move
-vim.keymap.set('n', '[e', ':m --<CR>', { desc = 'Move current line up', silent = true })
-vim.keymap.set('n', ']e', ':m +<CR>', { desc = 'Move current line down', silent = true })
+vim.keymap.set('n', '[e', ':m --<CR>==', { desc = 'Move current line up', silent = true })
+vim.keymap.set('n', ']e', ':m +<CR>==', { desc = 'Move current line down', silent = true })
 
 vim.keymap.set('n', '[q', ':cprevious<CR>', { desc = 'Next quickfix list entry', silent = true })
 vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Previous quickfix list entry', silent = true })
@@ -172,7 +179,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.keymap.set('n', '<leader>vc', ':tabedit $MYVIMRC<CR>', { desc = 'Edit config', silent = true })
+vim.keymap.set('n', '<leader>vc', ':edit $MYVIMRC<CR>', { desc = 'Edit config', silent = true })
 vim.keymap.set('n', '<leader>so', ':source<CR>', { desc = 'Source current file' })
 
 -- vim: ts=2 sts=2 sw=2 et

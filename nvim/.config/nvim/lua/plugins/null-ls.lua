@@ -1,14 +1,7 @@
+-- stylua: ignore
 local prettier_root_files = {
-  '.prettierrc',
-  '.prettierrc.json',
-  '.prettierrc.yml',
-  '.prettierrc.yaml',
-  '.prettierrc.json5',
-  '.prettierrc.js',
-  '.prettierrc.cjs',
-  '.prettierrc.toml',
-  'prettier.config.js',
-  'prettier.config.cjs',
+  '.prettierrc',    '.prettierrc.json', '.prettierrc.yml',  '.prettierrc.yaml',   '.prettierrc.json5',
+  '.prettierrc.js', '.prettierrc.cjs',  '.prettierrc.toml', 'prettier.config.js', 'prettier.config.cjs',
 }
 
 return {
