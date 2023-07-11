@@ -182,4 +182,6 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '<leader>vc', ':edit $MYVIMRC<CR>', { desc = 'Edit config', silent = true })
 vim.keymap.set('n', '<leader>so', ':source<CR>', { desc = 'Source current file' })
 
+vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = 'fugitive status' })
+
 -- vim: ts=2 sts=2 sw=2 et
