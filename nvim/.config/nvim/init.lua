@@ -111,6 +111,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 vim.o.scrolloff = 5
+vim.o.cursorline = true
 
 vim.o.undofile = true
 
@@ -165,23 +166,27 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('v', 'K', ":m '<--<CR>gv=gv", { desc = 'Move visual selection up', silent = true })
-vim.keymap.set('v', 'J', ":m '>+<CR>gv=gv", { desc = 'Move visual selection down', silent = true })
+vim.keymap.set('v', 'K', "<Cmd>m '<--<CR>gv=gv", { desc = 'Move visual selection up', silent = true })
+vim.keymap.set('v', 'J', "<Cmd>m '>+<CR>gv=gv", { desc = 'Move visual selection down', silent = true })
 
-vim.keymap.set('n', '[e', ':m --<CR>==', { desc = 'Move current line up', silent = true })
-vim.keymap.set('n', ']e', ':m +<CR>==', { desc = 'Move current line down', silent = true })
+vim.keymap.set('n', '[e', '<Cmd>m --<CR>==', { desc = 'Move current line up', silent = true })
+vim.keymap.set('n', ']e', '<Cmd>m +<CR>==', { desc = 'Move current line down', silent = true })
 
-vim.keymap.set('n', '[q', ':cprevious<CR>', { desc = 'Next quickfix list entry', silent = true })
-vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Previous quickfix list entry', silent = true })
+vim.keymap.set('n', '[q', '<Cmd>cprevious<CR>', { desc = 'Next quickfix list entry', silent = true })
+vim.keymap.set('n', ']q', '<Cmd>cnext<CR>', { desc = 'Previous quickfix list entry', silent = true })
+
+-- TODO: should this follow the buffer's line endings rather than only inserting newline?
+vim.keymap.set('n', '[<Space>', [[<Cmd>put!=repeat(nr2char(10), v:count1)<CR>+]], { desc = 'Next quickfix list entry', silent = true })
+vim.keymap.set('n', ']<Space>', [[<Cmd>put =repeat(nr2char(10), v:count1)<CR>-]], { desc = 'Previous quickfix list entry', silent = true })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.keymap.set('n', '<leader>vc', ':edit $MYVIMRC<CR>', { desc = 'Edit config', silent = true })
-vim.keymap.set('n', '<leader>so', ':source<CR>', { desc = 'Source current file' })
+vim.keymap.set('n', '<leader>vc', '<Cmd>edit $MYVIMRC<CR>', { desc = 'Edit config', silent = true })
+vim.keymap.set('n', '<leader>so', '<Cmd>source<CR>', { desc = 'Source current file' })
 
-vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = 'fugitive status' })
+vim.keymap.set('n', '<leader>gs', '<Cmd>Git<CR>', { desc = 'fugitive status' })
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -30,30 +30,36 @@ local on_attach = function(_, bufnr)
   end, '[W]orkspace [L]ist Folders')
 
   -- TODO: https://www.reddit.com/r/neovim/comments/10a31vo/how_does_vimlspbufformat_deal_with_multiple/
-  local do_format = function()
+  local do_format = function(async)
     vim.lsp.buf.format {
       filter = function(client)
         -- TODO: should use these as fallbacks when the main formatter is not available
         return client.name ~= 'lua_ls' and client.name ~= 'tsserver'
       end,
+      async = async,
     }
   end
 
-  local format_buffer = function()
+  local format_buffer = function(async)
     local eslintSuccess = false
     if vim.fn.exists ':EslintFixAll' > 0 then
-      eslintSuccess = pcall(vim.cmd, 'EslintFixAll')
+      eslintSuccess, _ = pcall(vim.cmd, 'EslintFixAll')
     end
 
-    local formatSuccess, error = pcall(do_format)
+    local formatSuccess, error = pcall(do_format, async)
 
     if not (eslintSuccess or formatSuccess) then
       print(error)
     end
   end
 
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', format_buffer, { desc = 'Format current buffer with LSP' })
-  vim.keymap.set('n', '<leader>;', format_buffer, { desc = 'Format buffer' })
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
+    format_buffer(false)
+  end, { desc = 'Format current buffer with LSP' })
+
+  vim.keymap.set('n', '<leader>;', function()
+    format_buffer(true)
+  end, { desc = 'Format buffer' })
 end
 
 return {

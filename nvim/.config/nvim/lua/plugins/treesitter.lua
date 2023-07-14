@@ -16,7 +16,7 @@ return {
       -- Automatically install missing parsers when entering buffer
       auto_install = false,
 
-      indent = { enable = true, disable = { 'python' } },
+      indent = { enable = true },
 
       highlight = { enable = true },
     }
