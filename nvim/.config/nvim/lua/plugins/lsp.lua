@@ -1,10 +1,14 @@
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  if client.server_capabilities.documentSymbolProvider then
+    require('nvim-navic').attach(client, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -63,6 +67,44 @@ local on_attach = function(_, bufnr)
 end
 
 return {
+  {
+    'SmiteshP/nvim-navic',
+    lazy = true,
+    opts = function()
+      return {
+        separator = ' > ',
+        depth_limit = 5,
+        icons = {
+          File = '',
+          Module = '',
+          Namespace = '',
+          Package = '',
+          Class = '',
+          Method = '',
+          Property = '',
+          Field = '',
+          Constructor = '',
+          Enum = '',
+          Interface = '',
+          Function = '',
+          Variable = '',
+          Constant = '',
+          String = '',
+          Number = '',
+          Boolean = '',
+          Array = '',
+          Object = '',
+          Key = '',
+          Null = '',
+          EnumMember = '',
+          Struct = '',
+          Event = '',
+          Operator = '',
+          TypeParameter = '',
+        },
+      }
+    end,
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
