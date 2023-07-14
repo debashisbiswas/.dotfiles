@@ -1,15 +1,20 @@
 $env:Path += ";C:\bin"
 
-if (Test-Path alias:\cd) {
+if (Test-Path alias:\cd)
+{
     Remove-Item alias:\cd -Force
 }
 
-function cd {
+function cd
+{
     param([parameter(Mandatory=$false)] $path)
 
-    if ($path) {
+    if ($path)
+    {
         Set-Location $path
-    } else {
+    }
+    else
+    {
         Set-Location $home
     }
 }
@@ -17,11 +22,12 @@ function cd {
 # For these features, ensure PowerShell 7+
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
-try {
-  Set-PSReadLineOption -PredictionSource History
-}
-catch {
-  # Just continue without enabling the feature.
+try
+{
+    Set-PSReadLineOption -PredictionSource History
+} catch
+{
+    # Just continue without enabling the feature.
 }
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
@@ -31,14 +37,26 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 Set-Alias v nvim
 Set-Alias e explorer.exe
 
-function .. {
+function ..
+{
     Set-Location ..
 }
 
-function fcd {
+function fcd
+{
     param ([string]$query = ".")
-    $selection = fd -t d $query | fzf
-    if ($selection) {
+    $selection = fd -type d $query | fzf
+    if ($selection)
+    {
+        Set-Location $selection
+    }
+}
+
+function f
+{
+    $selection = Get-ChildItem "~/dev" -Directory | Select-Object -ExpandProperty FullName | fzf
+    if ($selection)
+    {
         Set-Location $selection
     }
 }
@@ -48,48 +66,60 @@ function exists($cmdname)
     return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
 }
 
-function gd {
+function gd
+{
     git diff
 }
 
-function glo {
+function glo
+{
     git log --oneline
 }
 
-function glg {
+function glg
+{
     git log --all --decorate --oneline --graph
 }
 
-function gs {
+function gs
+{
     git status
 }
 
-function gad {
+function gad
+{
     git add .
 }
 
-if (Test-Path alias:\gc) {
+if (Test-Path alias:\gc)
+{
     Remove-Item alias:\gc -Force
 }
 
-function gc {
+function gc
+{
     git commit
 }
 
-function dot {
+function dot
+{
     Set-Location "$HOME/.dotfiles/"
 }
 
-function which($command) {
+function which($command)
+{
     Get-Command $command | Select-Object -ExpandProperty Source
 }
 
-if (exists starship) {
+if (exists starship)
+{
     Invoke-Expression (&starship init powershell)
-} else {
+} else
+{
     Write-Host "Could not find starship in path."
 }
 
-if (exists fnm) {
+if (exists fnm)
+{
     fnm env --use-on-cd | Out-String | Invoke-Expression
 }
