@@ -6,11 +6,6 @@ return {
     require('github-theme').setup {
       options = {
         transparent = true,
-        styles = {
-          -- disable italics
-          comments = 'NONE',
-          keywords = 'NONE',
-        },
       },
     }
 

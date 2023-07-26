@@ -139,6 +139,7 @@ return {
         rust_analyzer = {},
         tsserver = {},
         eslint = {},
+        gopls = {},
 
         jsonls = {
           json = {
