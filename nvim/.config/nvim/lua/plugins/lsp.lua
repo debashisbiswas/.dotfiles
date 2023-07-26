@@ -74,37 +74,35 @@ return {
       return {
         separator = ' > ',
         depth_limit = 5,
+        -- stylua: ignore
         icons = {
-          File = '',
-          Module = '',
-          Namespace = '',
-          Package = '',
-          Class = '',
-          Method = '',
-          Property = '',
-          Field = '',
-          Constructor = '',
-          Enum = '',
-          Interface = '',
-          Function = '',
-          Variable = '',
-          Constant = '',
-          String = '',
-          Number = '',
-          Boolean = '',
-          Array = '',
-          Object = '',
-          Key = '',
-          Null = '',
-          EnumMember = '',
-          Struct = '',
-          Event = '',
-          Operator = '',
-          TypeParameter = '',
+          File        = '', Module        = '',
+          Namespace   = '', Package       = '',
+          Class       = '', Method        = '',
+          Property    = '', Field         = '',
+          Constructor = '', Enum          = '',
+          Interface   = '', Function      = '',
+          Variable    = '', Constant      = '',
+          String      = '', Number        = '',
+          Boolean     = '', Array         = '',
+          Object      = '', Key           = '',
+          Null        = '', EnumMember    = '',
+          Struct      = '', Event         = '',
+          Operator    = '', TypeParameter = '',
         },
       }
     end,
   },
+
+  {
+    'ray-x/lsp_signature.nvim',
+    event = 'VeryLazy',
+    opts = {
+      floating_window = false,
+      hint_prefix = ""
+    },
+  },
+
   {
     'neovim/nvim-lspconfig',
     dependencies = {
