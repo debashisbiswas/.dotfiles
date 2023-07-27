@@ -45,7 +45,7 @@ function ..
 function fcd
 {
     param ([string]$query = ".")
-    $selection = fd -type d $query | fzf
+    $selection = Get-ChildItem $query -Directory | Select-Object -ExpandProperty FullName | fzf
     if ($selection)
     {
         Set-Location $selection
