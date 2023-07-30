@@ -8,7 +8,7 @@ end
 
 set -gx EDITOR nvim
 
-_add_to_path "$HOME/.cargo/bin" "$HOME/.local/bin"
+_add_to_path "$HOME/.cargo/bin" "$HOME/.local/bin" "/usr/local/go/bin"
 
 if status is-interactive
     alias dot "cd ~/.dotfiles"

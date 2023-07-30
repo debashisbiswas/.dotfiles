@@ -100,7 +100,9 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- this fixes some treesitter errors on windows
-vim.o.shellslash = true
+if vim.fn.exists 'shellslash' ~= 0 then
+  vim.o.shellslash = true
+end
 
 vim.diagnostic.config { float = { source = 'always' } }
 
