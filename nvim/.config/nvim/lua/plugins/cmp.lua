@@ -1,3 +1,16 @@
+-- from 'lukas-reineke/cmp-under-comparator'
+local function under(entry1, entry2)
+  local _, entry1_under = entry1.completion_item.label:find '^_+'
+  local _, entry2_under = entry2.completion_item.label:find '^_+'
+  entry1_under = entry1_under or 0
+  entry2_under = entry2_under or 0
+  if entry1_under > entry2_under then
+    return false
+  elseif entry1_under < entry2_under then
+    return true
+  end
+end
+
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
@@ -7,7 +20,6 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-nvim-lsp',
-    'lukas-reineke/cmp-under-comparator',
 
     'rafamadriz/friendly-snippets',
   },
@@ -88,7 +100,7 @@ return {
           -- compare.scopes,
           compare.score,
           compare.recently_used,
-          require('cmp-under-comparator').under,
+          under,
           -- compare.locality,
           compare.kind,
           -- compare.sort_text,
