@@ -95,19 +95,19 @@ return {
   },
 
   {
-    'ray-x/lsp_signature.nvim',
-    event = 'VeryLazy',
-    opts = {
-      floating_window = false,
-      hint_prefix = ""
-    },
-  },
-
-  {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       { 'williamboman/mason-lspconfig.nvim' },
+
+      {
+        'ray-x/lsp_signature.nvim',
+        event = 'VeryLazy',
+        opts = {
+          floating_window = false,
+          hint_prefix = '',
+        },
+      },
 
       {
         'j-hui/fidget.nvim',
@@ -133,11 +133,18 @@ return {
       --  the `settings` field of the server config. You must look up that documentation yourself.
       local servers = {
         clangd = {},
-        pyright = {},
         rust_analyzer = {},
         tsserver = {},
         eslint = {},
         gopls = {},
+
+        pyright = {
+          python = {
+            analysis = {
+              diagnosticMode = 'workspace',
+            },
+          },
+        },
 
         jsonls = {
           json = {

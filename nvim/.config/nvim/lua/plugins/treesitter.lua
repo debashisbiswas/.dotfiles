@@ -12,7 +12,7 @@ return {
     require('nvim-treesitter.configs').setup {
       -- Add languages to be installed here that you want installed for treesitter
       ensure_installed = {
-        'lua'
+        'lua',
       },
 
       -- Automatically install missing parsers when entering buffer
@@ -20,7 +20,10 @@ return {
 
       indent = { enable = true },
 
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        disable = { 'lua' } -- lua has semantic highlighting through the LSP
+      },
     }
   end,
 }
