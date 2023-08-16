@@ -70,7 +70,11 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   { import = 'plugins' },
-}, {})
+}, {
+  defaults = {
+    lazy = false,
+  },
+})
 
 vim.o.hlsearch = false
 vim.wo.number = true
@@ -96,12 +100,22 @@ vim.wo.signcolumn = 'yes'
 
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- this fixes some treesitter errors on windows
 if vim.fn.exists 'shellslash' ~= 0 then
   vim.o.shellslash = true
+end
+
+if vim.fn.has 'win32' == 1 then
+  -- :h shell-powershell
+  vim.cmd [[
+    let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+    let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+    let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    let &shellpipe  = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+    set shellquote= shellxquote=
+  ]]
 end
 
 vim.diagnostic.config { float = { source = 'always' } }
