@@ -133,7 +133,12 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('n', '<leader>vc', '<Cmd>edit $MYVIMRC<CR>', { desc = '[v]im: [c]onfig' })
+vim.keymap.set('n', '<leader>vc', function()
+  local command = vim.fn.getreg '%' == '' and 'edit' or 'tabedit'
+  local config_path = vim.fn.stdpath 'config'
+  return '<Cmd>' .. command .. ' ' .. config_path .. '<CR>'
+end, { desc = '[v]im: [c]onfig', expr = true })
+
 vim.keymap.set('n', '<leader>vl', '<Cmd>Lazy<CR>', { desc = '[v]im: [l]azy' })
 vim.keymap.set('n', '<leader>vm', '<Cmd>Mason<CR>', { desc = '[v]im: [m]ason' })
 vim.keymap.set('n', '<leader>so', '<Cmd>source<CR>', { desc = 'Source current file' })
