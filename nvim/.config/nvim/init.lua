@@ -59,13 +59,6 @@ local plugins = {
 
   { 'j-hui/fidget.nvim', tag = 'legacy' },
   'SmiteshP/nvim-navic',
-
-  -- DAP
-  'mfussenegger/nvim-dap',
-  'rcarriga/nvim-dap-ui',
-  'jay-babu/mason-nvim-dap.nvim',
-
-  'leoluz/nvim-dap-go',
 }
 
 require('lazy').setup(plugins, {
