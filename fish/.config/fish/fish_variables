@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_gad:git\x20add\x20\x2e
 SETUVAR _fish_abbr_gc:git\x20commit
 SETUVAR _fish_abbr_gd:git\x20diff
