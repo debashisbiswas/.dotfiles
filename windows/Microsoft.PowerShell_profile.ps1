@@ -125,8 +125,9 @@ if (exists fnm)
 }
 
 function RestartKomorebi {
-    Stop-Process -Name whkd && Start-Process whkd -WindowStyle Hidden
-    Stop-Process -Name komorebi && Start-Process komorebi -ArgumentList '--await-configuration' -WindowStyle hidden
+    Stop-Process -Name whkd
+    Stop-Process -Name komorebi
+    komorebic start -c "$Env:USERPROFILE\komorebi.json" --whkd
 }
 
 # Remove blue background from directory listings
