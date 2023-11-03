@@ -128,3 +128,6 @@ function RestartKomorebi {
     Stop-Process -Name whkd && Start-Process whkd -WindowStyle Hidden
     Stop-Process -Name komorebi && Start-Process komorebi -ArgumentList '--await-configuration' -WindowStyle hidden
 }
+
+# Remove blue background from directory listings
+$PSStyle.FileInfo.Directory = "`e[34m"

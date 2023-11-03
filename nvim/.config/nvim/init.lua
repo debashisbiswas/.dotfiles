@@ -6,6 +6,8 @@ require('boilerplate').bootstrap_lazy()
 
 local plugins = {
   'projekt0n/github-nvim-theme',
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   -- Classical vim
   'tpope/vim-fugitive',
