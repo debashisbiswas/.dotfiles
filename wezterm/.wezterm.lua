@@ -9,7 +9,7 @@ local function disable_ligatures(config_table)
 	config_table.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 end
 
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Catppuccin Macchiato"
 config.font_size = 16
 config.window_background_opacity = 0.9
 config.force_reverse_video_cursor = true
@@ -23,13 +23,15 @@ disable_ligatures(config)
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "pwsh" }
+    config.window_background_opacity = 0.95
 	config.cell_width = 0.9
 	config.font_size = 14
-    config.window_background_opacity = 0.95
 
 	-- tmux-like
 	config.leader = { mods = "CTRL", key = "s" }
 	config.keys = {
+		{ key = "r", mods = "CMD|SHIFT", action = wezterm.action.ReloadConfiguration },
+
 		{ key = "a", mods = "LEADER|CTRL", action = wezterm.action({ SendString = "\x01" }) },
 
 		{ key = "-", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },

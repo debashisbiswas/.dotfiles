@@ -13,6 +13,18 @@ require('catppuccin').setup {
     comments = {},
     conditionals = {},
   },
+  highlight_overrides = {
+    macchiato = function(macchiato)
+      return {
+        LineNr = { fg = macchiato.surface2 },
+      }
+    end,
+    mocha = function(mocha)
+      return {
+        LineNr = { fg = mocha.surface2 },
+      }
+    end,
+  },
 }
 
 -- setup must be called before loading
