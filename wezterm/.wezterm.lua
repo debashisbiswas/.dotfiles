@@ -9,7 +9,7 @@ local function disable_ligatures(config_table)
 	config_table.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 end
 
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = 'Catppuccin Mocha'
 config.font_size = 16
 config.window_background_opacity = 0.9
 config.force_reverse_video_cursor = true
