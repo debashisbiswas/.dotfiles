@@ -9,9 +9,10 @@ local function disable_ligatures(config_table)
 	config_table.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 end
 
-config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = 'carbonfox'
+-- config.window_background_opacity = 0.9
+
 config.font_size = 16
-config.window_background_opacity = 0.9
 config.force_reverse_video_cursor = true
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
@@ -23,7 +24,6 @@ disable_ligatures(config)
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "pwsh" }
-    config.window_background_opacity = 0.95
 	config.cell_width = 0.9
 	config.font_size = 14
 
@@ -54,7 +54,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		{ key = "l", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
 
 		{ key = "H", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Left", 5 } }) },
-		{ key = "J", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Down", 7 } }) },
+		{ key = "J", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Down", 5 } }) },
 		{ key = "K", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Up", 5 } }) },
 		{ key = "L", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Right", 5 } }) },
 
