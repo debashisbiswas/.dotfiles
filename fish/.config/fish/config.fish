@@ -7,8 +7,9 @@ function _add_to_path
 end
 
 set -gx EDITOR nvim
+set -gx FLYCTL_INSTALL "$HOME/.fly"
 
-_add_to_path "$HOME/.cargo/bin" "$HOME/.local/bin" "/usr/local/go/bin" "$HOME/go/bin"
+_add_to_path "$HOME/.cargo/bin" "$HOME/.local/bin" "/usr/local/go/bin" "$HOME/go/bin" "$FLYCTL_INSTALL/bin"
 
 if status is-interactive
     alias dot "cd ~/.dotfiles"
