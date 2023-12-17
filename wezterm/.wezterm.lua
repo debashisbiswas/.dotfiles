@@ -9,9 +9,6 @@ local function disable_ligatures(config_table)
 	config_table.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 end
 
-config.color_scheme = 'carbonfox'
--- config.window_background_opacity = 0.9
-
 config.font_size = 16
 config.force_reverse_video_cursor = true
 config.hide_tab_bar_if_only_one_tab = true
@@ -22,6 +19,16 @@ config.automatically_reload_config = true
 config.tab_and_split_indices_are_zero_based = true
 
 disable_ligatures(config)
+
+local carbonfox_custom = wezterm.get_builtin_color_schemes()["carbonfox"]
+carbonfox_custom.selection_bg = "#333333" -- default is #2a2a2a
+
+config.color_schemes = {
+	["carbonfox custom"] = carbonfox_custom,
+}
+
+config.color_scheme = "carbonfox custom"
+-- config.window_background_opacity = 0.9
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "pwsh" }
