@@ -13,7 +13,6 @@ local plugins = {
   'tpope/vim-repeat',
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
-  'tpope/vim-vinegar',
   'junegunn/vim-easy-align',
 
   -- Neovim
@@ -60,6 +59,8 @@ local plugins = {
 
   { 'j-hui/fidget.nvim', tag = 'legacy' },
   'SmiteshP/nvim-navic',
+
+  'stevearc/oil.nvim'
 }
 
 require('lazy').setup(plugins, {
