@@ -23,10 +23,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  if client.server_capabilities.documentSymbolProvider then
-    require('nvim-navic').attach(client, bufnr)
-  end
-
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -84,14 +80,6 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Format buffer' })
 end
 
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require('neodev').setup {}
-
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   clangd = {},
   rust_analyzer = {},
@@ -144,7 +132,13 @@ local servers = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Ensure the servers above are installed
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require('neodev').setup {}
+
+--------------------
+-- Mason
+--------------------
+
 require('mason').setup()
 local mason_lspconfig = require 'mason-lspconfig'
 

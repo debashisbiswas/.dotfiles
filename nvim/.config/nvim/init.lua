@@ -14,6 +14,7 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'junegunn/vim-easy-align',
+  'airblade/vim-gitgutter',
 
   -- Neovim
   'nvim-lua/plenary.nvim',
@@ -30,9 +31,6 @@ require('lazy').setup({
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
   'numToStr/Comment.nvim',
-
-  'lewis6991/gitsigns.nvim',
-  'nvim-lualine/lualine.nvim',
 
   'ThePrimeagen/harpoon',
 
