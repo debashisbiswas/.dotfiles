@@ -31,9 +31,7 @@ require('lazy').setup({
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
   'numToStr/Comment.nvim',
-
   'ThePrimeagen/harpoon',
-
   'stevearc/oil.nvim',
 
   -- Snippets
