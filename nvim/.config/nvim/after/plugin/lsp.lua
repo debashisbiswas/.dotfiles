@@ -1,3 +1,19 @@
+-- Set up borders for LSP windows
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'rounded'
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+vim.diagnostic.config {
+  float = {
+    source = 'always',
+    header = 'Diagnostics',
+  },
+}
+
 local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -145,8 +161,6 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
-vim.diagnostic.config { float = { source = 'always' } }
 
 require('fidget').setup {
   window = {

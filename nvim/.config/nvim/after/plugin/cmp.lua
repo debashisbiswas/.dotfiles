@@ -95,8 +95,4 @@ cmp.setup {
       -- compare.order,
     },
   },
-
-  experimental = {
-    ghost_text = true,
-  },
 }

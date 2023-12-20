@@ -4,8 +4,8 @@ require 'keymaps'
 
 require('boilerplate').bootstrap_lazy()
 
-local plugins = {
-  'projekt0n/github-nvim-theme',
+require('lazy').setup({
+  -- Color
   'EdenEast/nightfox.nvim',
 
   -- Classical vim
@@ -36,6 +36,8 @@ local plugins = {
 
   'ThePrimeagen/harpoon',
 
+  'stevearc/oil.nvim',
+
   -- Snippets
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
@@ -58,12 +60,7 @@ local plugins = {
   'b0o/schemastore.nvim',
 
   { 'j-hui/fidget.nvim', tag = 'legacy' },
-  'SmiteshP/nvim-navic',
-
-  'stevearc/oil.nvim'
-}
-
-require('lazy').setup(plugins, {
+}, {
   defaults = {
     lazy = false,
   },
