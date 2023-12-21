@@ -58,25 +58,11 @@ local on_attach = function(client, bufnr)
     }
   end
 
-  local format_buffer = function(async)
-    local eslintSuccess = false
-    if vim.fn.exists ':EslintFixAll' > 0 then
-      eslintSuccess, _ = pcall(vim.cmd, 'EslintFixAll')
-    end
-
-    local formatSuccess, error = pcall(do_format, async)
-
-    if not (eslintSuccess or formatSuccess) then
-      print(error)
-    end
-  end
-
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
-    format_buffer(false)
-  end, { desc = 'Format current buffer with LSP' })
-
   vim.keymap.set('n', '<leader>;', function()
-    format_buffer(true)
+    require('conform').format { lsp_fallback = true }
+    -- TODO: Write here to re-trigger linter (BufWritePost)...
+    -- maybe there's a better way to do this
+    vim.cmd 'write'
   end, { desc = 'Format buffer' })
 end
 
@@ -84,7 +70,6 @@ local servers = {
   clangd = {},
   rust_analyzer = {},
   tsserver = {},
-  eslint = {},
   gopls = {},
 
   pyright = {

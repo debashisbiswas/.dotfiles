@@ -50,7 +50,8 @@ require('lazy').setup({
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
 
-  'jose-elias-alvarez/null-ls.nvim',
+  'stevearc/conform.nvim',
+  'mfussenegger/nvim-lint',
 
   'folke/neodev.nvim',
   'b0o/schemastore.nvim',
