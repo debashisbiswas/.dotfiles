@@ -45,7 +45,7 @@ require('lint').linters_by_ft = {
   svelte = js_linters,
 }
 
-vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufEnter' }, {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'TextChanged' }, {
   callback = function()
     require('lint').try_lint()
   end,

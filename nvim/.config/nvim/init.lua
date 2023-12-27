@@ -14,7 +14,6 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'junegunn/vim-easy-align',
-  'airblade/vim-gitgutter',
 
   -- Neovim
   'nvim-lua/plenary.nvim',
@@ -37,7 +36,6 @@ require('lazy').setup({
 
   -- Snippets
   'L3MON4D3/LuaSnip',
-  'rafamadriz/friendly-snippets',
 
   -- Completion
   { 'echasnovski/mini.completion', version = '*' },
@@ -53,7 +51,16 @@ require('lazy').setup({
   'folke/neodev.nvim',
   'b0o/schemastore.nvim',
 
+  -- Slated for replacement/deletion
+
+  -- Won't need after making my own snippets
+  'rafamadriz/friendly-snippets',
+
+  -- Don't feel the need for a whole plugin for this
   { 'j-hui/fidget.nvim', tag = 'legacy' },
+
+  -- Signs seem to get out of sync?
+  'airblade/vim-gitgutter',
 }, {
   defaults = {
     lazy = false,
