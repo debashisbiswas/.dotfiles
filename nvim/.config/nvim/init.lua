@@ -27,6 +27,7 @@ require('lazy').setup({
       return vim.fn.executable 'make' == 1
     end,
   },
+  'benfowler/telescope-luasnip.nvim',
 
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
@@ -39,11 +40,7 @@ require('lazy').setup({
   'rafamadriz/friendly-snippets',
 
   -- Completion
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-nvim-lsp',
-  'saadparwaiz1/cmp_luasnip',
+  { 'echasnovski/mini.completion', version = '*' },
 
   -- LSP
   'neovim/nvim-lspconfig',

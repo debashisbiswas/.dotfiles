@@ -26,6 +26,9 @@ telescope.setup {
   },
 }
 
+telescope.load_extension 'luasnip'
+vim.keymap.set('n', '<leader>ls', telescope.extensions.luasnip.luasnip, { desc = '[L]ua[S]nip' })
+
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, 'fzf')
 
