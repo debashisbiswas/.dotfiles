@@ -14,10 +14,12 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   -- save/restore search term, remove trailing whitespace, remove trailing empty lines
   -- TODO: this should save your place with a mark or something
-  command = [[
-    let _s=@/
-    %s/\s\+$//e
-    %s#\($\n\)\+\%$##e
-    let @/=_s
-  ]],
+  callback = function()
+    local curpos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd [[
+      keeppatterns %s/\s\+$//e
+      keeppatterns %s#\($\n\)\+\%$##e
+    ]]
+    vim.api.nvim_win_set_cursor(0, curpos)
+  end,
 })

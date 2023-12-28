@@ -141,8 +141,4 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-require('fidget').setup {
-  window = {
-    blend = 0, -- Transparent background
-  },
-}
+require('fidget').setup {}

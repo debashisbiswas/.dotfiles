@@ -58,7 +58,7 @@ require('lazy').setup({
   'folke/neodev.nvim',
   'b0o/schemastore.nvim',
 
-  { 'j-hui/fidget.nvim', tag = 'legacy' },
+  'j-hui/fidget.nvim',
 }, {
   defaults = {
     lazy = false,
