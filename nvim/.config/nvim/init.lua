@@ -14,6 +14,7 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'junegunn/vim-easy-align',
+  'airblade/vim-gitgutter',
 
   -- Neovim
   'nvim-lua/plenary.nvim',
@@ -58,9 +59,6 @@ require('lazy').setup({
 
   -- Don't feel the need for a whole plugin for this
   { 'j-hui/fidget.nvim', tag = 'legacy' },
-
-  -- Signs seem to get out of sync?
-  'airblade/vim-gitgutter',
 }, {
   defaults = {
     lazy = false,

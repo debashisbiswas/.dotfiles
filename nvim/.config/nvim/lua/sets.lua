@@ -28,6 +28,9 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.termguicolors = true
 
+-- Changed for vim-gitgutter update time
+vim.o.updatetime = 250
+
 -- this fixes some treesitter errors on windows
 if vim.fn.exists 'shellslash' ~= 0 then
   vim.o.shellslash = true
