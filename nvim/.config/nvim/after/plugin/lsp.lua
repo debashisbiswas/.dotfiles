@@ -60,9 +60,6 @@ local on_attach = function(client, bufnr)
 
   vim.keymap.set('n', '<leader>;', function()
     require('conform').format { lsp_fallback = true }
-    -- TODO: Write here to re-trigger linter (BufWritePost)...
-    -- maybe there's a better way to do this
-    vim.cmd 'write'
   end, { desc = 'Format buffer' })
 end
 
@@ -71,6 +68,9 @@ local servers = {
   rust_analyzer = {},
   tsserver = {},
   gopls = {},
+
+  emmet_language_server = {},
+  html = {},
 
   pyright = {
     python = {

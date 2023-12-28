@@ -32,10 +32,6 @@ local js_linters = { 'eslint_d' }
 require('lint').linters_by_ft = {
   python = { 'ruff' },
 
-  html = js_linters,
-  css = js_linters,
-  json = js_linters,
-
   typescript = js_linters,
   javascript = js_linters,
   typescriptreact = js_linters,
