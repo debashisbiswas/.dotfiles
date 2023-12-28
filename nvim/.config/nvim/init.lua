@@ -2,6 +2,10 @@ require 'sets'
 require 'autocommands'
 require 'keymaps'
 
+-- Wanted:
+-- LSP signature hints (mini.completion did this, but stopped using due
+-- to snippet tradeoffs)
+
 require('boilerplate').bootstrap_lazy()
 
 require('lazy').setup({
@@ -37,9 +41,15 @@ require('lazy').setup({
 
   -- Snippets
   'L3MON4D3/LuaSnip',
+  'rafamadriz/friendly-snippets',
 
   -- Completion
-  { 'echasnovski/mini.completion', version = '*' },
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'saadparwaiz1/cmp_luasnip',
 
   -- LSP
   'neovim/nvim-lspconfig',
@@ -52,12 +62,6 @@ require('lazy').setup({
   'folke/neodev.nvim',
   'b0o/schemastore.nvim',
 
-  -- Slated for replacement/deletion
-
-  -- Won't need after making my own snippets
-  'rafamadriz/friendly-snippets',
-
-  -- Don't feel the need for a whole plugin for this
   { 'j-hui/fidget.nvim', tag = 'legacy' },
 }, {
   defaults = {
