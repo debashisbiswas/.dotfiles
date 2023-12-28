@@ -2,10 +2,6 @@ require 'sets'
 require 'autocommands'
 require 'keymaps'
 
--- Wanted:
--- LSP signature hints (mini.completion did this, but stopped using due
--- to snippet tradeoffs)
-
 require('boilerplate').bootstrap_lazy()
 
 require('lazy').setup({
