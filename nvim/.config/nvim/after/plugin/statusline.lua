@@ -21,3 +21,5 @@ require('lualine').setup {
     lualine_z = {},
   },
 }
+
+vim.opt.showmode = false
