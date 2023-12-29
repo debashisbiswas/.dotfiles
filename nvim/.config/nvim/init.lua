@@ -34,6 +34,7 @@ require('lazy').setup({
   'numToStr/Comment.nvim',
   'ThePrimeagen/harpoon',
   'stevearc/oil.nvim',
+  'nvim-lualine/lualine.nvim',
 
   -- Snippets
   'L3MON4D3/LuaSnip',
