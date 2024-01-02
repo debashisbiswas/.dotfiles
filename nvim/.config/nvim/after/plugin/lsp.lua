@@ -70,7 +70,16 @@ local servers = {
   gopls = {},
 
   emmet_language_server = {},
-  html = {},
+
+  html = {
+    html = {
+      format = {
+        indentInnerHtml = true,
+      },
+    },
+  },
+
+  cssls = {},
 
   pyright = {
     python = {
