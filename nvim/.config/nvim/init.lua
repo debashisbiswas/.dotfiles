@@ -32,7 +32,7 @@ require('lazy').setup({
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
   'numToStr/Comment.nvim',
-  'ThePrimeagen/harpoon',
+  { 'ThePrimeagen/harpoon', branch = 'harpoon2' },
   'stevearc/oil.nvim',
   'nvim-lualine/lualine.nvim',
 

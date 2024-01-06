@@ -1,21 +1,14 @@
-require('harpoon').setup()
+local harpoon = require 'harpoon'
 
-local mark = require 'harpoon.mark'
-local ui = require 'harpoon.ui'
-
--- stylua: ignore
-local nav = function(number)
-  return function() ui.nav_file(number) end
-end
+harpoon:setup()
 
 vim.keymap.set('n', 'gh', function()
-  mark.add_file()
-  print 'Marked current file.'
+  print('Marked ' .. vim.fn.expand('%:t'))
+  harpoon:list():append()
 end)
+vim.keymap.set('n', '<leader>jj', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-vim.keymap.set('n', '<leader>jj', ui.toggle_quick_menu)
-
-vim.keymap.set('n', '<leader>jf', nav(1))
-vim.keymap.set('n', '<leader>jd', nav(2))
-vim.keymap.set('n', '<leader>js', nav(3))
-vim.keymap.set('n', '<leader>ja', nav(4))
+vim.keymap.set('n', '<leader>jf', function() harpoon:list():select(1) end)
+vim.keymap.set('n', '<leader>jd', function() harpoon:list():select(2) end)
+vim.keymap.set('n', '<leader>js', function() harpoon:list():select(3) end)
+vim.keymap.set('n', '<leader>ja', function() harpoon:list():select(4) end)
