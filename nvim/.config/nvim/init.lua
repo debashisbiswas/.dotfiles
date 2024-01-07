@@ -33,8 +33,13 @@ require('lazy').setup({
 
   'numToStr/Comment.nvim',
   { 'ThePrimeagen/harpoon', branch = 'harpoon2' },
-  'stevearc/oil.nvim',
   'nvim-lualine/lualine.nvim',
+
+  'stevearc/oil.nvim',
+  -- When disabling netrw with oil.nvim, gx breaks as it's part of netrw. As of
+  -- nvim 0.10, gx won't be tied to netrw, but until then, this plugin restores
+  -- the functionality
+  'josa42/nvim-gx',
 
   -- Snippets
   'L3MON4D3/LuaSnip',
