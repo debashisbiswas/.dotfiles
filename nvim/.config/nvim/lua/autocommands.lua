@@ -1,4 +1,5 @@
 local config_group = vim.api.nvim_create_augroup('ConfigGroup', { clear = true })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = config_group,
   pattern = '*',

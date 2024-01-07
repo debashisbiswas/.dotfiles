@@ -20,8 +20,5 @@ require('nvim-treesitter.configs').setup {
 
   indent = { enable = true },
 
-  highlight = {
-    enable = true,
-    disable = { 'lua' }, -- lua has semantic highlighting through the LSP
-  },
+  highlight = { enable = true },
 }
