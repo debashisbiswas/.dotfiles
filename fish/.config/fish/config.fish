@@ -8,8 +8,16 @@ end
 
 set -gx EDITOR nvim
 set -gx FLYCTL_INSTALL "$HOME/.fly"
+set -gx PYENV_ROOT $HOME/.pyenv
 
-_add_to_path "$HOME/.cargo/bin" "$HOME/.local/bin" "/usr/local/go/bin" "$HOME/go/bin" "$FLYCTL_INSTALL/bin"
+_add_to_path \
+    "$HOME/.cargo/bin" \
+    "$HOME/.local/bin" \
+    "/usr/local/go/bin" \
+    "$HOME/go/bin" \
+    "$FLYCTL_INSTALL/bin" \
+    "$PYENV_ROOT/shims" \
+    "$PYENV_ROOT/bin"
 
 if status is-interactive
     alias dot "cd ~/.dotfiles"
@@ -42,3 +50,4 @@ end
 
 fnm env --use-on-cd | source
 starship init fish | source
+pyenv init - | source
