@@ -2,13 +2,7 @@ local js_formatters = { 'prettierd', 'eslint_d' }
 
 require('conform').setup {
   formatters_by_ft = {
-    python = function(bufnr)
-      if require('conform').get_formatter_info('ruff_format', bufnr).available then
-        return { 'ruff_format' }
-      else
-        return { 'isort', 'black' }
-      end
-    end,
+    python = { 'isort', 'black' },
 
     lua = { 'stylua' },
     rust = { 'rustfmt' },
