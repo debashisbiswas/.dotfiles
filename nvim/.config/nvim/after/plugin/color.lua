@@ -7,3 +7,14 @@ require('nightfox').setup {
 }
 
 vim.cmd 'colorscheme carbonfox'
+
+require('colorizer').setup {
+  user_default_options = {
+    -- Available modes for `mode`: foreground, background,  virtualtext
+    mode = 'background',
+    css = true,
+    -- Available methods are false / true / "normal" / "lsp" / "both"
+    -- TODO: hi
+    tailwind = true,
+  },
+}

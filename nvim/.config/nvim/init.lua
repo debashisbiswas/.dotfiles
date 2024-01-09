@@ -23,9 +23,7 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
+    cond = function() return vim.fn.executable 'make' == 1 end,
   },
   'benfowler/telescope-luasnip.nvim',
 
@@ -65,6 +63,10 @@ require('lazy').setup({
   'b0o/schemastore.nvim',
 
   'j-hui/fidget.nvim',
+
+  -- Colors
+  'NvChad/nvim-colorizer.lua',
+  'roobert/tailwindcss-colorizer-cmp.nvim',
 }, {
   defaults = {
     lazy = false,

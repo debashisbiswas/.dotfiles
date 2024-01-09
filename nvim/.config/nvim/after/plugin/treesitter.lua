@@ -4,15 +4,16 @@
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
-    'lua',
-    'python',
     'astro',
+    'comment',
     'javascript',
-    'typescript',
-    'tsx',
-    'markdown',
     'json',
+    'lua',
+    'markdown',
+    'python',
     'toml',
+    'tsx',
+    'typescript',
   },
 
   -- Automatically install missing parsers when entering buffer

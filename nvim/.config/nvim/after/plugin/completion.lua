@@ -26,10 +26,12 @@ end
 cmp.setup {
   preselect = 'None',
 
+  formatting = {
+    format = require('tailwindcss-colorizer-cmp').formatter,
+  },
+
   snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
+    expand = function(args) luasnip.lsp_expand(args.body) end,
   },
 
   window = {
@@ -65,15 +67,18 @@ cmp.setup {
     comparators = {
       compare.offset,
       compare.exact,
-      -- compare.scopes,
+      compare.scopes,
       compare.score,
       compare.recently_used,
       under,
-      -- compare.locality,
+      compare.locality,
       compare.kind,
-      -- compare.sort_text,
-      -- compare.length,
-      -- compare.order,
+      compare.sort_text,
+      compare.length,
+      compare.order,
     },
   },
+}
+
+cmp.config.formatting = {
 }

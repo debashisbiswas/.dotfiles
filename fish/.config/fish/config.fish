@@ -35,19 +35,23 @@ if status is-interactive
         alias v nvim
     end
 
-    alias ls "ls -p"
-    alias la "ls -A"
-    alias ll "ls -l"
-    alias lla "ll -A"
-
-    if type -q exa
-      alias ls "exa -F"
-      alias la "ls -a"
-      alias ll "ls -l"
-      alias lla "ll -a"
+    function ls -d 'exa instead of ls'
+        if type -q exa
+            exa --group-directories-first --git $argv
+        else
+            command ls --color=auto $argv
+        end
     end
 end
 
-fnm env --use-on-cd | source
-starship init fish | source
-pyenv init - | source
+if type -q fnm
+    fnm env --use-on-cd | source
+end
+
+if type -q starship
+    starship init fish | source
+end
+
+if type -q pyenv
+    pyenv init - | source
+end
