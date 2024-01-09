@@ -7,6 +7,7 @@ require('conform').setup {
     lua = { 'stylua' },
     rust = { 'rustfmt' },
 
+    html = js_formatters,
     css = js_formatters,
     json = js_formatters,
 
