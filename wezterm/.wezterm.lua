@@ -33,7 +33,7 @@ config.color_scheme = "carbonfox custom"
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "pwsh" }
 	config.cell_width = 0.9
-	config.font_size = 12
+	config.font_size = 14
 
 	-- tmux-like
 	config.leader = { mods = "CTRL", key = "s" }
