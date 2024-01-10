@@ -1,16 +1,8 @@
-function _add_to_path
-    if test (count $argv) -gt 0
-        set -gx PATH $argv $PATH
-    else
-        echo "warning: _add_to_path called without argument"
-    end
-end
-
 set -gx EDITOR nvim
 set -gx FLYCTL_INSTALL "$HOME/.fly"
 set -gx PYENV_ROOT $HOME/.pyenv
 
-_add_to_path \
+set -l PATH_ADDITIONS \
     "$HOME/.cargo/bin" \
     "$HOME/.local/bin" \
     "/usr/local/go/bin" \
@@ -19,11 +11,14 @@ _add_to_path \
     "$PYENV_ROOT/shims" \
     "$PYENV_ROOT/bin"
 
+set -gx PATH $PATH_ADDITIONS $PATH
+
 if status is-interactive
-    alias dot "cd ~/.dotfiles"
+    abbr dot "cd ~/.dotfiles"
 
     if type -q git
         abbr gd "git diff"
+        abbr gdc "git diff --cached"
         abbr glo "git log --oneline"
         abbr glg "git log --all --decorate --oneline --graph"
         abbr gs "git status"
@@ -32,24 +27,24 @@ if status is-interactive
     end
 
     if type -q nvim
-        alias v nvim
+        abbr v nvim
     end
 
-    function ls -d 'exa instead of ls'
-        if type -q exa
-            exa --group-directories-first --git $argv
+    function ls -d 'eza instead of ls'
+        if type -q eza
+            eza --group-directories-first --git $argv
         else
             command ls --color=auto $argv
         end
+    end
+
+    if type -q starship
+        starship init fish | source
     end
 end
 
 if type -q fnm
     fnm env --use-on-cd | source
-end
-
-if type -q starship
-    starship init fish | source
 end
 
 if type -q pyenv
