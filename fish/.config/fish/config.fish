@@ -1,15 +1,18 @@
 set -gx EDITOR nvim
 set -gx FLYCTL_INSTALL "$HOME/.fly"
 set -gx PYENV_ROOT $HOME/.pyenv
+set -gx VOLTA_HOME "$HOME/.volta"
 
 set -l PATH_ADDITIONS \
     "$HOME/.cargo/bin" \
     "$HOME/.local/bin" \
-    "/usr/local/go/bin" \
+    "$HOME/.local/share" \
     "$HOME/go/bin" \
+    "/usr/local/go/bin" \
     "$FLYCTL_INSTALL/bin" \
     "$PYENV_ROOT/shims" \
-    "$PYENV_ROOT/bin"
+    "$PYENV_ROOT/bin" \
+    "$VOLTA_HOME/bin"
 
 set -gx PATH $PATH_ADDITIONS $PATH
 
@@ -41,10 +44,6 @@ if status is-interactive
     if type -q starship
         starship init fish | source
     end
-end
-
-if type -q fnm
-    fnm env --use-on-cd | source
 end
 
 if type -q pyenv
