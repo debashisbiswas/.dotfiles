@@ -16,9 +16,7 @@ vim.diagnostic.config {
 
 local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
+    if desc then desc = 'LSP: ' .. desc end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
@@ -27,9 +25,11 @@ local on_attach = function(client, bufnr)
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', function()
-    require('telescope.builtin').lsp_references { path_display = { 'smart' } }
-  end, '[G]oto [R]eferences')
+  nmap(
+    'gr',
+    function() require('telescope.builtin').lsp_references { path_display = { 'smart' } } end,
+    '[G]oto [R]eferences'
+  )
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -43,9 +43,11 @@ local on_attach = function(client, bufnr)
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
   nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
+  nmap(
+    '<leader>wl',
+    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+    '[W]orkspace [L]ist Folders'
+  )
 
   -- TODO: https://www.reddit.com/r/neovim/comments/10a31vo/how_does_vimlspbufformat_deal_with_multiple/
   local do_format = function(async)
@@ -58,9 +60,12 @@ local on_attach = function(client, bufnr)
     }
   end
 
-  vim.keymap.set('n', '<leader>;', function()
-    require('conform').format { lsp_fallback = true }
-  end, { desc = 'Format buffer' })
+  vim.keymap.set(
+    'n',
+    '<leader>;',
+    function() require('conform').format { lsp_fallback = true } end,
+    { desc = 'Format buffer' }
+  )
 end
 
 local servers = {

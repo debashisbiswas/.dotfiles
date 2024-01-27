@@ -1,4 +1,4 @@
-local js_formatters = { 'prettierd', 'eslint_d' }
+local js_formatters = { 'prettierd' }
 
 require('conform').setup {
   formatters_by_ft = {
@@ -21,22 +21,10 @@ require('conform').setup {
   },
 }
 
-local js_linters = { 'eslint_d' }
-
 require('lint').linters_by_ft = {
   python = { 'ruff' },
-
-  typescript = js_linters,
-  javascript = js_linters,
-  typescriptreact = js_linters,
-  javascriptreact = js_linters,
-
-  astro = js_linters,
-  svelte = js_linters,
 }
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'TextChanged' }, {
-  callback = function()
-    require('lint').try_lint()
-  end,
+  callback = function() require('lint').try_lint() end,
 })
