@@ -51,6 +51,11 @@ require('lazy').setup({
   'hrsh7th/cmp-cmdline',
   'saadparwaiz1/cmp_luasnip',
 
+  -- Auto
+  'windwp/nvim-autopairs',
+  'windwp/nvim-ts-autotag',
+  'RRethy/nvim-treesitter-endwise',
+
   -- LSP
   'neovim/nvim-lspconfig',
   'williamboman/mason.nvim',
