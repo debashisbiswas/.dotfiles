@@ -1,4 +1,4 @@
-local js_formatters = { 'prettierd' }
+local js_formatters = { 'prettier' }
 
 require('conform').setup {
   formatters_by_ft = {

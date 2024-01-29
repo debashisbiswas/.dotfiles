@@ -63,7 +63,12 @@ local on_attach = function(client, bufnr)
   vim.keymap.set(
     'n',
     '<leader>;',
-    function() require('conform').format { lsp_fallback = true } end,
+    function()
+      require('conform').format {
+        lsp_fallback = true,
+        async = true,
+      }
+    end,
     { desc = 'Format buffer' }
   )
 end
