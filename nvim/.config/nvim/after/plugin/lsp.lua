@@ -48,29 +48,6 @@ local on_attach = function(client, bufnr)
     function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
     '[W]orkspace [L]ist Folders'
   )
-
-  -- TODO: https://www.reddit.com/r/neovim/comments/10a31vo/how_does_vimlspbufformat_deal_with_multiple/
-  local do_format = function(async)
-    vim.lsp.buf.format {
-      filter = function(client)
-        -- TODO: should use these as fallbacks when the main formatter is not available
-        return client.name ~= 'lua_ls' and client.name ~= 'tsserver'
-      end,
-      async = async,
-    }
-  end
-
-  vim.keymap.set(
-    'n',
-    '<leader>;',
-    function()
-      require('conform').format {
-        lsp_fallback = true,
-        async = true,
-      }
-    end,
-    { desc = 'Format buffer' }
-  )
 end
 
 local servers = {
