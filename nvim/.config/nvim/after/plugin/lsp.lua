@@ -1,6 +1,7 @@
 -- Set up borders for LSP windows
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts = opts or {}
   opts.border = opts.border or 'rounded'
@@ -102,6 +103,7 @@ local servers = {
 
   lua_ls = {
     Lua = {
+      runtime = { version = 'LuaJIT' },
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
