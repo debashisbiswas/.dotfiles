@@ -11,6 +11,7 @@ require('lazy').setup({
   -- Classical vim
   'tpope/vim-fugitive',
   'tpope/vim-repeat',
+  'tpope/vim-sleuth',
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'junegunn/vim-easy-align',
@@ -68,6 +69,12 @@ require('lazy').setup({
   'b0o/schemastore.nvim',
 
   'j-hui/fidget.nvim',
+
+  -- DAP
+  'mfussenegger/nvim-dap',
+  'rcarriga/nvim-dap-ui',
+  'theHamsta/nvim-dap-virtual-text',
+  'mfussenegger/nvim-dap-python',
 
   -- Colors
   'NvChad/nvim-colorizer.lua',
