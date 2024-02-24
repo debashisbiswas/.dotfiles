@@ -14,8 +14,13 @@ require('lazy').setup({
   'tpope/vim-sleuth',
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
+
   'junegunn/vim-easy-align',
   'airblade/vim-gitgutter',
+
+  'tpope/vim-dadbod',
+  'kristijanhusak/vim-dadbod-ui',
+  'kristijanhusak/vim-dadbod-completion',
 
   -- Neovim
   'nvim-lua/plenary.nvim',

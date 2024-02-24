@@ -62,7 +62,7 @@ conform.setup {
   end,
 
   formatters_by_ft = {
-    python = { 'isort', 'black' },
+    python = { 'ruff_fix', 'ruff_format' },
 
     lua = { 'stylua' },
     rust = { 'rustfmt' },
