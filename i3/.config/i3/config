@@ -7,7 +7,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Meta Key - Alt key is Mod1, and Windows key is Mod4
-set $mod Mod1
+set $mod Mod4
 
 font pango:monospace 10
 
