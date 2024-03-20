@@ -38,6 +38,7 @@ require('lazy').setup({
   'numToStr/Comment.nvim',
   { 'ThePrimeagen/harpoon', branch = 'harpoon2' },
   'nvim-lualine/lualine.nvim',
+  'folke/which-key.nvim',
 
   'stevearc/oil.nvim',
   -- When disabling netrw with oil.nvim, gx breaks as it's part of netrw. As of
