@@ -14,9 +14,12 @@ a relative path.
 ## Finding paths
 
 PowerShell profile: `$PROFILE`
-nvim install path: `:echo stdpath('data')` from nvim
+nvim install path: `:echo stdpath('config')` from nvim
 
 ## Commands
+
+On systems without admin access, may need to use `mklink /H` to hardlink (does
+not require admin access). For directories, use, `mklink /J`.
 
 ### Symlink a file
 

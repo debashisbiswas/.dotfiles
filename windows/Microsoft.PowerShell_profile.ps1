@@ -1,4 +1,5 @@
 $env:Path += ";C:\bin"
+$env:Path += ";${HOME}\go\bin"
 
 if (Test-Path alias:\cd)
 {
@@ -31,6 +32,7 @@ try
 }
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
+# First, Install-Module PSFzf
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 
