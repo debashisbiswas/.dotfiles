@@ -39,6 +39,8 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory
 Set-Alias v nvim
 Set-Alias e explorer.exe
 
+$env:Editor = "nvim"
+
 function ..
 {
     Set-Location ..
@@ -46,7 +48,7 @@ function ..
 
 function fcd
 {
-    param ([string]$query = ".")
+    param ()
     $selection = Get-ChildItem $query -Directory | Select-Object -ExpandProperty FullName | fzf
     if ($selection)
     {

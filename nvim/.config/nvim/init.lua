@@ -25,7 +25,7 @@ require('lazy').setup({
   -- Neovim
   'nvim-lua/plenary.nvim',
 
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x' },
+  { 'nvim-telescope/telescope.nvim',   branch = '0.1.x' },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
@@ -45,6 +45,8 @@ require('lazy').setup({
   -- nvim 0.10, gx won't be tied to netrw, but until then, this plugin restores
   -- the functionality
   'josa42/nvim-gx',
+
+  "folke/zen-mode.nvim",
 
   -- Snippets
   'L3MON4D3/LuaSnip',
