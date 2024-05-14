@@ -13,8 +13,7 @@ function cd
     if ($path)
     {
         Set-Location $path
-    }
-    else
+    } else
     {
         Set-Location $home
     }
@@ -128,11 +127,13 @@ if (exists fnm)
     fnm env --use-on-cd | Out-String | Invoke-Expression
 }
 
-function RestartKomorebi {
-    Stop-Process -Name whkd
-    Stop-Process -Name komorebi
-    komorebic start -c "$Env:USERPROFILE\komorebi.json" --whkd
-}
-
 # Remove blue background from directory listings
 $PSStyle.FileInfo.Directory = "`e[34m"
+
+$ProfileDir = Split-Path -Parent $PROFILE
+$LocalPS1Path = Join-Path $ProfileDir "local.ps1"
+
+if (Test-Path $LocalPS1Path)
+{
+    . $LocalPS1Path
+}
