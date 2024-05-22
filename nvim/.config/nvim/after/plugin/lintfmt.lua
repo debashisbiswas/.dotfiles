@@ -45,7 +45,7 @@ local function create_format_progress_handle()
   }
 end
 
-local js_formatters = { 'prettier' }
+local js_formatters = { 'prettierd' }
 
 conform.setup {
   format_on_save = function(bufnr)
