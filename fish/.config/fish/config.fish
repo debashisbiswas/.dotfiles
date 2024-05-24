@@ -3,18 +3,16 @@ set -gx FLYCTL_INSTALL "$HOME/.fly"
 set -gx PYENV_ROOT $HOME/.pyenv
 set -gx VOLTA_HOME "$HOME/.volta"
 
-set -l PATH_ADDITIONS \
-    "$HOME/.cargo/bin" \
-    "$HOME/.local/bin" \
-    "$HOME/.local/share" \
-    "$HOME/go/bin" \
-    "/usr/local/go/bin" \
-    "$FLYCTL_INSTALL/bin" \
-    "$PYENV_ROOT/shims" \
-    "$PYENV_ROOT/bin" \
-    "$VOLTA_HOME/bin"
-
-set -gx PATH $PATH_ADDITIONS $PATH
+fish_add_path -g "$HOME/.cargo/bin"
+fish_add_path -g "$HOME/.local/bin"
+fish_add_path -g "$HOME/.local/share"
+fish_add_path -g "$HOME/go/bin"
+fish_add_path -g "/usr/local/go/bin"
+fish_add_path -g "$FLYCTL_INSTALL/bin"
+fish_add_path -g "$PYENV_ROOT/shims"
+fish_add_path -g "$PYENV_ROOT/bin"
+fish_add_path -g "$VOLTA_HOME/bin"
+fish_add_path -g "$HOME/.sst/bin"
 
 if status is-interactive
     abbr dot "cd ~/.dotfiles"
