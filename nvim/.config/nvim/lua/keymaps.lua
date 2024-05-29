@@ -16,9 +16,9 @@ vim.keymap.set('n', '<leader>so', '<Cmd>source<CR>', { desc = 'Source current fi
 
 vim.keymap.set(
   'n',
-  '<leader>sc',
+  '<leader>vc',
   function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' } end,
-  { desc = '[s]search: [c]onfig' }
+  { desc = '[v]im [c]onfig' }
 )
 
 vim.keymap.set('n', '<leader>vl', '<Cmd>Lazy<CR>', { desc = '[v]im: [l]azy' })
