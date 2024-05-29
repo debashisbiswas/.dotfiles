@@ -34,6 +34,7 @@ require('lazy').setup({
   'benfowler/telescope-luasnip.nvim',
 
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  'nvim-treesitter/nvim-treesitter-context',
 
   'numToStr/Comment.nvim',
   { 'ThePrimeagen/harpoon', branch = 'harpoon2' },
