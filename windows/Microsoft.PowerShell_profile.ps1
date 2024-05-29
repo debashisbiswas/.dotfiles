@@ -131,9 +131,9 @@ if (exists fnm)
 $PSStyle.FileInfo.Directory = "`e[34m"
 
 $ProfileDir = Split-Path -Parent $PROFILE
-$LocalPS1Path = Join-Path $ProfileDir "local.ps1"
+$LocalPS1 = Join-Path $ProfileDir "local.ps1"
 
-if (Test-Path $LocalPS1Path)
+if (Test-Path $LocalPS1)
 {
-    . $LocalPS1Path
+    . $LocalPS1
 }
