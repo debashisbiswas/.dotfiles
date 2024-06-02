@@ -154,6 +154,7 @@
       signal-desktop
       ticktick
       wezterm
+      alacritty
       zoom-us
       lxappearance
       discord
@@ -177,6 +178,7 @@
       gcc
       gh
       git
+      glow
       gtk3
       htop
       jq
@@ -229,7 +231,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = lib.optional (pkgs.obsidian.version == "1.4.16") "electron-25.9.0";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
