@@ -16,6 +16,7 @@ require('lazy').setup({
   'tpope/vim-unimpaired',
 
   'junegunn/vim-easy-align',
+  'AndrewRadev/splitjoin.vim',
   'airblade/vim-gitgutter',
 
   'tpope/vim-dadbod',
@@ -25,7 +26,7 @@ require('lazy').setup({
   -- Neovim
   'nvim-lua/plenary.nvim',
 
-  { 'nvim-telescope/telescope.nvim',   branch = '0.1.x' },
+  { 'nvim-telescope/telescope.nvim', branch = '0.1.x' },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
@@ -47,7 +48,7 @@ require('lazy').setup({
   -- the functionality
   'josa42/nvim-gx',
 
-  "folke/zen-mode.nvim",
+  'folke/zen-mode.nvim',
 
   -- Snippets
   'L3MON4D3/LuaSnip',
@@ -74,6 +75,7 @@ require('lazy').setup({
   'stevearc/conform.nvim',
   'mfussenegger/nvim-lint',
 
+  -- TODO: for nvim 0.10+, https://github.com/folke/lazydev.nvim
   'folke/neodev.nvim',
   'b0o/schemastore.nvim',
 
@@ -82,6 +84,7 @@ require('lazy').setup({
   -- DAP
   'mfussenegger/nvim-dap',
   'rcarriga/nvim-dap-ui',
+  'nvim-neotest/nvim-nio',
   'theHamsta/nvim-dap-virtual-text',
   'mfussenegger/nvim-dap-python',
 
