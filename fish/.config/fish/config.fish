@@ -1,3 +1,4 @@
+set -gx DOTFILES "$HOME/.dotfiles"
 set -gx EDITOR nvim
 set -gx FLYCTL_INSTALL "$HOME/.fly"
 set -gx PYENV_ROOT $HOME/.pyenv
@@ -15,7 +16,7 @@ fish_add_path -g "$VOLTA_HOME/bin"
 fish_add_path -g "$HOME/.sst/bin"
 
 if status is-interactive
-    abbr dot "cd ~/.dotfiles"
+    abbr dot "cd $DOTFILES"
 
     if type -q git
         abbr gd "git diff"
@@ -46,4 +47,8 @@ end
 
 if type -q pyenv
     pyenv init - | source
+end
+
+if type -q nixos-rebuild
+    abbr rebuild "sudo nixos-rebuild -I nixos-config=\"$DOTFILES/nixos/configuration.nix\" switch"
 end

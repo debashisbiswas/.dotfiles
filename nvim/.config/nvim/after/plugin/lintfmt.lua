@@ -78,6 +78,8 @@ conform.setup {
 
     astro = js_formatters,
     svelte = js_formatters,
+
+    nix = { 'nixpkgs_fmt' },
   },
 }
 
