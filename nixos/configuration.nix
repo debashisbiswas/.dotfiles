@@ -146,7 +146,6 @@
       pavucontrol
       signal-desktop
       ticktick
-      wezterm
       alacritty
       zoom-us
       lxappearance
@@ -176,7 +175,6 @@
       htop
       jq
       mysql
-      neovim
       nmap
       pciutils
       postgresql
@@ -206,7 +204,7 @@
 
   environment.sessionVariables = {
     EDITOR = "nvim";
-    TERMINAL = "wezterm";
+    TERMINAL = "alacritty";
   };
 
   # TODO: doesn't work yet...
@@ -240,21 +238,20 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  programs.fish.enable = true;
-  programs.dconf.enable = true;
 
-  # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
-  # This is useful for Neovim language servers installed through Mason, for example.
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-  ];
+  programs = {
+    fish.enable = true;
+    dconf.enable = true;
+    neovim.enable = true;
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+    # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
+    # This is useful for Neovim language servers installed through Mason, for example.
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+      # Add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
+    ];
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
