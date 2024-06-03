@@ -12,9 +12,7 @@
 
   imports =
     [
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/lenovo/thinkpad/t480"
     ];
 
   # Bootloader.
@@ -140,28 +138,8 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
     packages = with pkgs; [
-      brave
-      firefox
-      obsidian
-      pavucontrol
-      signal-desktop
-      ticktick
-      alacritty
-      zoom-us
-      lxappearance
-      discord
-      xfce.thunar
-      xfce.thunar-volman
-      xfce.thunar-archive-plugin
+      # cli
       nix-search-cli
-
-      elixir
-      go
-      nodejs
-      python3
-      rustup
-      zig
-
       awscli2
       btop
       eza
@@ -171,7 +149,6 @@
       gh
       git
       glow
-      gtk3
       htop
       jq
       mysql
@@ -187,6 +164,35 @@
       unzip
       usbutils
       xclip
+
+      # gui
+      alacritty
+      brave
+      discord
+      firefox
+      gtk3
+      lxappearance
+      obsidian
+      pavucontrol
+      signal-desktop
+      ticktick
+      xfce.thunar
+      xfce.thunar-archive-plugin
+      xfce.thunar-volman
+      zoom-us
+
+      # languages
+      go
+      nodejs
+      python3
+      rustup
+      zig
+
+      # erlang and adjacent
+      erlang
+      rebar3
+      elixir
+      gleam
     ];
   };
 
@@ -226,7 +232,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git # for flakes
+    vim
     pulseaudio
     spotify
   ];
