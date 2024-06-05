@@ -134,6 +134,8 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+require('lspconfig').gleam.setup {}
+
 require('fidget').setup {}
 
 --------------------

@@ -1,6 +1,6 @@
 # in seconds
-xset s 900
-xset dpms 0 0 1200
+# xset s 900
+# xset dpms 0 0 1200
 
 # https://github.com/alacritty/alacritty/issues/3465
-export WINIT_X11_SCALE_FACTOR=1
+# export WINIT_X11_SCALE_FACTOR=1
