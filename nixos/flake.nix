@@ -3,18 +3,28 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware }: {
-    nixosConfigurations.mipha = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
+  outputs = { self, nixpkgs, hardware }@inputs:
+    let
+      inherit (self) outputs;
+    in
+    {
+      nixosConfigurations = {
 
-        # https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-        nixos-hardware.nixosModules.lenovo-thinkpad-t480
-      ];
+        mipha = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/mipha ];
+          specialArgs = { inherit inputs outputs; };
+        };
+
+        lumine = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/lumine ];
+          specialArgs = { inherit inputs outputs; };
+        };
+
+      };
     };
-  };
 }

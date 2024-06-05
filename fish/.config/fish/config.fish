@@ -50,7 +50,7 @@ if type -q pyenv
 end
 
 if type -q nixos-rebuild
-    abbr rebuild "sudo nixos-rebuild --flake \"$DOTFILES/nixos\" switch"
+    abbr rebuild "sudo nixos-rebuild --flake \"$DOTFILES/nixos#$(hostname)\" switch"
 end
 
 abbr refresh 'source ~/.config/fish/**/*.fish'
