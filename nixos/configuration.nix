@@ -90,6 +90,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # calibre needs to be able to see connected e-readers
+  services.udisks2.enable = true;
+
   virtualisation.docker = {
     enable = true;
     rootless = {
