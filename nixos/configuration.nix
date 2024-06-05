@@ -159,6 +159,7 @@
       # gui
       alacritty
       brave
+      calibre
       discord
       firefox
       gtk3
