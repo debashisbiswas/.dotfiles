@@ -138,7 +138,6 @@
     shell = pkgs.fish;
     packages = with pkgs; [
       # cli
-      nix-search-cli
       awscli2
       btop
       eza
@@ -149,8 +148,10 @@
       git
       glow
       htop
+      imagemagick
       jq
       mysql
+      nix-search-cli
       nmap
       pciutils
       postgresql
