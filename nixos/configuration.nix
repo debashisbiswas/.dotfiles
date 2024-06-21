@@ -95,6 +95,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # These are all used for mounting USB devices when plugged in.
   services.udisks2.enable = true; # calibre needs to be able to see connected e-readers
   services.devmon.enable = true;
   services.gvfs.enable = true;
