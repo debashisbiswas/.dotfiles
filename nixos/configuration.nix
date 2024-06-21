@@ -95,8 +95,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # calibre needs to be able to see connected e-readers
-  services.udisks2.enable = true;
+  services.udisks2.enable = true; # calibre needs to be able to see connected e-readers
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
 
   virtualisation.docker = {
     enable = true;
@@ -138,6 +139,7 @@
     shell = pkgs.fish;
     packages = with pkgs; [
       # cli
+      ansible
       awscli2
       btop
       eza
@@ -151,6 +153,7 @@
       imagemagick
       jq
       mysql
+      neofetch
       nix-search-cli
       nmap
       pciutils
@@ -160,6 +163,7 @@
       ripgrep
       starship
       stow
+      terraform
       tmux
       unzip
       usbutils
