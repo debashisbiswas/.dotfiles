@@ -19,6 +19,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot = {
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
+  };
+
   # Enable networking
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -175,6 +180,7 @@
       brave
       calibre
       discord
+      droidcam
       firefox
       gtk3
       lxappearance
@@ -256,6 +262,7 @@
     fish.enable = true;
     dconf.enable = true;
     neovim.enable = true;
+    adb.enable = true;
 
     # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
     # This is useful for Neovim language servers installed through Mason, for example.
@@ -269,9 +276,11 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     57621 # spotify
+    4747 # droidcam
   ];
   networking.firewall.allowedUDPPorts = [
     5353 # spotify
+    4747 # droidcam
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
