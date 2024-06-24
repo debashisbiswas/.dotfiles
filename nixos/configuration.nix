@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   nix = {
@@ -15,11 +15,12 @@
       };
   };
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  nixpkgs.config.allowUnfree = true;
 
+  # Bootloader.
   boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
     kernelModules = [ "v4l2loopback" ];
     extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
   };
@@ -30,18 +31,20 @@
 
   time.timeZone = "America/Phoenix";
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
   # part of i3 config?
@@ -93,17 +96,19 @@
           rofi
         ];
       };
-
     };
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    # These are all used for mounting USB devices when plugged in.
+    udisks2.enable = true; # calibre needs to be able to see connected e-readers
+    devmon.enable = true;
+    gvfs.enable = true;
+
+    # DE will usually provide this, but i3 won't
+    blueman.enable = true;
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # These are all used for mounting USB devices when plugged in.
-  services.udisks2.enable = true; # calibre needs to be able to see connected e-readers
-  services.devmon.enable = true;
-  services.gvfs.enable = true;
 
   virtualisation.docker = {
     enable = true;
@@ -114,11 +119,10 @@
   };
 
   # Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  # DE will usually provide this, but i3 won't
-  services.blueman.enable = true;
+  hardware = {
+    bluetooth.enable = true; # enables support for Bluetooth
+    bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -188,6 +192,7 @@
       firefox
       gtk3
       lxappearance
+      obs-studio
       obsidian
       pavucontrol
       signal-desktop
@@ -241,9 +246,6 @@
       "x-scheme-handler/about" = defaultBrowser;
       "x-scheme-handler/unknown" = defaultBrowser;
     };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
