@@ -150,14 +150,17 @@
       btop
       eza
       fd
+      ffmpeg
       fzf
       gcc
       gh
       git
       glow
+      gphoto2
       htop
       imagemagick
       jq
+      mpv
       mysql
       neofetch
       nix-search-cli
@@ -173,6 +176,7 @@
       tmux
       unzip
       usbutils
+      v4l-utils
       xclip
 
       # gui
