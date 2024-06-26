@@ -175,6 +175,7 @@
       postgresql
       pulumi
       pulumiPackages.pulumi-language-nodejs
+      railway
       ripgrep
       starship
       stow
