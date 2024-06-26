@@ -26,7 +26,7 @@ require('lazy').setup({
   -- Neovim
   'nvim-lua/plenary.nvim',
 
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x' },
+  { 'nvim-telescope/telescope.nvim',   branch = '0.1.x' },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
@@ -89,7 +89,7 @@ require('lazy').setup({
   'mfussenegger/nvim-dap-python',
 
   -- Colors
-  'NvChad/nvim-colorizer.lua',
+  'brenoprata10/nvim-highlight-colors',
   'roobert/tailwindcss-colorizer-cmp.nvim',
 }, {
   defaults = {

@@ -8,13 +8,8 @@ require('nightfox').setup {
 
 vim.cmd 'colorscheme carbonfox'
 
-require('colorizer').setup {
-  user_default_options = {
-    -- Available modes for `mode`: foreground, background,  virtualtext
-    mode = 'background',
-    css = true,
-    -- Available methods are false / true / "normal" / "lsp" / "both"
-    -- TODO: hi
-    tailwind = true,
-  },
-}
+vim.opt.termguicolors = true
+require('nvim-highlight-colors').setup({
+  render = 'background',
+  enable_tailwind = true,
+})
