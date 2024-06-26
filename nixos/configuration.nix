@@ -2,17 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   nix = {
     package = pkgs.nixFlakes;
 
-    settings =
-      {
-        experimental-features = [ "nix-command" "flakes" ];
-        warn-dirty = false;
-      };
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      warn-dirty = false;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -22,7 +21,10 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelModules = [ "v4l2loopback" ];
-    extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=2
+    '';
   };
 
   # Enable networking
