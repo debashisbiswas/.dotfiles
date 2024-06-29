@@ -216,6 +216,7 @@
       erlang
       rebar3
       elixir
+      inotify-tools
       gleam
 
       # idk
