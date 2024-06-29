@@ -121,12 +121,12 @@ set $locker i3lock && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l       exec --no-startup-id $locker, mode "default"
-    bindsym e       exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s       exec --no-startup-id $locker && systemctl suspend, mode "default"
-    bindsym h       exec --no-startup-id $locker && systemctl hibernate, mode "default"
-    bindsym r       exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+    bindsym l       exec $locker, mode "default"
+    bindsym e       exec i3-msg exit, mode "default"
+    bindsym s       exec $locker && systemctl suspend, mode "default"
+    bindsym h       exec $locker && systemctl hibernate, mode "default"
+    bindsym r       exec systemctl reboot, mode "default"
+    bindsym Shift+s exec systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -149,53 +149,36 @@ bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
 bindsym XF86MonBrightnessUp   exec brightnessctl set +5% -n 10
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- -n 10
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
-bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_i3status
+bindsym XF86AudioMicMute     exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym $mod+t exec --no-startup-id i3-sensible-terminal
-bindsym $mod+b exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+bindsym $mod+t exec i3-sensible-terminal
+bindsym $mod+b exec gtk-launch $(xdg-settings get default-web-browser)
 
-bindsym $mod+s exec --no-startup-id "rofi -modi drun,run -show drun -theme DarkBlue"
+bindsym $mod+s exec "rofi -modi drun,run -show drun -theme DarkBlue"
 
-# Required for v9, but v10 should both autostart and use experimental backends by default
-exec_always --no-startup-id picom -b
-
-exec_always --no-startup-id feh --bg-center --randomize ~/Pictures/Wallpapers
-exec --no-startup-id dunst
-
-# TODO: this starts up a new instance every time I relogin
-exec --no-startup-id redshift -l 33.4:-111.9
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec_always feh --bg-center --randomize ~/Pictures/Wallpapers
+exec dunst
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+exec nm-applet
 
 bindsym $mod+y floating enable; resize set 55ppt 75ppt; move position center
 
-# https://gist.github.com/dianjuar/ee774561a8bc02b077989bc17424a19f
 # Screenshots
 # Fullscreen
-bindsym Print exec --no-startup-id maim "$HOME/Pictures/$(date)"
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Print exec grim
+bindsym Ctrl+Print exec grim - | wl-copy
 # Window
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/$(date)"
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym $mod+Print exec grim -g "$(slurp)"
+bindsym Ctrl+$mod+Print exec grim -g "$(slurp)" - | wl-copy
 # Select
-bindsym Shift+Print exec --no-startup-id maim --hidecursor --select "$HOME/Pictures/$(date)"
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --hidecursor --select | xclip -selection clipboard -t image/png
+# TODO
+bindsym Shift+Print exec $(swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | slurp)
+bindsym Ctrl+Shift+Print exec maim --hidecursor --select | xclip -selection clipboard -t image/png
 
 gaps inner 8
 
@@ -204,3 +187,14 @@ smart_borders on
 smart_gaps inverse_outer
 # outer border settings for single window
 # gaps horizontal 750
+
+input type:touchpad {
+  tap enabled
+  natural_scroll enabled
+  scroll_factor 0.2
+}
+
+# thinkpad t480
+output eDP-1 {
+  background `find ~/Pictures/Wallpapers -type f | shuf -n 1` center
+}

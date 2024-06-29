@@ -226,7 +226,6 @@
       grim
       slurp
       wl-clipboard
-      mako
     ];
   };
 
