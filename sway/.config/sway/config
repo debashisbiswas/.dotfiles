@@ -117,12 +117,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $locker i3lock && sleep 1
+set $locker swaylock && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l       exec $locker, mode "default"
-    bindsym e       exec i3-msg exit, mode "default"
+    bindsym e       exec swaymsg exit, mode "default"
     bindsym s       exec $locker && systemctl suspend, mode "default"
     bindsym h       exec $locker && systemctl hibernate, mode "default"
     bindsym r       exec systemctl reboot, mode "default"
@@ -159,7 +159,6 @@ bindsym $mod+b exec gtk-launch $(xdg-settings get default-web-browser)
 
 bindsym $mod+s exec "rofi -modi drun,run -show drun -theme DarkBlue"
 
-exec_always feh --bg-center --randomize ~/Pictures/Wallpapers
 exec dunst
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
