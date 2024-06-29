@@ -117,7 +117,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $locker swaylock && sleep 1
+set $locker swaylock -f && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -137,7 +137,7 @@ bindsym $mod+Delete mode "$mode_system"
 
 # The bar configuration
 bar {
-  font pango:Fira Sans Book 12
+  font pango:Fira Sans Book 14
   status_command i3status
   tray_output primary
 }
