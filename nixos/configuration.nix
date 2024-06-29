@@ -221,8 +221,16 @@
       # idk
       libreoffice-qt
       hunspell
+
+      # sway
+      grim
+      slurp
+      wl-clipboard
+      mako
     ];
   };
+
+  services.gnome.gnome-keyring.enable = true;
 
   fonts = {
     enableDefaultPackages = true;
@@ -276,6 +284,10 @@
     dconf.enable = true;
     neovim.enable = true;
     adb.enable = true;
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+    };
 
     # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
     # This is useful for Neovim language servers installed through Mason, for example.
