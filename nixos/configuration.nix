@@ -217,6 +217,10 @@
       rebar3
       elixir
       gleam
+
+      # idk
+      libreoffice-qt
+      hunspell
     ];
   };
 
