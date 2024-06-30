@@ -193,7 +193,14 @@ input type:touchpad {
   scroll_factor 0.2
 }
 
+output * {
+  background `find ~/Pictures/Wallpapers -type f | shuf -n 1` center
+}
+
 # thinkpad t480
 output eDP-1 {
-  background `find ~/Pictures/Wallpapers -type f | shuf -n 1` center
+}
+
+# lg ultrawide on desktop
+output DP-1 {
 }
