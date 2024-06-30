@@ -3,7 +3,6 @@
   imports = [
     ../../configuration.nix
     inputs.hardware.nixosModules.common-gpu-amd
-    inputs.hardware.nixosModules.common-cpu-intel-kaby-lake
 
     ./hardware-configuration.nix
   ];
