@@ -161,6 +161,8 @@ bindsym $mod+s exec "rofi -modi drun,run -show drun -theme DarkBlue"
 
 exec dunst
 
+exec wlsunset -l 33.4 -L -111.9
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec nm-applet

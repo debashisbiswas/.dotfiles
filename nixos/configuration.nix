@@ -162,12 +162,14 @@
       gh
       git
       glow
+      gnumake
       gphoto2
       htop
       imagemagick
       jq
       mpv
       mysql
+      ncspot
       neofetch
       nix-search-cli
       nmap
@@ -227,6 +229,7 @@
       grim
       slurp
       wl-clipboard
+      wlsunset
     ];
   };
 
