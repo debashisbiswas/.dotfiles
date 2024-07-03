@@ -124,6 +124,7 @@
   hardware = {
     bluetooth.enable = true; # enables support for Bluetooth
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    keyboard.zsa.enable = true; # https://nixos.wiki/wiki/ZSA_Keyboards
   };
 
   # Enable sound with pipewire.
@@ -186,6 +187,7 @@
       unzip
       usbutils
       v4l-utils
+      wally-cli
       xclip
 
       # gui
