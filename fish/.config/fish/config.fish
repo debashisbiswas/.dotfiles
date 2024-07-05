@@ -53,4 +53,8 @@ if type -q nixos-rebuild
     abbr rebuild "sudo nixos-rebuild --flake \"$DOTFILES/nixos#$(hostname)\" switch"
 end
 
-abbr refresh 'source ~/.config/fish/**/*.fish'
+if type -q docker
+    abbr dc "docker compose"
+end
+
+abbr refresh "source ~/.config/fish/config.fish"
