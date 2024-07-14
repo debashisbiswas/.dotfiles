@@ -57,4 +57,6 @@ if type -q docker
     abbr dc "docker compose"
 end
 
+alias wl "xdg-open 'https://www.youtube.com/playlist?list=WL'"
+
 abbr refresh "source ~/.config/fish/config.fish"
