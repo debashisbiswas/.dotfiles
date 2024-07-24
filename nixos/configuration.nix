@@ -54,7 +54,7 @@
 
   services = {
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "sway";
     };
 
     # Enable touchpad support (enabled default in most desktopManager).
