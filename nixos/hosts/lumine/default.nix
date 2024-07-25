@@ -17,5 +17,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
+  hardware.amdgpu.opencl.enable = true;
+
   system.stateVersion = "23.11";
 }

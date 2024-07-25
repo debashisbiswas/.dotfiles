@@ -110,6 +110,8 @@
 
     # DE will usually provide this, but i3 won't
     blueman.enable = true;
+
+    ollama.enable = true;
   };
 
   virtualisation.docker = {
