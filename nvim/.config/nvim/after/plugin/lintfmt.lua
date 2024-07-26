@@ -83,7 +83,7 @@ conform.setup {
   },
 }
 
-vim.keymap.set('n', '<leader>;', function()
+vim.keymap.set('n', '<leader>f', function()
   local handle = create_format_progress_handle()
 
   conform.format({ async = true, quiet = true, lsp_fallback = true }, function(err)
