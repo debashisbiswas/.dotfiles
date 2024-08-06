@@ -192,6 +192,7 @@
       calibre
       discord
       firefox
+      foliate
       gtk3
       lxappearance
       obs-studio
