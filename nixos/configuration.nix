@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   nix = {
@@ -20,11 +20,6 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelModules = [ "v4l2loopback" ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-    extraModprobeConfig = ''
-      options v4l2loopback devices=2
-    '';
   };
 
   # Enable networking
@@ -196,7 +191,6 @@
       brave
       calibre
       discord
-      droidcam
       firefox
       gtk3
       lxappearance
@@ -307,11 +301,9 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     57621 # spotify
-    4747 # droidcam
   ];
   networking.firewall.allowedUDPPorts = [
     5353 # spotify
-    4747 # droidcam
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
