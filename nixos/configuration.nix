@@ -5,6 +5,11 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./modules/v4l2.nix
+    ./modules/spotify.nix
+  ];
+
   nix = {
     package = pkgs.nixFlakes;
 
@@ -117,10 +122,11 @@
     };
   };
 
-  # Bluetooth
   hardware = {
+    # Bluetooth
     bluetooth.enable = true; # enables support for Bluetooth
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
     keyboard.zsa.enable = true; # https://nixos.wiki/wiki/ZSA_Keyboards
   };
 
@@ -269,7 +275,6 @@
     git # for flakes
     vim
     pulseaudio
-    spotify
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -299,13 +304,6 @@
     ];
   };
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    57621 # spotify
-  ];
-  networking.firewall.allowedUDPPorts = [
-    5353 # spotify
-  ];
-  # Or disable the firewall altogether.
+  # Disable the firewall altogether.
   # networking.firewall.enable = false;
 }
