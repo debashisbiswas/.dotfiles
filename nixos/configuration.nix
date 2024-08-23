@@ -248,6 +248,7 @@
       noto-fonts-cjk
       noto-fonts-emoji
       takao
+      ibm-plex
     ];
   };
 
