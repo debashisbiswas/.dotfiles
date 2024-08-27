@@ -2,10 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
+    inputs.home-manager.nixosModules.default
+
     ./modules/v4l2.nix
     ./modules/spotify.nix
   ];
@@ -157,6 +159,7 @@
       ansible
       awscli2
       btop
+      dig
       eza
       fd
       ffmpeg
@@ -215,6 +218,7 @@
       go
       nodejs
       python3
+      racket-minimal
       rustup
       zig
 
@@ -235,6 +239,13 @@
       wl-clipboard
       wlsunset
     ];
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      violet = import ./home.nix;
+    };
   };
 
   services.gnome.gnome-keyring.enable = true;
