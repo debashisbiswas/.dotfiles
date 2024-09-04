@@ -44,7 +44,7 @@ if status is-interactive
         starship init fish | source
     end
 
-    bind \cf iku
+    bind \cf arcane
 end
 
 if type -q pyenv
