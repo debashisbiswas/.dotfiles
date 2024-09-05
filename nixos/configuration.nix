@@ -200,12 +200,13 @@
       brave
       calibre
       discord
+      emacs
       firefox
       foliate
       gtk3
       lxappearance
-      obs-studio
       obsidian
+      obs-studio
       pavucontrol
       signal-desktop
       ticktick
