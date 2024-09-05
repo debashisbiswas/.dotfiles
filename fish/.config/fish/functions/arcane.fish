@@ -6,7 +6,7 @@ function arcane
 
         if not tmux has-session -t=$session_name 2>/dev/null
             tmux new-session -d -s $session_name -c $selected -n "editor" "nvim +Oil"
-            tmux new-window -t $session_name -n "terminal"
+            tmux new-window -t $session_name -c $selected -n "terminal"
         end
         
         if set -q TMUX
