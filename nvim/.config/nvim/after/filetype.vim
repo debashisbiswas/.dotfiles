@@ -1,6 +1,5 @@
 " :help 43.2
 
-
 augroup filetypedetect
   " This is fine for now: correctly highlights PL/SQL files. However, because
   " the filetype is not 'sql', the filetype plugin doesn't get loaded, so I
