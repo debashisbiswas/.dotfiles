@@ -1,6 +1,6 @@
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = ' m'
 
 vim.o.hlsearch = false
 vim.wo.number = true

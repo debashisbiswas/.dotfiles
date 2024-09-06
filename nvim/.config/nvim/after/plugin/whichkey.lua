@@ -16,6 +16,7 @@ wk.add {
   { "<leader>g", group = "git" },
   { "<leader>h", group = "hunk" }, -- this should be the help page!
   { "<leader>j", group = "jump" },
+  { "<leader>m", group = "localleader" },
   { "<leader>s", group = "search" },
   { "<leader>v", group = "vim" },
   { "<leader>w", group = "workspace" }

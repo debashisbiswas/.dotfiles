@@ -28,8 +28,6 @@ vim.keymap.set('n', '<leader>vm', '<Cmd>Mason<CR>', { desc = '[v]im: [m]ason' })
 vim.keymap.set('n', '<leader>gs', '<Cmd>Git<CR>', { desc = 'fugitive status' })
 vim.keymap.set({ 'n', 'x' }, 'gl', '<Plug>(EasyAlign)', { desc = 'EasyAlign' })
 
-vim.keymap.set('n', '<leader>m', ':make ', { desc = 'make command' })
-
 vim.keymap.set('n', '<leader>a,', '<Cmd>normal A,<CR>', { desc = 'line append comma' })
 vim.keymap.set('n', '<leader>a;', '<Cmd>normal A;<CR>', { desc = 'line append semicolon' })
 vim.keymap.set('x', '<leader>a,', ':normal A,<CR>', { desc = 'visual line append comma', silent = true })
