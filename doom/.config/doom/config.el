@@ -75,3 +75,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (setq scroll-margin 4)
+
+(define-derived-mode heex-mode web-mode "HEEx" "Major mode for editing HEEx files")
+(add-to-list 'auto-mode-alist '("\\.heex?\\'" . heex-mode))
+
+(add-hook 'heex-mode-hook #'tree-sitter-hl-mode)
+(add-hook 'heex-mode-hook (lambda() (tree-sitter-load 'heex)))
