@@ -26,3 +26,9 @@ require('nvim-treesitter.configs').setup {
 }
 
 require('treesitter-context').setup { separator = '-' }
+
+require('nvim-ts-autotag').setup({
+  aliases = {
+    ["elixir"] = "html"
+  }
+})

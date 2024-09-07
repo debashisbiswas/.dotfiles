@@ -1,5 +1,7 @@
 -- Set up borders for LSP windows
 -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+
+local lspconfig = require('lspconfig')
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -57,7 +59,9 @@ local servers = {
   tsserver = {},
   gopls = {},
 
-  emmet_language_server = {},
+  emmet_language_server = {
+    filetypes = { "css", "html", "javascriptreact", "typescriptreact", "heex" }
+  },
 
   html = {
     html = {
@@ -65,6 +69,7 @@ local servers = {
         indentInnerHtml = true,
       },
     },
+    filetypes = { "html", "heex" }
   },
 
   cssls = {},
@@ -132,7 +137,7 @@ mason_lspconfig.setup_handlers {
       server_name = "ts_ls"
     end
 
-    require('lspconfig')[server_name].setup {
+    lspconfig[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
@@ -141,7 +146,7 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-require('lspconfig').gleam.setup {}
+lspconfig.gleam.setup {}
 
 require('fidget').setup {}
 
