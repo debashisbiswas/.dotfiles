@@ -211,4 +211,4 @@ gaps inner 8
 smart_borders on
 smart_gaps inverse_outer
 # outer border settings for single window
-# gaps horizontal 750
+gaps horizontal 750
