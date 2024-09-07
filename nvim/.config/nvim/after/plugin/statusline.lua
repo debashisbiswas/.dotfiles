@@ -7,19 +7,7 @@ require('lualine').setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = {
-      { 'filename', separator = {} },
-      function()
-        local result = ""
-        local current = vim.fn.expand '%:t'
-        local alternate = vim.fn.expand '#:t'
-        if alternate ~= '' and alternate ~= current then
-          result = '[' .. '#' .. alternate .. ']'
-        end
-
-        return result
-      end,
-    },
+    lualine_c = { 'filename' },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
