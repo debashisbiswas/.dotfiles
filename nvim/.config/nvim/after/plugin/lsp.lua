@@ -69,7 +69,6 @@ local servers = {
         indentInnerHtml = true,
       },
     },
-    filetypes = { "html", "heex" }
   },
 
   cssls = {},
