@@ -21,7 +21,6 @@ require('nvim-treesitter.configs').setup {
 
   indent = { enable = true },
   highlight = { enable = true },
-  autotag = { enable = true },
   endwise = { enable = true },
 }
 
