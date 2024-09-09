@@ -59,6 +59,16 @@ local servers = {
   tsserver = {},
   gopls = {},
 
+  tailwindcss = {
+    tailwindCSS = {
+      includeLanguages = {
+        elixir = "html-eex",
+        eelixir = "html-eex",
+        heex = "html-eex",
+      },
+    }
+  },
+
   emmet_language_server = {
     filetypes = { "css", "html", "javascriptreact", "typescriptreact", "heex" }
   },
