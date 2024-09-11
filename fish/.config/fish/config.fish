@@ -59,6 +59,10 @@ if type -q docker
     abbr dc "docker compose"
 end
 
+if type -q direnv
+    direnv hook fish | source
+end
+
 alias wl "xdg-open 'https://www.youtube.com/playlist?list=WL'"
 
 abbr refresh "source ~/.config/fish/config.fish"
