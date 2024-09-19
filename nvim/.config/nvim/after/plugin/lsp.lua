@@ -56,7 +56,7 @@ end
 local servers = {
   clangd = {},
   rust_analyzer = {},
-  tsserver = {},
+  ts_ls = {},
   gopls = {},
 
   tailwindcss = {
@@ -140,12 +140,6 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    -- https://github.com/neovim/nvim-lspconfig/pull/3232
-    -- https://github.com/williamboman/mason-lspconfig.nvim/issues/458
-    if server_name == "tsserver" then
-      server_name = "ts_ls"
-    end
-
     lspconfig[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
