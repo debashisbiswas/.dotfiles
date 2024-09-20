@@ -18,25 +18,13 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'TextChanged' }, {
 
 local conform = require 'conform'
 
-local function get_available_formatter_names()
-  local formatters = conform.list_formatters()
-  local fmt_names = {}
-
-  if not vim.tbl_isempty(formatters) then
-    fmt_names = vim.tbl_map(function(f) return f.name end, formatters)
-  elseif conform.will_fallback_lsp() then
-    fmt_names = { 'lsp' }
-  else
-    return
-  end
-
-  return fmt_names
-end
-
 local function create_format_progress_handle()
-  local fmt_names = get_available_formatter_names()
+  local formatters, will_use_lsp = conform.list_formatters_to_run()
 
-  if not fmt_names then return end
+  local fmt_names = vim.tbl_map(function(format_info) return format_info.name end, formatters)
+
+  -- TODO: this doesn't work - will_use_lsp is always false, even when using the lsp for formatting?
+  if will_use_lsp then table.insert(fmt_names, 'lsp') end
 
   return require('fidget.progress').handle.create {
     title = 'Formatting',
@@ -54,10 +42,18 @@ conform.setup {
     local handle = create_format_progress_handle()
 
     return {
-      lsp_fallback = true,
+      lsp_format = "fallback",
     }, function(err)
-      if handle then handle:finish() end
-      if err then vim.notify(err, vim.log.levels.WARN) end
+      if err then
+        if handle then
+          handle:report({ message = err })
+          handle:cancel()
+        else
+          vim.notify(err, vim.log.levels.WARN)
+        end
+      else
+        handle:finish()
+      end
     end
   end,
 
@@ -86,9 +82,17 @@ conform.setup {
 vim.keymap.set('n', '<leader>f', function()
   local handle = create_format_progress_handle()
 
-  conform.format({ async = true, quiet = true, lsp_fallback = true }, function(err)
-    if handle then handle:finish() end
-    if err then vim.notify(err, vim.log.levels.WARN) end
+  conform.format({ async = true, lsp_format = "fallback" }, function(err)
+    if err then
+      if handle then
+        handle:report({ message = err })
+        handle:cancel()
+      else
+        vim.notify(err, vim.log.levels.WARN)
+      end
+    else
+      handle:finish()
+    end
   end)
 end, { desc = 'Format buffer' })
 
