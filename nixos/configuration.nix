@@ -236,6 +236,7 @@
 
       # sway
       grim
+      libnotify # notify-send
       slurp
       wl-clipboard
       wlsunset

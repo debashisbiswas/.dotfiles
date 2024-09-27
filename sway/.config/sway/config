@@ -17,7 +17,7 @@ popup_during_fullscreen smart
 # The "smart" setting hides borders on workspaces with only one window visible.
 hide_edge_borders smart
 
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 bindsym $mod+d focus child
 
 bindsym $mod+Left focus left
@@ -141,6 +141,9 @@ bar {
   status_command i3status
   tray_output primary
 }
+
+bindsym $mod+a exec --no-startup-id alacritty --title "audio-selector" -e bash -c '$HOME/bin/switch-audio.sh'
+for_window [title="audio-selector"] floating enable
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioPlay  exec playerctl play-pause

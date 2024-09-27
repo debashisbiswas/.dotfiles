@@ -1,18 +1,39 @@
 #!/usr/bin/env bash
 
-# List available sinks with index and description
-sinks=$(pactl list short sinks | awk '{print $1, $2}')
+# Function to get the list of audio inputs
+get_inputs() {
+    pactl list short sinks | awk '{print $2}'
+}
 
-# Use fzf to select a sink
-selected_sink=$(echo "$sinks" | fzf --prompt="Select an audio output: " --height=10 --reverse)
+# Function to switch the audio input
+switch_input() {
+    pactl set-default-sink "$1"
+    notify-send "Switched to $1"
+}
 
-# Extract the sink index from the selected line
-sink_index=$(echo "$selected_sink" | awk '{print $1}')
+# Main menu function
+show_menu() {
+    local inputs=($(get_inputs))
+    local keys=("f" "d" "s" "a" "j" "k" "l" ";")
+    
+    echo "Select audio input:"
+    for i in "${!inputs[@]}"; do
+        if [ $i -lt ${#keys[@]} ]; then
+            echo "${keys[$i]}) ${inputs[$i]}"
+        fi
+    done
+    
+    read -n 1 -s choice
+    echo
 
-# If a valid sink is selected, switch to it
-if [[ -n "$sink_index" ]]; then
-    pactl set-default-sink "$sink_index"
-    echo "Switched to sink $sink_index"
-else
-    echo "No sink selected."
-fi
+    for i in "${!keys[@]}"; do
+        if [[ "${keys[$i]}" == "$choice" && $i -lt ${#inputs[@]} ]]; then
+            switch_input "${inputs[$i]}"
+            return
+        fi
+    done
+    
+    notify-send "Invalid selection"
+}
+
+show_menu
