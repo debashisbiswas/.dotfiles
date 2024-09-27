@@ -19,5 +19,5 @@ wk.add {
   { "<leader>m", group = "localleader" },
   { "<leader>s", group = "search" },
   { "<leader>v", group = "vim" },
-  { "<leader>w", group = "workspace" }
+  { "<leader>w", proxy = "<c-w>",      group = "windows" }, -- proxy to window mappings
 }
