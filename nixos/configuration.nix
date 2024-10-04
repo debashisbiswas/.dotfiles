@@ -114,6 +114,8 @@
     blueman.enable = true;
 
     ollama.enable = true;
+
+    emacs.enable = true;
   };
 
   virtualisation.docker = {
@@ -200,7 +202,6 @@
       brave
       calibre
       discord
-      emacs
       firefox
       foliate
       gtk3
