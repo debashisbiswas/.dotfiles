@@ -162,6 +162,8 @@
       awscli2
       btop
       dig
+      direnv
+      editorconfig-core-c
       eza
       fd
       ffmpeg
@@ -180,13 +182,16 @@
       ncspot
       neofetch
       nix-search-cli
+      nixfmt-classic
       nmap
+      pandoc
       pciutils
       postgresql
       pulumi
       pulumiPackages.pulumi-language-nodejs
       railway
       ripgrep
+      shellcheck
       starship
       stow
       terraform
