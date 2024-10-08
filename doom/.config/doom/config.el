@@ -88,3 +88,20 @@
 (add-hook 'markdown-mode-hook #'auto-fill-mode)
 
 (setq projectile-project-search-path '("~/dev"))
+
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+
+;; rebind gx
+;; https://github.com/emacs-evil/evil/blob/b7ab3840dbfc1da5f9ad56542fc94e3dab4be5f1/evil-maps.el#L84
+(map! :n "gx" #'browse-url-at-point)
+(remove-hook 'doom-first-input-hook #'evil-exchange)
+
+(use-package! gptel
+  :config
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '("llama3.2:latest"))
+  )
+
+(setq org-log-done 'time)
