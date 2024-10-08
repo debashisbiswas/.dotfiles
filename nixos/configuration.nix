@@ -229,6 +229,13 @@
       rustup
       zig
 
+      # language servers
+      gopls
+      elixir-ls
+      svelte-language-server
+      tailwindcss-language-server
+      typescript-language-server
+
       # erlang and adjacent
       erlang
       rebar3
