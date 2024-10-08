@@ -79,6 +79,9 @@
 (define-derived-mode heex-mode web-mode "HEEx" "Major mode for editing HEEx files")
 (add-to-list 'auto-mode-alist '("\\.heex?\\'" . heex-mode))
 
+(define-derived-mode astro-mode web-mode "Astro" "Major mode for editing Astro files")
+(add-to-list 'auto-mode-alist '("\\.astro?\\'" . astro-mode))
+
 (add-hook 'heex-mode-hook #'tree-sitter-hl-mode)
 (add-hook 'heex-mode-hook (lambda() (tree-sitter-load 'heex)))
 
