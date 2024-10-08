@@ -230,6 +230,7 @@
       zig
 
       # language servers
+      astro-language-server
       gopls
       elixir-ls
       svelte-language-server
