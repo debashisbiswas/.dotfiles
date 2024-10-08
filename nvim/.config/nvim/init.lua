@@ -17,7 +17,6 @@ require('lazy').setup({
   'tpope/vim-dispatch',
 
   'junegunn/vim-easy-align',
-  'AndrewRadev/splitjoin.vim',
   'airblade/vim-gitgutter',
 
   'tpope/vim-dadbod',
@@ -33,7 +32,6 @@ require('lazy').setup({
     build = 'make',
     cond = function() return vim.fn.executable 'make' == 1 end,
   },
-  'benfowler/telescope-luasnip.nvim',
 
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   'nvim-treesitter/nvim-treesitter-context',
@@ -81,13 +79,6 @@ require('lazy').setup({
   'b0o/schemastore.nvim',
 
   'j-hui/fidget.nvim',
-
-  -- DAP
-  'mfussenegger/nvim-dap',
-  'rcarriga/nvim-dap-ui',
-  'nvim-neotest/nvim-nio',
-  'theHamsta/nvim-dap-virtual-text',
-  'mfussenegger/nvim-dap-python',
 
   -- Colors
   'brenoprata10/nvim-highlight-colors',
