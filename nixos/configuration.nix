@@ -110,9 +110,6 @@
     devmon.enable = true;
     gvfs.enable = true;
 
-    # DE will usually provide this, but i3 won't
-    blueman.enable = true;
-
     ollama.enable = true;
 
     emacs.enable = true;
