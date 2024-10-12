@@ -227,12 +227,14 @@
       rustup
       zig
 
-      # language servers
+      # language tooling
       astro-language-server
-      gopls
+      delve
       elixir-ls
+      gopls
       svelte-language-server
       tailwindcss-language-server
+      terraform-ls
       typescript-language-server
 
       # erlang and adjacent
