@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "Iosevka" :size 24)
-      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 16))
+      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 24))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -105,3 +105,9 @@
   )
 
 (setq org-log-done 'time)
+
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(setq)
+
+(setq shell-file-name (executable-find "bash"))
