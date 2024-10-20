@@ -189,6 +189,7 @@
       railway
       ripgrep
       shellcheck
+      sqlite
       starship
       stow
       terraform
