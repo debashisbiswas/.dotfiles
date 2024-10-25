@@ -122,6 +122,8 @@ require('neodev').setup()
 --------------------
 
 require('mason').setup()
+
+-- Someday I won't have to use Windows, but this is staying for now
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {

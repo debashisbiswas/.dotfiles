@@ -231,12 +231,20 @@
       # language tooling
       astro-language-server
       delve
-      elixir-ls
+      emmet-language-server
       gopls
+      lexical
+      lua-language-server
+      nil
+      nixpkgs-fmt
+      prettierd
+      pyright
+      rust-analyzer
       svelte-language-server
       tailwindcss-language-server
       terraform-ls
       typescript-language-server
+      vscode-langservers-extracted # html, css, json, eslint, md
 
       # erlang and adjacent
       erlang
