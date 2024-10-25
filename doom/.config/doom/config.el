@@ -108,6 +108,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
-(setq)
-
 (setq shell-file-name (executable-find "bash"))
+
+(setq which-key-idle-secondary-delay 0)
