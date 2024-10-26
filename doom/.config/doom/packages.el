@@ -50,6 +50,5 @@
 ;; (unpin! t)
 
 (package! ef-themes)
-(package! evil-exchange :disable t)
 (package! gptel)
 (package! nov)
