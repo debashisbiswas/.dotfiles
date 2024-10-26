@@ -15,6 +15,7 @@ fish_add_path -g "$PYENV_ROOT/shims"
 fish_add_path -g "$PYENV_ROOT/bin"
 fish_add_path -g "$VOLTA_HOME/bin"
 fish_add_path -g "$HOME/.sst/bin"
+fish_add_path -g "$HOME/.emacs.d/bin"
 
 if status is-interactive
     abbr dot "cd $DOTFILES"
