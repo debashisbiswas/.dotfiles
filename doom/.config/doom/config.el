@@ -86,6 +86,7 @@
 (add-hook 'heex-mode-hook (lambda() (tree-sitter-load 'heex)))
 
 (add-hook 'markdown-mode-hook #'auto-fill-mode)
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
 (setq projectile-project-search-path '("~/dev"))
 
