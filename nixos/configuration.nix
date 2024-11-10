@@ -13,7 +13,7 @@
   ];
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.latest;
 
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -174,8 +174,8 @@
       htop
       imagemagick
       jq
+      mariadb
       mpv
-      mysql
       ncspot
       neofetch
       nix-search-cli
@@ -184,8 +184,8 @@
       pandoc
       pciutils
       postgresql
-      pulumi
-      pulumiPackages.pulumi-language-nodejs
+      # pulumi
+      # pulumiPackages.pulumi-language-nodejs
       railway
       ripgrep
       shellcheck
@@ -281,7 +281,7 @@
       fira
       iosevka
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       takao
       ibm-plex
