@@ -160,6 +160,7 @@
       btop
       dig
       direnv
+      doppler
       editorconfig-core-c
       eza
       fd
