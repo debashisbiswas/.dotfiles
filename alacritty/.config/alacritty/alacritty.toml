@@ -2,10 +2,10 @@
 live_config_reload = true
 
 [font]
-size = 15.0
+size = 18.0
 
 [font.normal]
-family = "IosevkaTerm Nerd Font"
+family = "Iosevka"
 
 [window]
 decorations = "full"
@@ -15,10 +15,6 @@ opacity = 1
 [window.padding]
 x = 6
 y = 4
-
-[terminal.shell]
-program = "wsl"
-args = ["~"]
 
 # Carbonfox
 
