@@ -1,6 +1,9 @@
 $env:Path += ";C:\bin"
 $env:Path += ";${HOME}\go\bin"
 
+$env:DOTFILES = "$HOME\.dotfiles"
+$env:STARSHIP_CONFIG = "$env:DOTFILES\starship\.config\starship.toml"
+
 if (Test-Path alias:\cd)
 {
     Remove-Item alias:\cd -Force
@@ -106,7 +109,7 @@ function gc
 
 function dot
 {
-    Set-Location "$HOME/.dotfiles/"
+    Set-Location $env:DOTFILES
 }
 
 function which($command)
