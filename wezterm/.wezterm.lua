@@ -14,7 +14,7 @@ config.force_reverse_video_cursor = true
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.font = wezterm.font({ family = "Iosevka", weight = "Medium" })
+config.font = wezterm.font({ family = "IosevkaTerm Nerd Font", weight = "Medium" })
 config.automatically_reload_config = true
 config.tab_and_split_indices_are_zero_based = true
 

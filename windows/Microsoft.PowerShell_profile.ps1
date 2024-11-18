@@ -117,14 +117,16 @@ function which($command)
 if (exists starship)
 {
     Invoke-Expression (&starship init powershell)
-} else
-{
-    Write-Host "Could not find starship in path."
 }
 
 if (exists fnm)
 {
     fnm env --use-on-cd | Out-String | Invoke-Expression
+}
+
+if (exists eza)
+{
+    Set-Alias -Name ls -Value eza
 }
 
 # Remove blue background from directory listings
