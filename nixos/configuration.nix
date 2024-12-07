@@ -259,7 +259,7 @@
       libreoffice-qt
       hunspell
 
-      # sway
+      # wayland
       grim
       libnotify # notify-send
       slurp
@@ -267,14 +267,12 @@
       wlsunset
 
       # hyprland
-      kitty
-      waybar
-
-      libnotify
-      mako
       dunst
-
+      networkmanagerapplet
+      nwg-look
       swww
+      waybar
+      wl-clipboard
     ];
   };
 

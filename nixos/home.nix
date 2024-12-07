@@ -40,6 +40,13 @@
 
   fonts.fontconfig.enable = true;
 
+  home.pointerCursor = {
+    name = "phinger-cursors-dark";
+    package = pkgs.phinger-cursors;
+    size = 24;
+    gtk.enable = true;
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
