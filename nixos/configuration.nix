@@ -211,6 +211,7 @@
       foliate
       gtk3
       lxappearance
+      musescore
       obsidian
       obs-studio
       pavucontrol
