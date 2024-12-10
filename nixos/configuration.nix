@@ -268,6 +268,7 @@
       wlsunset
 
       # hyprland
+      clipse
       hyprshot
       mako
       networkmanagerapplet
