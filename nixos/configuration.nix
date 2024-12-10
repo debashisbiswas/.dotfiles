@@ -241,6 +241,7 @@
       nixpkgs-fmt
       prettierd
       pyright
+      ruff
       rust-analyzer
       svelte-language-server
       tailwindcss-language-server
