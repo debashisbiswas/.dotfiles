@@ -275,6 +275,7 @@
       swww
       waybar
       wl-clipboard
+      wofi
     ];
   };
 
