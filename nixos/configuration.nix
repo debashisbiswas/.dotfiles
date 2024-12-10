@@ -268,7 +268,7 @@
       wlsunset
 
       # hyprland
-      dunst
+      mako
       networkmanagerapplet
       nwg-look
       swww
