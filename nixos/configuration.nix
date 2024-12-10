@@ -368,6 +368,9 @@
 
   xdg.portal = {
     enable = true;
+
+    # gtk portal for file pickers
+    # https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
