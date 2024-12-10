@@ -268,6 +268,7 @@
       wlsunset
 
       # hyprland
+      hyprshot
       mako
       networkmanagerapplet
       nwg-look
