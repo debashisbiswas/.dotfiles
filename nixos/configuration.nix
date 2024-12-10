@@ -339,6 +339,7 @@
     dconf.enable = true;
     neovim.enable = true;
     adb.enable = true;
+    hyprlock.enable = true;
     sway = {
       enable = true;
       wrapperFeatures.gtk = true;
