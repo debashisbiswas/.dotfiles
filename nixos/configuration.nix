@@ -56,7 +56,7 @@
 
   services = {
     displayManager = {
-      defaultSession = "sway";
+      defaultSession = "Hyprland";
     };
 
     # Enable touchpad support (enabled default in most desktopManager).
@@ -87,7 +87,6 @@
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
-          brightnessctl
           dmenu
           dunst
           feh
@@ -260,22 +259,19 @@
       libreoffice-qt
       hunspell
 
-      # wayland
-      grim
-      libnotify # notify-send
-      slurp
-      wl-clipboard
-      wlsunset
-
-      # hyprland
+      # desktop environment
+      brightnessctl
       clipse
       hyprshot
+      libnotify
       mako
       networkmanagerapplet
       nwg-look
       swww
       waybar
       wl-clipboard
+      wl-clipboard
+      wlsunset
       wofi
     ];
   };
@@ -342,10 +338,6 @@
     neovim.enable = true;
     adb.enable = true;
     hyprlock.enable = true;
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-    };
 
     # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
     # This is useful for Neovim language servers installed through Mason, for example.
@@ -356,7 +348,6 @@
     ];
   };
 
-  # hyprland
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
