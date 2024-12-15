@@ -102,7 +102,10 @@
     };
 
     # Enable CUPS to print documents.
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = [ pkgs.hplip ];
+    };
 
     # These are all used for mounting USB devices when plugged in.
     udisks2.enable = true; # calibre needs to be able to see connected e-readers
