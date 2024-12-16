@@ -142,5 +142,6 @@ mason_lspconfig.setup_handlers {
 }
 
 lspconfig.gleam.setup {}
+lspconfig.nixd.setup {}
 
 require('fidget').setup {}

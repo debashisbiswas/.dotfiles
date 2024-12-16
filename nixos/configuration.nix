@@ -239,7 +239,7 @@
       gopls
       lexical
       lua-language-server
-      nil
+      nixd
       nixpkgs-fmt
       prettierd
       pyright
