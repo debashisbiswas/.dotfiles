@@ -179,7 +179,6 @@
       jq
       mariadb
       mpv
-      ncspot
       neofetch
       nix-search-cli
       nixfmt-classic
