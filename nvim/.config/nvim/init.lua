@@ -53,14 +53,6 @@ require('lazy').setup({
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
 
-  -- Completion
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'saadparwaiz1/cmp_luasnip',
-
   -- Auto
   'windwp/nvim-autopairs',
   'windwp/nvim-ts-autotag',
@@ -82,7 +74,6 @@ require('lazy').setup({
 
   -- Colors
   'brenoprata10/nvim-highlight-colors',
-  'roobert/tailwindcss-colorizer-cmp.nvim',
 
   {
     "David-Kunz/gen.nvim",
@@ -110,6 +101,53 @@ require('lazy').setup({
       no_auto_close = false,  -- Never closes the window automatically.
       debug = false           -- Prints errors and the command which is run.
     }
+  },
+
+  {
+    'saghen/blink.cmp',
+    lazy = false, -- lazy loading handled internally
+    version = 'v0.*',
+
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = { preset = 'default' },
+
+      -- default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, via `opts_extend`
+      sources = {
+        -- TODO: not understanding what default is used for
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        completion = {
+          enabled_providers = { "lsp", "path", "snippets", "buffer", "dadbod" },
+        },
+        providers = {
+          dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+        },
+      },
+
+      signature = { enabled = true },
+
+      completion = {
+        list = { selection = 'auto_insert' },
+        accept = {
+          auto_brackets = { enabled = true },
+        },
+        menu = {
+          draw = {
+            treesitter = { 'lsp' }
+          },
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        }
+      }
+    },
+
+    -- allows extending the providers array elsewhere in your config
+    -- without having to redefine it
+    opts_extend = { "sources.default" }
   },
 }, {
   defaults = {

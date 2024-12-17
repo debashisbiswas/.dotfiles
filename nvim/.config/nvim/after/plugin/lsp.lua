@@ -110,9 +110,7 @@ local servers = {
   },
 }
 
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 require('neodev').setup()
