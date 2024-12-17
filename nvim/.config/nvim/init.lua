@@ -75,82 +75,10 @@ require('lazy').setup({
   -- Colors
   'brenoprata10/nvim-highlight-colors',
 
-  {
-    "David-Kunz/gen.nvim",
-    opts = {
-      model = "mistral",   -- The default model to use.
-      host = "localhost",  -- The host running the Ollama service.
-      port = "11434",      -- The port on which the Ollama service is listening.
-      quit_map = "q",      -- set keymap for close the response window
-      retry_map = "<c-r>", -- set keymap to re-send the current prompt
-      init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
-
-      -- Function to initialize Ollama
-      command = function(options)
-        local body = { model = options.model, stream = true }
-        return "curl --silent --no-buffer -X POST http://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
-      end,
-      -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
-      -- This can also be a command string.
-      -- The executed command must return a JSON object with { response, context }
-      -- (context property is optional).
-      -- list_models = '<omitted lua function>', -- Retrieves a list of model names
-      display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
-      show_prompt = true,     -- Shows the prompt submitted to Ollama.
-      show_model = true,      -- Displays which model you are using at the beginning of your chat session.
-      no_auto_close = false,  -- Never closes the window automatically.
-      debug = false           -- Prints errors and the command which is run.
-    }
-  },
-
-  {
-    'saghen/blink.cmp',
-    lazy = false, -- lazy loading handled internally
-    version = 'v0.*',
-
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-      keymap = { preset = 'default' },
-
-      -- default list of enabled providers defined so that you can extend it
-      -- elsewhere in your config, without redefining it, via `opts_extend`
-      sources = {
-        -- TODO: not understanding what default is used for
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-        completion = {
-          enabled_providers = { "lsp", "path", "snippets", "buffer", "dadbod" },
-        },
-        providers = {
-          dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-        },
-      },
-
-      signature = { enabled = true },
-
-      completion = {
-        list = { selection = 'auto_insert' },
-        accept = {
-          auto_brackets = { enabled = true },
-        },
-        menu = {
-          draw = {
-            treesitter = { 'lsp' }
-          },
-        },
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 200,
-        }
-      }
-    },
-
-    -- allows extending the providers array elsewhere in your config
-    -- without having to redefine it
-    opts_extend = { "sources.default" }
-  },
+  { import = "plugins" }
 }, {
   defaults = {
     lazy = false,
   },
+  change_detection = { notify = false }
 })
