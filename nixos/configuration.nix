@@ -244,6 +244,7 @@
       pyright
       ruff
       rust-analyzer
+      stylua
       svelte-language-server
       tailwindcss-language-server
       terraform-ls
