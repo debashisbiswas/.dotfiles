@@ -3,6 +3,8 @@ return {
   lazy = false, -- lazy loading handled internally
   version = 'v0.*',
 
+  dependencies = { 'kristijanhusak/vim-dadbod-completion' },
+
   opts = {
     keymap = { preset = 'default' },
 
@@ -12,10 +14,12 @@ return {
       -- TODO: not understanding what default is used for
       default = { 'lsp', 'path', 'snippets', 'buffer' },
       completion = {
-        enabled_providers = { "lsp", "path", "snippets", "buffer", "dadbod" },
+        enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'dadbod' },
       },
       providers = {
-        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+        lsp = { fallback_for = { 'lazydev' } },
+        lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+        dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
       },
     },
 
@@ -28,17 +32,13 @@ return {
       },
       menu = {
         draw = {
-          treesitter = { 'lsp' }
+          treesitter = { 'lsp' },
         },
       },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 200,
-      }
-    }
+      },
+    },
   },
-
-  -- allows extending the providers array elsewhere in your config
-  -- without having to redefine it
-  opts_extend = { "sources.default" }
 }

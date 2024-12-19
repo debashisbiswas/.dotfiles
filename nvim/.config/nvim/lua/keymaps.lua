@@ -16,13 +16,6 @@ vim.keymap.set('n', '<leader>so', '<Cmd>source<CR>', { desc = 'Source current fi
 vim.keymap.set('n', '<leader>bd', '<Cmd>bdelete<CR>', { desc = 'Delete buffer' })
 vim.keymap.set('n', '<leader>bk', '<Cmd>bdelete<CR>', { desc = 'Kill buffer' })
 
-vim.keymap.set(
-  'n',
-  '<leader>vc',
-  function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' } end,
-  { desc = '[v]im [c]onfig' }
-)
-
 vim.keymap.set('n', '<leader>vl', '<Cmd>Lazy<CR>', { desc = '[v]im: [l]azy' })
 vim.keymap.set('n', '<leader>vm', '<Cmd>Mason<CR>', { desc = '[v]im: [m]ason' })
 vim.keymap.set('n', '<leader>gg', '<Cmd>Git<CR>', { desc = 'git status' })

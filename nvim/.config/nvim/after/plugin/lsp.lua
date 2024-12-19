@@ -112,9 +112,6 @@ local servers = {
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require('neodev').setup()
-
 --------------------
 -- Mason
 --------------------
