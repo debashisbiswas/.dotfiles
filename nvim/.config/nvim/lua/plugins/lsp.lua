@@ -121,6 +121,14 @@ return {
       }
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local function set_up_server(server_name)
+        lspconfig[server_name].setup {
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = servers[server_name],
+          filetypes = (servers[server_name] or {}).filetypes,
+        }
+      end
 
       --------------------
       -- Mason
@@ -131,23 +139,11 @@ return {
       -- Someday I won't have to use Windows, but this is staying for now
       local mason_lspconfig = require 'mason-lspconfig'
 
-      mason_lspconfig.setup {
-        ensure_installed = vim.tbl_keys(servers),
-      }
+      mason_lspconfig.setup {}
+      mason_lspconfig.setup_handlers { function(name) set_up_server(name) end }
 
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          lspconfig[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-          }
-        end,
-      }
-
-      lspconfig.gleam.setup {}
-      lspconfig.nixd.setup {}
+      set_up_server 'gleam'
+      set_up_server 'nixd'
 
       require('fidget').setup {}
     end,
