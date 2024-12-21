@@ -75,6 +75,8 @@ return {
           filetypes = { 'css', 'html', 'javascriptreact', 'typescriptreact', 'heex' },
         },
 
+        eslint = {},
+
         html = {
           html = {
             format = {
@@ -144,6 +146,7 @@ return {
 
       set_up_server 'gleam'
       set_up_server 'nixd'
+      set_up_server 'eslint'
 
       require('fidget').setup {}
     end,
