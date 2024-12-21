@@ -8,17 +8,15 @@ return {
   opts = {
     keymap = { preset = 'default' },
 
-    -- default list of enabled providers defined so that you can extend it
-    -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      -- TODO: not understanding what default is used for
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
-      completion = {
-        enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'dadbod' },
-      },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'dadbod' },
       providers = {
-        lsp = { fallback_for = { 'lazydev' } },
-        lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+        lazydev = {
+          name = 'LazyDev',
+          module = 'lazydev.integrations.blink',
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
       },
     },
