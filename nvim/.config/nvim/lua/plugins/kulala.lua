@@ -1,6 +1,7 @@
 return {
   {
     'mistweaverco/kulala.nvim',
+    ft = 'http',
     init = function()
       vim.filetype.add {
         extension = {

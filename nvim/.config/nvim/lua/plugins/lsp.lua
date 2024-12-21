@@ -2,9 +2,14 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'j-hui/fidget.nvim',
+      { 'j-hui/fidget.nvim', opts = {} },
       'b0o/schemastore.nvim',
-      'williamboman/mason.nvim',
+      {
+        'williamboman/mason.nvim',
+        keys = {
+          { '<leader>vm', '<Cmd>Mason<CR>', desc = '[v]im: [m]ason' },
+        },
+      },
       'williamboman/mason-lspconfig.nvim',
     },
     config = function()
@@ -148,8 +153,6 @@ return {
       set_up_server 'nixd'
       set_up_server 'eslint'
       set_up_server 'svelte'
-
-      require('fidget').setup {}
     end,
   },
   {

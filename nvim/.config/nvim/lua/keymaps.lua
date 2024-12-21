@@ -2,11 +2,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('n', '<esc>', '<Cmd>nohlsearch<CR>', { silent = true })
 
-vim.keymap.set('n', 'k', "v:count == 0 && &filetype != 'harpoon' ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 && &filetype != 'harpoon' ? 'gj' : 'j'", { expr = true, silent = true })
-
-vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, { desc = 'Show LSP signature help' })
-
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
@@ -16,10 +11,6 @@ vim.keymap.set('n', '<leader>bd', '<Cmd>bdelete<CR>', { desc = 'Delete buffer' }
 vim.keymap.set('n', '<leader>bk', '<Cmd>bdelete<CR>', { desc = 'Kill buffer' })
 
 vim.keymap.set('n', '<leader>vl', '<Cmd>Lazy<CR>', { desc = '[v]im: [l]azy' })
-vim.keymap.set('n', '<leader>vm', '<Cmd>Mason<CR>', { desc = '[v]im: [m]ason' })
-vim.keymap.set('n', '<leader>gg', '<Cmd>Git<CR>', { desc = 'git status' })
-vim.keymap.set('n', '<leader>gb', '<Cmd>Git blame<CR>', { desc = 'git blame' })
-vim.keymap.set({ 'n', 'x' }, 'gl', '<Plug>(EasyAlign)', { desc = 'EasyAlign' })
 
 vim.keymap.set('n', '<leader>a,', '<Cmd>normal A,<CR>', { desc = 'line append comma' })
 vim.keymap.set('n', '<leader>a;', '<Cmd>normal A;<CR>', { desc = 'line append semicolon' })
