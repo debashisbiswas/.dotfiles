@@ -2,8 +2,6 @@ local function create_format_progress_handle()
   local formatters, will_use_lsp = require('conform').list_formatters_to_run()
 
   local fmt_names = vim.tbl_map(function(format_info) return format_info.name end, formatters)
-
-  -- TODO: this doesn't work - will_use_lsp is always false, even when using the lsp for formatting?
   if will_use_lsp then table.insert(fmt_names, 'lsp') end
 
   return require('fidget.progress').handle.create {
@@ -13,54 +11,48 @@ local function create_format_progress_handle()
   }
 end
 
+local function create_format_complete_callback(handle)
+  return function(err)
+    if err then
+      if handle then
+        handle:report { message = err }
+        handle:cancel()
+      else
+        vim.notify(err, vim.log.levels.WARN)
+      end
+    else
+      handle:finish()
+    end
+  end
+end
+
 local js_formatters = { 'prettierd' }
 
 return {
   'stevearc/conform.nvim',
   dependencies = { 'fidget.nvim' },
   event = { 'BufWritePre' },
+  cmd = { 'ConformInfo' },
   keys = {
     {
       '<leader>f',
       function()
         local handle = create_format_progress_handle()
-
-        require('conform').format({ async = true, lsp_format = 'fallback' }, function(err)
-          if err then
-            if handle then
-              handle:report { message = err }
-              handle:cancel()
-            else
-              vim.notify(err, vim.log.levels.WARN)
-            end
-          else
-            handle:finish()
-          end
-        end)
+        require('conform').format(nil, create_format_complete_callback(handle))
       end,
       desc = 'Format buffer',
     },
   },
   opts = {
+    default_format_opts = {
+      lsp_format = 'fallback',
+      async = true,
+    },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
 
       local handle = create_format_progress_handle()
-
-      return {
-        lsp_format = 'fallback',
-      }, function(err)
-        if err then
-          if handle then
-            handle:report { message = err }
-            handle:cancel()
-          else
-            vim.notify(err, vim.log.levels.WARN)
-          end
-        else
-          handle:finish()
-        end
-      end
+      return {}, create_format_complete_callback(handle)
     end,
 
     formatters_by_ft = {
