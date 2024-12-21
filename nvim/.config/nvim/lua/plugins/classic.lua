@@ -20,9 +20,6 @@ return {
   },
   {
     'airblade/vim-gitgutter',
-    init = function()
-      -- Changed for vim-gitgutter update time
-      vim.o.updatetime = 250
-    end,
+    init = function() vim.o.updatetime = 250 end,
   },
 }

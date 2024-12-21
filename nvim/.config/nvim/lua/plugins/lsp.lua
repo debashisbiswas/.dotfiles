@@ -2,8 +2,9 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'j-hui/fidget.nvim', opts = {} },
+      'fidget.nvim',
       'b0o/schemastore.nvim',
+
       {
         'williamboman/mason.nvim',
         keys = {
