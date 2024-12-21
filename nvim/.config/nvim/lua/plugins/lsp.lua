@@ -147,6 +147,7 @@ return {
       set_up_server 'gleam'
       set_up_server 'nixd'
       set_up_server 'eslint'
+      set_up_server 'svelte'
 
       require('fidget').setup {}
     end,
