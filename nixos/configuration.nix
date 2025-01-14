@@ -10,6 +10,8 @@
 
     ./modules/v4l2.nix
     ./modules/spotify.nix
+    ./modules/hyprland.nix
+    ./modules/print.nix
   ];
 
   nix = {
@@ -24,9 +26,9 @@
   nixpkgs.config.allowUnfree = true;
 
   # Bootloader.
-  boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
   };
 
   # Enable networking
@@ -99,17 +101,6 @@
           rofi
         ];
       };
-    };
-
-    # Enable CUPS to print documents.
-    printing = {
-      enable = true;
-      drivers = [ pkgs.hplip pkgs.brlaser pkgs.gutenprint ];
-    };
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
     };
 
     # These are all used for mounting USB devices when plugged in.
@@ -211,7 +202,6 @@
     dconf.enable = true;
     neovim.enable = true;
     adb.enable = true;
-    hyprlock.enable = true;
 
     # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
     # This is useful for Neovim language servers installed through Mason, for example.
@@ -220,23 +210,6 @@
       # Add any missing dynamic libraries for unpackaged programs
       # here, NOT in environment.systemPackages
     ];
-  };
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-
-  xdg.portal = {
-    enable = true;
-
-    # gtk portal for file pickers
-    # https://wiki.hyprland.org/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   # Disable the firewall altogether.
