@@ -104,7 +104,12 @@
     # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [ pkgs.hplip ];
+      drivers = [ pkgs.hplip pkgs.brlaser pkgs.gutenprint ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
     };
 
     # These are all used for mounting USB devices when plugged in.
