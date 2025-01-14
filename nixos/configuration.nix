@@ -215,6 +215,7 @@
       discord
       firefox
       foliate
+      ghostty
       gtk3
       lxappearance
       musescore
@@ -308,7 +309,7 @@
 
   environment.sessionVariables = {
     EDITOR = "nvim";
-    TERMINAL = "alacritty";
+    TERMINAL = "ghostty";
   };
 
   # TODO: doesn't work yet...

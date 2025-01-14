@@ -1,0 +1,11 @@
+theme = carbonfox
+font-family = "Iosevka"
+font-size = 18
+
+window-decoration = false
+window-padding-x = 6
+window-padding-balance = true
+cursor-invert-fg-bg = true
+
+confirm-close-surface = false
+resize-overlay = never
