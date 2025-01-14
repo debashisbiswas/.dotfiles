@@ -131,7 +131,6 @@
   };
 
   hardware = {
-    # Bluetooth
     bluetooth.enable = true; # enables support for Bluetooth
     bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
@@ -160,129 +159,6 @@
     description = "Debashis Biswas";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
-    packages = with pkgs; [
-      # cli
-      ansible
-      awscli2
-      btop
-      dig
-      direnv
-      doppler
-      editorconfig-core-c
-      eza
-      fd
-      ffmpeg
-      fzf
-      gcc
-      gh
-      git
-      glow
-      gnumake
-      gphoto2
-      htop
-      imagemagick
-      jq
-      mariadb
-      mpv
-      neofetch
-      nix-search-cli
-      nixfmt-classic
-      nmap
-      pandoc
-      pciutils
-      postgresql
-      # pulumi
-      # pulumiPackages.pulumi-language-nodejs
-      railway
-      ripgrep
-      shellcheck
-      sqlite
-      starship
-      stow
-      terraform
-      tmux
-      unzip
-      usbutils
-      v4l-utils
-      wally-cli
-      xclip
-
-      # gui
-      alacritty
-      brave
-      calibre
-      vscode
-      discord
-      firefox
-      foliate
-      ghostty
-      gtk3
-      lxappearance
-      musescore
-      obsidian
-      obs-studio
-      pavucontrol
-      signal-desktop
-      ticktick
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      xfce.thunar-volman
-      zoom-us
-
-      # languages
-      go
-      nodejs
-      python3
-      racket-minimal
-      rustup
-      zig
-
-      # language tooling
-      astro-language-server
-      delve
-      emmet-language-server
-      gopls
-      lexical
-      lua-language-server
-      nixd
-      nixpkgs-fmt
-      prettierd
-      pyright
-      ruff
-      rust-analyzer
-      stylua
-      svelte-language-server
-      tailwindcss-language-server
-      terraform-ls
-      typescript-language-server
-      vscode-langservers-extracted # html, css, json, eslint, md
-
-      # erlang and adjacent
-      erlang
-      rebar3
-      elixir
-      inotify-tools
-      gleam
-
-      # idk
-      libreoffice-qt
-      hunspell
-
-      # desktop environment
-      brightnessctl
-      clipse
-      hyprshot
-      libnotify
-      mako
-      networkmanagerapplet
-      nwg-look
-      swww
-      waybar
-      wl-clipboard
-      wl-clipboard
-      wlsunset
-      wofi
-    ];
   };
 
   home-manager = {
@@ -294,18 +170,7 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      fira
-      iosevka
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      takao
-      ibm-plex
-    ];
-  };
+  fonts = { enableDefaultPackages = true; };
 
   environment.sessionVariables = {
     EDITOR = "nvim";
