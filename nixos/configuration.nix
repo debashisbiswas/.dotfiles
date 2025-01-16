@@ -214,4 +214,7 @@
 
   # Disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  # react native expo
+  networking.firewall.allowedTCPPorts = [ 8081 ];
 }
