@@ -82,6 +82,7 @@
     obs-studio
     pavucontrol
     signal-desktop
+    slack
     ticktick
     xfce.thunar
     xfce.thunar-archive-plugin
