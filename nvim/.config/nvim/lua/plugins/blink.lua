@@ -24,7 +24,7 @@ return {
     signature = { enabled = true },
 
     completion = {
-      list = { selection = 'auto_insert' },
+      list = { selection = { auto_insert = true } },
       accept = {
         auto_brackets = { enabled = true },
       },
