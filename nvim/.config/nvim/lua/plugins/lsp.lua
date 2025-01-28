@@ -154,6 +154,7 @@ return {
       set_up_server 'nixd'
       set_up_server 'eslint'
       set_up_server 'svelte'
+      set_up_server 'zls'
     end,
   },
   {
