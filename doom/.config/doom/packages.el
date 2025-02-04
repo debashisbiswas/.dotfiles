@@ -52,3 +52,4 @@
 (package! ef-themes)
 (package! gptel)
 (package! nov)
+(package! obsidian)

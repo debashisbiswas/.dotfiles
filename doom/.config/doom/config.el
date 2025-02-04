@@ -112,3 +112,43 @@
 (setq shell-file-name (executable-find "bash"))
 
 (setq which-key-idle-secondary-delay 0)
+
+;; obsidian.el
+
+(require 'obsidian)
+(obsidian-specify-path "~/maestoso/")
+;; If you want a different directory of `obsidian-capture':
+(setq obsidian-inbox-directory "Inbox")
+;; Clicking on a wiki link referring a non-existing file the file can be
+;; created in the inbox (t) or next to the file with the link (nil).
+;; Default: t - creating in the inbox
+                                        ;(setq obsidian-wiki-link-create-file-in-inbox nil)
+;; You may want to define a folder for daily notes. By default it is the inbox.
+                                        ;(setq obsidian-daily-notes-directory "Daily Notes")
+;; Directory of note templates, unset (nil) by default
+                                        ;(setq obsidian-templates-directory "Templates")
+;; Daily Note template name - requires a template directory. Default: Daily Note Template.md
+                                        ;(setq obsidian-daily-note-template "Daily Note Template.md")
+
+
+;; Define obsidian-mode bindings
+(add-hook
+ 'obsidian-mode-hook
+ (lambda ()
+   ;; Replace standard command with Obsidian.el's in obsidian vault:
+   (local-set-key (kbd "C-c C-o") 'obsidian-follow-link-at-point)
+
+   ;; Use either `obsidian-insert-wikilink' or `obsidian-insert-link':
+   (local-set-key (kbd "C-c C-l") 'obsidian-insert-wikilink)
+
+   ;; Following backlinks
+   (local-set-key (kbd "C-c C-b") 'obsidian-backlink-jump)))
+
+;; Optionally you can also bind a few functions:
+;; replace "YOUR_BINDING" with the key of your choice:
+;; (global-set-key (kbd "YOUR_BINDING") 'obsidian-jump)       ;; Opening a note
+;; (global-set-key (kbd "YOUR_BINDING") 'obsidian-capture)    ;; Capturing a new note in the inbox
+;; (global-set-key (kbd "YOUR_BINDING") 'obsidian-daily-note) ;; Creating daily note
+
+;; Activate detection of Obsidian vault
+(global-obsidian-mode t)
