@@ -1,6 +1,7 @@
 return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
+  dependencies = { 'nvim-lua/plenary.nvim' },
   init = function()
     vim.keymap.set('n', 'k', "v:count == 0 && &filetype != 'harpoon' ? 'gk' : 'k'", { expr = true, silent = true })
     vim.keymap.set('n', 'j', "v:count == 0 && &filetype != 'harpoon' ? 'gj' : 'j'", { expr = true, silent = true })
