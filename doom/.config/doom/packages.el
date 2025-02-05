@@ -53,3 +53,4 @@
 (package! gptel)
 (package! nov)
 (package! obsidian)
+(package! catppuccin-theme)
