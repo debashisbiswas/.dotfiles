@@ -14,7 +14,7 @@ return {
     { '<leader>ss', function() require('fzf-lua').builtin() end, { desc = '[ ] Find existing buffers' } },
     { '<leader>sf', function() require('fzf-lua').files() end, { desc = '[S]earch [F]iles' } },
     { '<leader>sh', function() require('fzf-lua').helptags() end, { desc = '[S]earch [H]elp' } },
-    { '<leader>sw', function() require('fzf_lua').grep_cword() end, { desc = '[S]earch current [W]ord' } },
+    { '<leader>sw', function() require('fzf-lua').grep_cword() end, { desc = '[S]earch current [W]ord' } },
     { '<leader>sg', function() require('fzf-lua').live_grep() end, { desc = '[S]earch by [G]rep' } },
     { '<leader>sd', function() require('fzf-lua').diagnostics_workspace() end, { desc = '[S]earch [D]iagnostics' } },
     { '<leader>sr', function() require('fzf-lua').resume() end, { desc = '[S]earch [R]esume' } },
