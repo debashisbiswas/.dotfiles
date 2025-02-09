@@ -150,6 +150,7 @@ return {
       mason_lspconfig.setup {}
       mason_lspconfig.setup_handlers { function(name) set_up_server(name) end }
 
+      set_up_server 'astro'
       set_up_server 'gleam'
       set_up_server 'nixd'
       set_up_server 'eslint'
