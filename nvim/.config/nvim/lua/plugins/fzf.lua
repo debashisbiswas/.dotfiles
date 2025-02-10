@@ -1,7 +1,6 @@
 return {
   'ibhagwan/fzf-lua',
-  dependencies = { 'echasnovski/mini.icons' },
-  opts = { 'hide' },
+  opts = { 'hide', 'max-perf' },
   keys = {
     { '<leader>?', function() require('fzf-lua').oldfiles() end, { desc = 'Search oldfiles' } },
     { '<leader>/', function() require('fzf-lua').grep_curbuf() end, { desc = '[/] Fuzzily search in current buffer' } },
