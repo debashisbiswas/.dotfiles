@@ -1,6 +1,6 @@
 return {
   'ibhagwan/fzf-lua',
-  opts = { 'hide', 'max-perf' },
+  opts = { 'max-perf' },
   keys = {
     { '<leader>?', function() require('fzf-lua').oldfiles() end, { desc = 'Search oldfiles' } },
     { '<leader>/', function() require('fzf-lua').grep_curbuf() end, { desc = '[/] Fuzzily search in current buffer' } },
