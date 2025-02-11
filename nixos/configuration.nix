@@ -208,6 +208,11 @@
       # Add any missing dynamic libraries for unpackaged programs
       # here, NOT in environment.systemPackages
     ];
+
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
 
   # Disable the firewall altogether.
