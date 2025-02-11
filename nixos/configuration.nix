@@ -109,8 +109,6 @@
     gvfs.enable = true;
 
     ollama.enable = true;
-
-    emacs.enable = true;
   };
 
   virtualisation.docker = {
