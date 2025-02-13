@@ -50,7 +50,12 @@
 ;; (unpin! t)
 
 (package! ef-themes)
-(package! gptel)
-(package! nov)
-(package! obsidian)
 (package! catppuccin-theme)
+
+(package! denote)
+(package! gptel)
+(package! obsidian)
+
+(package! plsql :disable (not (string= (system-name) "AZ75LT2YBB3J3")))
+(package! sqlplus :disable (not (string= (system-name) "AZ75LT2YBB3J3")))
+(package! nov :disable (string= (system-name) "AZ75LT2YBB3J3"))

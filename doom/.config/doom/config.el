@@ -21,8 +21,9 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Iosevka" :size 20)
-      doom-variable-pitch-font (font-spec :family "Noto Sans" :size 20))
+(let ((font-size (if (string= (system-name) "AZ75LT2YBB3J3") 18 20)))
+  (setq doom-font (font-spec :family "Iosevka" :size font-size)
+        doom-variable-pitch-font (font-spec :family "Noto Sans" :size font-size)))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -36,12 +37,18 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-
+(setq org-log-done 'time)
+(setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
+(after! org-mode ((add-to-list 'org-agenda-custom-commands
+                               '("d" "Done items from past week"
+                                 tags
+                                 "+CLOSED>=\"<-7d>\"")
+                               t)))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -74,7 +81,12 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(require 'plsql)
+(require 'json)
+
 (setq scroll-margin 4)
+(map! :desc "dired" :n "-" #'dired-jump)
 
 (define-derived-mode heex-mode web-mode "HEEx" "Major mode for editing HEEx files")
 (add-to-list 'auto-mode-alist '("\\.heex?\\'" . heex-mode))
@@ -82,32 +94,38 @@
 (define-derived-mode astro-mode web-mode "Astro" "Major mode for editing Astro files")
 (add-to-list 'auto-mode-alist '("\\.astro?\\'" . astro-mode))
 
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+(remove-hook 'doom-first-input-hook #'evil-exchange)
 (add-hook 'heex-mode-hook #'tree-sitter-hl-mode)
 (add-hook 'heex-mode-hook (lambda() (tree-sitter-load 'heex)))
-
 (add-hook 'markdown-mode-hook #'auto-fill-mode)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
-(setq projectile-project-search-path '("~/dev"))
-
-(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
-(remove-hook 'doom-first-input-hook #'evil-exchange)
+(setq projectile-project-search-path '(("~/dev" . 1) ("~/personal" . 1)))
 
 ;; rebind gx
 ;; https://github.com/emacs-evil/evil/blob/b7ab3840dbfc1da5f9ad56542fc94e3dab4be5f1/evil-maps.el#L84
 (map! :n "gx" #'browse-url-at-point)
 
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+(setq auto-mode-alist
+      (append
+       '(("\\.pkb\\'" . plsql-mode)
+         ("\\.pks\\'" . plsql-mode)
+         ("\\.fnc\\'" . plsql-mode)
+         ("\\.vw\\'" . plsql-mode)
+         ("\\.sql\\'" . plsql-mode))
+       auto-mode-alist))
+
 (use-package! gptel
   :config
-  (gptel-make-ollama "Ollama"
-    :host "localhost:11434"
-    :stream t
-    :models '("llama3.2:latest"))
-  )
+  (setq
+   gptel-model 'llama3.2:latest
+   gptel-backend (gptel-make-ollama "Ollama"
+                   :host "localhost:11434"
+                   :stream t
+                   :models '(deepseek-r1:latest llama3.2:latest))))
 
-(setq org-log-done 'time)
-
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 (setq shell-file-name (executable-find "bash"))
 
