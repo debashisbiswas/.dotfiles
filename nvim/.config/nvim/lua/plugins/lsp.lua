@@ -129,11 +129,11 @@ return {
       }
 
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local function set_up_server(server_name)
+      local function set_up_server(server_name, opts)
         lspconfig[server_name].setup {
           capabilities = capabilities,
           on_attach = on_attach,
-          settings = servers[server_name],
+          settings = opts or servers[server_name],
           filetypes = (servers[server_name] or {}).filetypes,
         }
       end
@@ -156,6 +156,10 @@ return {
       set_up_server 'eslint'
       set_up_server 'svelte'
       set_up_server 'zls'
+
+      require('lspconfig')['elixirls'].setup {
+        cmd = { 'elixir-ls' },
+      }
     end,
   },
   {
