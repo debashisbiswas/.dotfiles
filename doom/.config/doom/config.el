@@ -127,8 +127,12 @@
                    :stream t
                    :models '(deepseek-r1:latest llama3.2:latest))))
 
-
 (setq shell-file-name (executable-find "bash"))
+
+(let ((fish (executable-find "fish")))
+  (setq-default vterm-shell fish)
+  (setq-default explicit-shell-file-name fish))
+
 
 (setq which-key-idle-secondary-delay 0)
 
