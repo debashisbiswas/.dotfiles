@@ -50,7 +50,6 @@
 ;; (unpin! t)
 
 (package! ef-themes)
-(package! catppuccin-theme)
 
 (package! denote)
 (package! gptel)
