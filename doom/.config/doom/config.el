@@ -82,7 +82,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(require 'plsql)
 (require 'json)
 
 (setq scroll-margin 4)
@@ -108,14 +107,16 @@
 (map! :n "gx" #'browse-url-at-point)
 
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-(setq auto-mode-alist
-      (append
-       '(("\\.pkb\\'" . plsql-mode)
-         ("\\.pks\\'" . plsql-mode)
-         ("\\.fnc\\'" . plsql-mode)
-         ("\\.vw\\'" . plsql-mode)
-         ("\\.sql\\'" . plsql-mode))
-       auto-mode-alist))
+
+(when (require 'plsql nil 'noerror)
+  (setq auto-mode-alist
+        (append
+         '(("\\.pkb\\'" . plsql-mode)
+           ("\\.pks\\'" . plsql-mode)
+           ("\\.fnc\\'" . plsql-mode)
+           ("\\.vw\\'" . plsql-mode)
+           ("\\.sql\\'" . plsql-mode))
+         auto-mode-alist)))
 
 (use-package! gptel
   :config
