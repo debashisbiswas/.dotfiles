@@ -21,6 +21,7 @@
   # environment.
   home.packages = with pkgs; [
     # cli
+    aider-chat
     ansible
     awscli2
     btop
