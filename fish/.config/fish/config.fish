@@ -4,6 +4,12 @@ set -gx FLYCTL_INSTALL "$HOME/.fly"
 set -gx PYENV_ROOT $HOME/.pyenv
 set -gx VOLTA_HOME "$HOME/.volta"
 
+if test (hostname) = "AZ75LT2YBB3J3"
+    set -gx IS_WORK_MACHINE true
+else
+    set -gx IS_WORK_MACHINE false
+end
+
 fish_add_path -g "$HOME/.cargo/bin"
 fish_add_path -g "$HOME/.local/bin"
 fish_add_path -g "$HOME/.local/share"

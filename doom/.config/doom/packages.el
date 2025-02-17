@@ -55,6 +55,6 @@
 (package! gptel)
 (package! obsidian)
 
-(package! plsql :disable (not (string= (system-name) "AZ75LT2YBB3J3")))
-(package! sqlplus :disable (not (string= (system-name) "AZ75LT2YBB3J3")))
-(package! nov :disable (string= (system-name) "AZ75LT2YBB3J3"))
+(package! plsql :disable (not (getenv "IS_WORK_MACHINE")))
+(package! sqlplus :disable (not (getenv "IS_WORK_MACHINE")))
+(package! nov :disable (getenv "IS_WORK_MACHINE"))
