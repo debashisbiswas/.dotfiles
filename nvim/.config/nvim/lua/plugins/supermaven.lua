@@ -3,7 +3,8 @@ return {
   lazy = false,
   opts = {
     keymaps = {
-      accept_suggestion = '<C-l>',
+      accept_suggestion = '<M-l>',
+      accept_word = '<M-j>',
     },
   },
 }
