@@ -156,6 +156,8 @@ return {
       set_up_server 'eslint'
       set_up_server 'svelte'
       set_up_server 'zls'
+      set_up_server 'ts_ls'
+      set_up_server 'tailwindcss'
 
       require('lspconfig')['elixirls'].setup {
         cmd = { 'elixir-ls' },

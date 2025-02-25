@@ -19,6 +19,7 @@ return {
         },
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
       },
+      cmdline = { enabled = false },
     },
 
     signature = { enabled = true },
