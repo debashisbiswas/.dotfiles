@@ -39,6 +39,7 @@
     glow
     gnumake
     gphoto2
+    home-manager
     htop
     imagemagick
     jq
@@ -92,6 +93,7 @@
     zoom-us
 
     # languages
+    bun
     go
     nodejs
     python3
