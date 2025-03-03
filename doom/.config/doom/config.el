@@ -44,11 +44,12 @@
 (setq org-directory "~/org/")
 (setq org-log-done 'time)
 (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
-(after! org-mode ((add-to-list 'org-agenda-custom-commands
-                               '("d" "Done items from past week"
-                                 tags
-                                 "+CLOSED>=\"<-7d>\"")
-                               t)))
+(after! org-mode (add-to-list 'org-agenda-custom-commands
+                              '("d" "Done items from past week"
+                                tags
+                                "+CLOSED>=\"<-7d>\""
+                                ((org-agenda-sorting-strategy '(schedule-up))))
+                              t))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
