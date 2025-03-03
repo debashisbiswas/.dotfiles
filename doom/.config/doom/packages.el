@@ -53,7 +53,6 @@
 
 (package! denote)
 (package! gptel)
-(package! obsidian)
 
 (package! plsql :disable (not (getenv "IS_WORK_MACHINE")))
 (package! sqlplus :disable (not (getenv "IS_WORK_MACHINE")))
