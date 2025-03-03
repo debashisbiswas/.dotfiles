@@ -90,7 +90,6 @@
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
-    zoom-us
 
     # languages
     bun
