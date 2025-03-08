@@ -54,6 +54,6 @@
 (package! denote)
 (package! gptel)
 
-(package! plsql :disable (not (getenv "IS_WORK_MACHINE")))
-(package! sqlplus :disable (not (getenv "IS_WORK_MACHINE")))
-(package! nov :disable (getenv "IS_WORK_MACHINE"))
+(package! plsql :disable (not (string= (getenv "IS_WORK_MACHINE") "true")))
+(package! sqlplus :disable (not (string= (getenv "IS_WORK_MACHINE") "true")))
+(package! nov :disable (not (string= (getenv "IS_WORK_MACHINE") "true")))

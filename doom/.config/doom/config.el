@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(let ((font-size (if (getenv "IS_WORK_MACHINE") 18 20)))
+(let ((font-size (if (string= (getenv "IS_WORK_MACHINE") "true") 18 20)))
   (setq doom-font (font-spec :family "Iosevka" :size font-size)
         doom-variable-pitch-font (font-spec :family "Noto Sans" :size font-size)))
 
