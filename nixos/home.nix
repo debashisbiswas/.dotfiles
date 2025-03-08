@@ -134,6 +134,7 @@
     # desktop environment
     brightnessctl
     clipse
+    hyprpicker
     hyprshot
     libnotify
     mako
