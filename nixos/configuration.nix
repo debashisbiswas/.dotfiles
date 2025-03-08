@@ -157,8 +157,6 @@
     };
   };
 
-  services.gnome.gnome-keyring.enable = true;
-
   fonts = { enableDefaultPackages = true; };
 
   environment.sessionVariables = {
@@ -185,7 +183,21 @@
     git # for flakes
     vim
     pulseaudio
+
+    # Keyring
+    gnome-keyring
+    libsecret
+    libgnome-keyring
+    gcr
   ];
+
+  services.gnome.gnome-keyring.enable = true;
+  services.dbus.packages = with pkgs; [ gnome-keyring gcr ];
+
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    gdm.enableGnomeKeyring = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -200,6 +212,7 @@
     dconf.enable = true;
     neovim.enable = true;
     adb.enable = true;
+    seahorse.enable = true;
 
     # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
     # This is useful for Neovim language servers installed through Mason, for example.
