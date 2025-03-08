@@ -102,9 +102,12 @@
 
     # language tooling
     astro-language-server
+    clojure-lsp
+    cljfmt
     delve
     emmet-language-server
     gopls
+    leiningen
     lexical
     lua-language-server
     nixd
@@ -220,7 +223,7 @@
   programs = {
     emacs = {
       enable = true;
-      package = pkgs.emacs29-pgtk;
+      package = pkgs.emacs30;
       extraPackages = epkgs: with epkgs; [ vterm ];
     };
   };

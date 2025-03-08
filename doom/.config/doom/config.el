@@ -41,9 +41,13 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
 (setq org-log-done 'time)
-(setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
+
+(let ((orgdir "~/org/"))
+  (setq org-directory orgdir)
+  (when (file-exists-p orgdir)
+    (setq org-agenda-files (directory-files-recursively orgdir "\\.org$"))))
+
 (after! org-mode (add-to-list 'org-agenda-custom-commands
                               '("d" "Done items from past week"
                                 tags
