@@ -49,11 +49,10 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-(package! ef-themes)
+(defun is-work-machine () (string= (getenv "IS_WORK_MACHINE") "true"))
 
-(package! denote)
 (package! gptel)
 
-(package! plsql :disable (not (string= (getenv "IS_WORK_MACHINE") "true")))
-(package! sqlplus :disable (not (string= (getenv "IS_WORK_MACHINE") "true")))
-(package! nov :disable (not (string= (getenv "IS_WORK_MACHINE") "true")))
+(package! plsql :disable (not (is-work-machine)))
+(package! sqlplus :disable (not (is-work-machine)))
+(package! nov :disable (is-work-machine))
