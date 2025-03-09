@@ -123,6 +123,12 @@
            ("\\.sql\\'" . plsql-mode))
          auto-mode-alist)))
 
+(defun build-doppler-command (project secret)
+  (concat "doppler secrets --project \"" project "\" get \"" secret "\" --plain"))
+
+(defun get-anthropic-key-from-doppler ()
+  (string-trim (shell-command-to-string (build-doppler-command "system" "ANTHROPIC_API_KEY"))))
+
 (use-package! gptel
   :config
   (setq
@@ -130,13 +136,18 @@
    gptel-backend (gptel-make-ollama "Ollama"
                    :host "localhost:11434"
                    :stream t
-                   :models '(deepseek-r1:latest llama3.2:latest))))
+                   :models '(deepseek-r1:latest llama3.2:latest)))
+
+  (let ((anthropic-api-key (get-anthropic-key-from-doppler)))
+    (gptel-make-anthropic "Claude"
+      :stream t
+      :key anthropic-api-key)))
+
 
 (setq shell-file-name (executable-find "bash"))
 
 (let ((fish (executable-find "fish")))
   (setq-default vterm-shell fish)
   (setq-default explicit-shell-file-name fish))
-
 
 (setq which-key-idle-secondary-delay 0)
