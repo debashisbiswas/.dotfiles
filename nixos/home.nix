@@ -120,6 +120,7 @@
     tailwindcss-language-server
     terraform-ls
     typescript-language-server
+    uv
     vscode-langservers-extracted # html, css, json, eslint, md
     yarn-berry
 
