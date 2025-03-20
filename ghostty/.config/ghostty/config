@@ -11,3 +11,6 @@ cursor-invert-fg-bg = true
 
 confirm-close-surface = false
 resize-overlay = never
+
+background-opacity = 0.95
+background-blur = true

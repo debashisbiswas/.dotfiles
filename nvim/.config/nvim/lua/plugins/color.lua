@@ -3,6 +3,7 @@ return {
     'EdenEast/nightfox.nvim',
     priority = 1000,
     opts = {
+      options = { transparent = true },
       palettes = {
         carbonfox = {
           sel0 = '#3a3a3a', -- Popup bg, visual selection bg
