@@ -25,6 +25,7 @@
     ansible
     awscli2
     btop
+    claude-code
     dig
     direnv
     doppler
@@ -224,7 +225,7 @@
   programs = {
     emacs = {
       enable = true;
-      package = pkgs.emacs30;
+      package = pkgs.emacs30-pgtk;
       extraPackages = epkgs: with epkgs; [ vterm ];
     };
   };

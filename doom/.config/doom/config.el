@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(let ((font-size (if (string= (getenv "IS_WORK_MACHINE") "true") 18 20)))
+(let ((font-size (if (string= (getenv "IS_WORK_MACHINE") "true") 18 18)))
   (setq doom-font (font-spec :family "Iosevka" :size font-size)
         doom-variable-pitch-font (font-spec :family "Noto Sans" :size font-size)))
 
@@ -37,6 +37,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-tomorrow-night)
+(pixel-scroll-precision-mode)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -92,7 +93,7 @@
 
 (require 'json)
 
-(setq scroll-margin 4)
+;; (setq scroll-margin 4)
 (map! :desc "dired" :n "-" #'dired-jump)
 
 (define-derived-mode heex-mode web-mode "HEEx" "Major mode for editing HEEx files")
