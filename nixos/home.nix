@@ -61,6 +61,7 @@
     sqlite
     starship
     stow
+    tailscale
     terraform
     tmux
     unzip

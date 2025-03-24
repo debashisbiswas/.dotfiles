@@ -228,6 +228,8 @@
     };
   };
 
+  services.tailscale.enable = true;
+
   # Disable the firewall altogether.
   # networking.firewall.enable = false;
 
