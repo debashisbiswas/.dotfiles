@@ -12,6 +12,7 @@
     ./modules/spotify.nix
     ./modules/hyprland.nix
     ./modules/print.nix
+    ./modules/syncthing.nix
   ];
 
   nix = {
