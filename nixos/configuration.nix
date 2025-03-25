@@ -13,6 +13,7 @@
     ./modules/hyprland.nix
     ./modules/print.nix
     ./modules/syncthing.nix
+    ./modules/vm.nix
   ];
 
   nix = {
