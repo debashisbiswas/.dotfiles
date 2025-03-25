@@ -1,11 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
-  programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = [ "violet" ];
-
-  virtualisation = {
-    libvirtd.enable = true;
-    spiceUSBRedirection.enable = true;
-  };
+  virtualisation.libvirtd.enable = true;
+  users.users.violet.extraGroups = [ "libvirtd" "kvm" ];
+  environment.systemPackages = with pkgs; [
+    virt-manager
+    qemu
+  ];
 }
