@@ -1,6 +1,22 @@
 { pkgs, ... }:
 
 {
+  boot = {
+    initrd.kernelModules = [
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+
+      "i915"
+      "amdgpu"
+    ];
+
+    kernelParams = [
+      "intel_iommu=on"
+      "vfio-pci.ids=1002:67df,1002:aaf0"
+    ];
+  };
+
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -20,5 +36,6 @@
   environment.systemPackages = with pkgs; [
     virt-manager
     qemu
+    pciutils # lspci
   ];
 }
