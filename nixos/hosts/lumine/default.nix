@@ -1,8 +1,11 @@
-{ ... }:
+{ inputs, ... }:
 {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
+    inputs.hardware.nixosModules.common-gpu-amd
+
+    ../../modules/vm.nix
   ];
 
   networking.hostName = "lumine";
