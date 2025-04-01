@@ -20,3 +20,5 @@ vim.keymap.set('x', '<leader>a;', ':normal A;<CR>', { desc = 'visual line append
 vim.keymap.set('n', '<leader>so', '<Cmd>source<CR>', { desc = 'Source current file', silent = true })
 vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'source line', silent = true })
 vim.keymap.set('v', '<leader>x', ':lua<CR>', { desc = 'source selection', silent = true })
+
+vim.keymap.set('n', '<leader>bb', function() require('fzf-lua').buffers() end, { desc = 'Buffers', silent = true })
