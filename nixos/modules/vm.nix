@@ -10,6 +10,8 @@
     # To get this to work again in the future, re-enable the BIOS option for both
     # integrated and dedicated graphics, or use another dedicated card for passthrough.
 
+    # Or maybe figure out single-GPU switching!
+
     # initrd.kernelModules = [
     #   "vfio_pci"
     #   "vfio"
@@ -23,9 +25,9 @@
 
     kernelParams = [
       "intel_iommu=on"
+      # RX 580 graphics and audio
+      # "vfio-pci.ids=1002:67df,1002:aaf0"
     ];
-    # RX 580 graphics and audio
-    # ++ lib.optional cfg.enable "vfio-pci.ids=1002:67df,1002:aaf0";
   };
 
   virtualisation = {
@@ -33,12 +35,8 @@
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;
+        ovmf.enable = true;
         swtpm.enable = true;
-
-        ovmf = {
-          enable = true;
-          packages = [ pkgs.OVMFFull.fd ];
-        };
       };
     };
   };
@@ -46,7 +44,6 @@
   users.users.violet.extraGroups = [ "libvirtd" "kvm" ];
   environment.systemPackages = with pkgs; [
     virt-manager
-    qemu
     pciutils
   ];
 }
