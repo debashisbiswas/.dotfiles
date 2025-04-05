@@ -6,7 +6,7 @@ return {
     vim.o.timeoutlen = 300
   end,
   opts = {
-    preset = 'modern',
+    preset = 'helix',
     icons = { mappings = false },
     spec = {
       { '<leader>', group = 'leader' },
