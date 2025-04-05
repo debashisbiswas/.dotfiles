@@ -155,6 +155,8 @@
     # fonts
     work-sans
     fira
+    fira-code
+    roboto-mono
     iosevka
     noto-fonts
     noto-fonts-cjk-sans
