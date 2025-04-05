@@ -151,7 +151,6 @@
     wl-clipboard
     wl-clipboard
     wlsunset
-    wofi
 
     # fonts
     work-sans
