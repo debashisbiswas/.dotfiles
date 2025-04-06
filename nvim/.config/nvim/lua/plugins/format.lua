@@ -1,31 +1,3 @@
-local function create_format_progress_handle()
-  local formatters, will_use_lsp = require('conform').list_formatters_to_run()
-
-  local fmt_names = vim.tbl_map(function(format_info) return format_info.name end, formatters)
-  if will_use_lsp then table.insert(fmt_names, 'lsp') end
-
-  return require('fidget.progress').handle.create {
-    title = 'Formatting',
-    lsp_client = { name = table.concat(fmt_names, ', ') },
-    percentage = 0,
-  }
-end
-
-local function create_format_complete_callback(handle)
-  return function(err)
-    if err then
-      if handle then
-        handle:report { message = err }
-        handle:cancel()
-      else
-        vim.notify(err, vim.log.levels.WARN)
-      end
-    else
-      handle:finish()
-    end
-  end
-end
-
 local js_formatters = { 'prettierd' }
 
 return {
@@ -36,10 +8,7 @@ return {
   keys = {
     {
       '<leader>f',
-      function()
-        local handle = create_format_progress_handle()
-        require('conform').format(nil, create_format_complete_callback(handle))
-      end,
+      function() require('conform').format() end,
       desc = 'Format buffer',
     },
   },
@@ -50,9 +19,7 @@ return {
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
-
-      local handle = create_format_progress_handle()
-      return {}, create_format_complete_callback(handle)
+      return {}
     end,
 
     formatters_by_ft = {
