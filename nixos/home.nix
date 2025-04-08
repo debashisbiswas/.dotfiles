@@ -92,6 +92,7 @@
     xfce.thunar
     xfce.thunar-archive-plugin
     xfce.thunar-volman
+    zed-editor
 
     # languages
     bun
