@@ -2,7 +2,6 @@ local js_formatters = { 'prettierd' }
 
 return {
   'stevearc/conform.nvim',
-  dependencies = { 'fidget.nvim' },
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
   keys = {
