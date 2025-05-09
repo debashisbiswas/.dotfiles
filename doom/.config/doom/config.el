@@ -133,7 +133,7 @@
 (defun get-anthropic-key-from-doppler ()
   (string-trim (shell-command-to-string (build-doppler-command "system" "ANTHROPIC_API_KEY"))))
 
-(use-package! gtptel
+(use-package! gptel
   :config
   (setq
    gptel-model 'qwen2.5-coder:7b
