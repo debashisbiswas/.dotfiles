@@ -133,14 +133,14 @@
 (defun get-anthropic-key-from-doppler ()
   (string-trim (shell-command-to-string (build-doppler-command "system" "ANTHROPIC_API_KEY"))))
 
-(use-package! gptel
+(use-package! gtptel
   :config
   (setq
-   gptel-model 'llama3.2:latest
+   gptel-model 'qwen2.5-coder:7b
    gptel-backend (gptel-make-ollama "Ollama"
                    :host "localhost:11434"
                    :stream t
-                   :models '(deepseek-r1:latest llama3.2:latest)))
+                   :models '(qwen2.5-coder:7b llama3.2:latest)))
 
   (let ((anthropic-api-key (get-anthropic-key-from-doppler)))
     (gptel-make-anthropic "Claude"
