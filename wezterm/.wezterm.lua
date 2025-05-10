@@ -9,7 +9,7 @@ local function disable_ligatures(config_table)
 	config_table.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 end
 
-config.font_size = 16
+config.font_size = 20
 config.force_reverse_video_cursor = true
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
