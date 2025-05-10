@@ -139,6 +139,7 @@
     hunspell
 
     # desktop environment
+    bluetui
     brightnessctl
     clipse
     hyprpicker
@@ -147,6 +148,7 @@
     mako
     networkmanagerapplet
     nwg-look
+    overskride # tuis are cool until you need to connect a bluetooth keyboard
     swww
     waybar
     wl-clipboard
