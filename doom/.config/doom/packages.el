@@ -51,8 +51,6 @@
 
 (defun is-work-machine () (string= (getenv "IS_WORK_MACHINE") "true"))
 
-(package! gptel)
-
 (package! plsql :disable (not (is-work-machine)))
 (package! sqlplus :disable (not (is-work-machine)))
 (package! nov :disable (is-work-machine))
