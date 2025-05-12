@@ -88,6 +88,7 @@
     pavucontrol
     signal-desktop
     slack
+    tana
     ticktick
     xfce.thunar
     xfce.thunar-archive-plugin
