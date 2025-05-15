@@ -6,17 +6,13 @@
     inputs.hardware.nixosModules.common-gpu-amd
 
     ../../modules/vm.nix
+    ../../modules/gaming.nix
   ];
 
   networking.hostName = "lumine";
 
   services.fstrim.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
+  modules.gaming.enable = false;
 
   system.stateVersion = "23.11";
 }
