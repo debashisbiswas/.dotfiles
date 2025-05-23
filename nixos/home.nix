@@ -113,6 +113,7 @@
     gopls
     leiningen
     lexical
+    ltex-ls-plus
     lua-language-server
     nixd
     nixpkgs-fmt

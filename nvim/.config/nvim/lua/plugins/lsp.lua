@@ -157,6 +157,7 @@ return {
       set_up_server 'zls'
       set_up_server 'ts_ls'
       set_up_server 'tailwindcss'
+      set_up_server 'ltex_plus'
 
       require('lspconfig')['elixirls'].setup {
         cmd = { 'elixir-ls' },
