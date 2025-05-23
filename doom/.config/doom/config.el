@@ -171,3 +171,7 @@
       (shell-command-to-string "wl-paste -n | tr -d \r")))
   (setq interprogram-cut-function 'wl-copy)
   (setq interprogram-paste-function 'wl-paste))
+
+(use-package! mixed-pitch
+  :hook
+  (markdown-mode . mixed-pitch-mode))
