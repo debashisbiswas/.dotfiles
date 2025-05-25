@@ -46,6 +46,9 @@ with pkgs; [
 
   # languages
   bun
+  elixir
+  erlang
+  gleam
   go
   nodejs
   python3
@@ -57,6 +60,7 @@ with pkgs; [
   astro-language-server
   delve
   emmet-language-server
+  elixir-ls
   gopls
   lua-language-server
   nixd

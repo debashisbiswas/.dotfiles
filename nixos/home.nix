@@ -58,13 +58,8 @@ in
     xfce.thunar-volman
     zed-editor
 
-    # erlang and adjacent
-    # TODO: can this be shared with macos?
-    erlang
-    rebar3
-    elixir
-    inotify-tools
-    gleam
+    inotify-tools # elixir! only needed on linux
+    rebar3 # TODO: maybe can be shared
 
     # idk
     libreoffice-qt
