@@ -8,9 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, hardware, ... }@inputs:
+  outputs = { self, nixpkgs, hardware, nix-darwin, ... }@inputs:
     let
       inherit (self) outputs;
     in
@@ -29,6 +33,14 @@
           specialArgs = { inherit inputs outputs; };
         };
 
+      };
+
+      darwinConfigurations = {
+        vale = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [ ./hosts/vale ];
+          specialArgs = { inherit inputs; };
+        };
       };
     };
 }

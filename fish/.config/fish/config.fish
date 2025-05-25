@@ -64,6 +64,10 @@ if type -q pyenv
     pyenv init - | source
 end
 
+if type -q darwin-rebuild
+    abbr rebuild "sudo darwin-rebuild --flake \"$DOTFILES/nixos#$(hostname)\" switch"
+end
+
 if type -q nixos-rebuild
     abbr rebuild "sudo nixos-rebuild --flake \"$DOTFILES/nixos#$(hostname)\" switch"
 end
