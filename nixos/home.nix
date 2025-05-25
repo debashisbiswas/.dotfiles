@@ -11,7 +11,7 @@ in
     username = user;
     homeDirectory = "/home/${user}";
 
-    home.pointerCursor = {
+    pointerCursor = {
       name = "phinger-cursors-dark";
       package = pkgs.phinger-cursors;
       size = 24;
