@@ -24,6 +24,10 @@ fish_add_path -g "$HOME/.sst/bin"
 fish_add_path -g "$HOME/.emacs.d/bin"
 fish_add_path -g "$HOME/.config/emacs/bin"
 
+if test (uname) = Darwin
+    fish_add_path -g "/Applications/Emacs.app/Contents/MacOS"
+end
+
 if status is-interactive
     abbr dot "cd $DOTFILES"
 
