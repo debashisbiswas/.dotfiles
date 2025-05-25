@@ -3,14 +3,6 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       'b0o/schemastore.nvim',
-
-      {
-        'williamboman/mason.nvim',
-        keys = {
-          { '<leader>vm', '<Cmd>Mason<CR>', desc = '[v]im: [m]ason' },
-        },
-      },
-      'williamboman/mason-lspconfig.nvim',
     },
     config = function()
       -- Set up borders for LSP windows
@@ -25,12 +17,7 @@ return {
         return orig_util_open_floating_preview(contents, syntax, opts, ...)
       end
 
-      vim.diagnostic.config {
-        float = {
-          source = 'always',
-          header = 'Diagnostics',
-        },
-      }
+      vim.diagnostic.config { float = { source = true } }
 
       local on_attach = function(client, bufnr)
         local nmap = function(keys, func, desc)
@@ -60,108 +47,28 @@ return {
         nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
       end
 
-      local servers = {
-        clangd = {},
-        rust_analyzer = {},
-        ts_ls = {},
-        gopls = {},
-
-        tailwindcss = {
-          tailwindCSS = {
-            includeLanguages = {
-              elixir = 'html-eex',
-              eelixir = 'html-eex',
-              heex = 'html-eex',
-            },
-          },
-        },
-
-        emmet_language_server = {
-          filetypes = { 'css', 'html', 'javascriptreact', 'typescriptreact', 'heex' },
-        },
-
-        eslint = {},
-
-        html = {
-          html = {
-            format = {
-              indentInnerHtml = true,
-            },
-          },
-        },
-
-        cssls = {},
-
-        pyright = {
-          python = {
-            analysis = {
-              diagnosticMode = 'workspace',
-            },
-          },
-        },
-
-        jsonls = {
-          json = {
-            schemas = require('schemastore').json.schemas(),
-            validate = { enable = true },
-          },
-        },
-
-        yamlls = {
-          yaml = {
-            schemaStore = {
-              -- You must disable built-in schemaStore support if you want to use
-              -- this plugin and its advanced options like `ignore`.
-              enable = false,
-            },
-            schemas = require('schemastore').yaml.schemas(),
-          },
-        },
-
-        lua_ls = {
-          Lua = {
-            runtime = { version = 'LuaJIT' },
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-          },
-        },
-      }
-
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local function set_up_server(server_name, opts)
+
+      local servers = require 'plugins.lsp.servers'
+      for _, server_config in ipairs(servers) do
+        local server_name, config
+
+        if type(server_config) == 'string' then
+          server_name = server_config
+          config = {}
+        else
+          server_name = server_config[1]
+          config = server_config
+        end
+
         lspconfig[server_name].setup {
           capabilities = capabilities,
           on_attach = on_attach,
-          settings = opts or servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
+          settings = config.settings,
+          filetypes = config.filetypes,
+          cmd = config.cmd,
         }
       end
-
-      --------------------
-      -- Mason
-      --------------------
-
-      require('mason').setup()
-
-      -- Someday I won't have to use Windows, but this is staying for now
-      local mason_lspconfig = require 'mason-lspconfig'
-
-      mason_lspconfig.setup {}
-      mason_lspconfig.setup_handlers { function(name) set_up_server(name) end }
-
-      set_up_server 'astro'
-      set_up_server 'gleam'
-      set_up_server 'nixd'
-      set_up_server 'eslint'
-      set_up_server 'svelte'
-      set_up_server 'zls'
-      set_up_server 'ts_ls'
-      set_up_server 'tailwindcss'
-      set_up_server 'ltex_plus'
-
-      require('lspconfig')['elixirls'].setup {
-        cmd = { 'elixir-ls' },
-      }
     end,
   },
   {
