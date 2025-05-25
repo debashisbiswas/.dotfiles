@@ -113,7 +113,6 @@
     gopls
     leiningen
     lexical
-    ltex-ls-plus
     lua-language-server
     nixd
     nixpkgs-fmt
@@ -127,6 +126,7 @@
     typescript-language-server
     uv
     vscode-langservers-extracted # html, css, json, eslint, md
+    vtsls
     yarn-berry
 
     # erlang and adjacent
