@@ -2,10 +2,13 @@
 
 let
   user = "violet";
-  sharedPackages = import ./shared/packages.nix { inherit pkgs; };
 in
 {
   nixpkgs.config.allowUnfree = true;
+
+  imports = [
+    ./shared/packages.nix
+  ];
 
   home = {
     username = user;
@@ -21,7 +24,7 @@ in
     stateVersion = "24.11";
   };
 
-  home.packages = sharedPackages ++ (with pkgs; [
+  home.packages = with pkgs; [
     # cli
     gphoto2
     home-manager
@@ -81,7 +84,7 @@ in
     wl-clipboard
     wl-clipboard
     wlsunset
-  ]);
+  ];
 
   fonts.fontconfig.enable = true;
 

@@ -2,23 +2,26 @@
 
 let
   user = "violet";
-  sharedPackages = import ./shared/packages.nix { inherit pkgs; };
 in
 {
+  imports = [
+    ./shared/packages.nix
+  ];
+  
   home = {
     username = user;
     homeDirectory = "/Users/${user}";
     stateVersion = "24.11";
   };
 
-  home.packages = sharedPackages ++ (with pkgs; [
+  home.packages = with pkgs; [
     # libvterm
     cmake
     glibtool
 
     # emacs - dired
     coreutils-prefixed
-  ]);
+  ];
 
   fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
