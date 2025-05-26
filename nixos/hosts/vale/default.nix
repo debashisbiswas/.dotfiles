@@ -8,6 +8,7 @@ in
     inputs.home-manager.darwinModules.home-manager
   ];
 
+  nix.settings.warn-dirty = false;
   nixpkgs.config.allowUnfree = true;
 
   users.users.violet = {
@@ -32,6 +33,16 @@ in
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   networking.hostName = "vale";
+
+  system.activationScripts.postActivation.text = ''
+    echo "[Rosetta] Checking if installed..."
+    if ! /usr/bin/pgrep oahd > /dev/null 2>&1; then
+      echo "[Rosetta] Installing..."
+      /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+    else
+      echo "[Rosetta] Already installed."
+    fi
+  '';
 
   homebrew = {
     enable = true;
