@@ -5,7 +5,7 @@ with pkgs; [
   neovim
 
   # cli
-  aider-chat
+  amp-cli
   ansible
   awscli2
   btop
