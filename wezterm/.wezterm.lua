@@ -14,7 +14,7 @@ config.force_reverse_video_cursor = true
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.font = wezterm.font({ family = "Iosevka", weight = "Medium" })
+config.font = wezterm.font({ family = "Iosevka", weight = "DemiBold" })
 config.automatically_reload_config = true
 config.tab_and_split_indices_are_zero_based = true
 
@@ -28,7 +28,8 @@ config.color_schemes = {
 }
 
 config.color_scheme = "carbonfox custom"
--- config.window_background_opacity = 0.9
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 50
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.default_prog = { "pwsh" }
