@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   user = "violet";
@@ -6,6 +6,7 @@ in
 {
   imports = [
     inputs.home-manager.darwinModules.home-manager
+    inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
 
   nix.settings.warn-dirty = false;
@@ -44,15 +45,27 @@ in
     fi
   '';
 
+  nix-homebrew = {
+    inherit user;
+    enable = true;
+    taps = {
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+      "homebrew/homebrew-emacsmacport" = inputs.homebrew-emacsmacport;
+    };
+    mutableTaps = false;
+    autoMigrate = true;
+  };
+
   homebrew = {
     enable = true;
     onActivation = {
       cleanup = "uninstall";
     };
 
-    taps = [
-      "railwaycat/emacsmacport"
-    ];
+    # https://github.com/zhaofengli/nix-homebrew/issues/5#issuecomment-1878798641
+    taps = builtins.attrNames config.nix-homebrew.taps;
 
     casks = [
       "android-studio"
@@ -65,6 +78,7 @@ in
       "raycast"
       "spotify"
       "tailscale"
+      "visual-studio-code"
       "wezterm"
       "zed"
     ];

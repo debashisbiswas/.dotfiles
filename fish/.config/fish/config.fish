@@ -25,7 +25,7 @@ fish_add_path -g "$HOME/.emacs.d/bin"
 fish_add_path -g "$HOME/.config/emacs/bin"
 
 if test (uname) = Darwin
-    fish_add_path -g "/Applications/Emacs.app/Contents/MacOS"
+    fish_add_path -g "/opt/homebrew/bin/"
 end
 
 if status is-interactive
