@@ -74,6 +74,7 @@ in
       "discord"
       "docker"
       "emacs-mac"
+      "google-chrome"
       "obsidian"
       "raycast"
       "spotify"
