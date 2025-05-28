@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     work-sans
     fira
@@ -17,3 +19,4 @@
     libertine
   ];
 }
+

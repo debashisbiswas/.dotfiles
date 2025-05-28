@@ -1,9 +1,8 @@
 { pkgs, ... }:
-
 {
   home.packages = with pkgs; [
-    cocoapods
     flutter
+  ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+    cocoapods
   ];
 }
-

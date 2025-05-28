@@ -13,9 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
+    nix-homebrew = { url = "github:zhaofengli-wip/nix-homebrew"; };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
       flake = false;
@@ -34,13 +32,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, hardware, nix-darwin, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
     in
     {
       nixosConfigurations = {
-
         mipha = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./hosts/mipha ];
@@ -52,7 +49,6 @@
           modules = [ ./hosts/lumine ];
           specialArgs = { inherit inputs outputs; };
         };
-
       };
 
       darwinConfigurations = {
@@ -60,6 +56,16 @@
           system = "aarch64-darwin";
           modules = [ ./hosts/vale ];
           specialArgs = { inherit inputs; };
+        };
+      };
+
+      homeConfigurations = {
+        AZ75LT2YBB3J3 = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home-wsl.nix ];
         };
       };
     };

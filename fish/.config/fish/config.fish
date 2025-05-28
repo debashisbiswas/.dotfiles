@@ -72,6 +72,10 @@ if type -q nixos-rebuild
     abbr rebuild "sudo nixos-rebuild --flake \"$DOTFILES/nixos#$(hostname)\" switch"
 end
 
+if string match -q "*microsoft*" (uname -r)
+    abbr rebuild "home-manager --flake \"$DOTFILES/nixos#$(hostname)\" switch"
+end
+
 if type -q nix
     abbr ns "nix shell nixpkgs#"
 end

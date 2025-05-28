@@ -5,6 +5,7 @@
     ./ai.nix
     ./fonts.nix
 
+    ./lang/clojure.nix
     ./lang/elixir.nix
     ./lang/flutter.nix
     ./lang/go.nix
@@ -22,9 +23,9 @@
     vim
     neovim
 
-    # cli
     ansible
     awscli2
+    bat
     btop
     dig
     direnv
@@ -34,6 +35,8 @@
     fd
     ffmpeg
     fzf
+    zip
+    unzip
     gcc
     gh
     git
@@ -51,11 +54,14 @@
     # pulumi
     # pulumiPackages.pulumi-language-nodejs
     railway
+    repomix
     ripgrep
     sqlite
     starship
     stow
     tmux
+    unzip
+    zip
   ];
 }
 

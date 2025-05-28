@@ -7,7 +7,7 @@ in
   imports = [
     ./shared/packages.nix
   ];
-  
+
   home = {
     username = user;
     homeDirectory = "/Users/${user}";
