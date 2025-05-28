@@ -6,6 +6,7 @@
     ./fonts.nix
 
     ./lang/elixir.nix
+    ./lang/flutter.nix
     ./lang/go.nix
     ./lang/lua.nix
     ./lang/nix.nix
