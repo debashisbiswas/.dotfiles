@@ -62,6 +62,7 @@
     tmux
     unzip
     zip
+    zk
   ];
 }
 
