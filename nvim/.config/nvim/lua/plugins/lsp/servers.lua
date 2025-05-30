@@ -10,6 +10,8 @@ return {
   'zls',
   'eslint',
   'cssls',
+  'sourcekit',
+  'dartls',
 
   {
     'tailwindcss',
