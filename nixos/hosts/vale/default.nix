@@ -77,6 +77,7 @@ in
       "google-chrome"
       "obsidian"
       "raycast"
+      "signal"
       "spotify"
       "tailscale"
       "visual-studio-code"
