@@ -2,6 +2,7 @@ return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
     {
       'isak102/telescope-git-file-history.nvim',
       dependencies = {
@@ -16,6 +17,7 @@ return {
       layout_config = {
         prompt_position = 'top',
       },
+      sorting_strategy = 'ascending',
       file_ignore_patterns = { 'node_modules', '.git' },
     },
 
@@ -28,11 +30,18 @@ return {
         additional_args = { '--hidden' },
       },
     },
+
+    extensions = {
+      ['ui-select'] = {
+        require('telescope.themes').get_cursor {},
+      },
+    },
   },
   config = function(_, opts)
     require('telescope').setup(opts)
     require('telescope').load_extension 'fzf'
     require('telescope').load_extension 'git_file_history'
+    require('telescope').load_extension 'ui-select'
 
     vim.api.nvim_set_hl(0, 'TelescopeMatching', { link = 'Statement' })
     vim.api.nvim_set_hl(0, 'TelescopeTitle', { link = 'Statement' })
@@ -59,7 +68,7 @@ return {
       end,
       { desc = 'Telescope commands' },
     },
-    { '<leader>ht', '<Cmd>Telescope colorscheme<CR>', { desc = 'Color schemes' } },
+    { '<leader>ht', '<Cmd>Telescope colorscheme enable_preview=true<CR>', { desc = 'Color schemes' } },
     { '<leader>bb', '<Cmd>Telescope buffers<CR>', { desc = 'Buffers' } },
 
     { '<c-p>', '<Cmd>Telescope git_files<CR>', { desc = 'Search [G]it [F]iles' } },
@@ -77,7 +86,7 @@ return {
 
     {
       '<leader>vc',
-      function() require('telescope.builtin').files { cwd = vim.fn.stdpath 'config' } end,
+      function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' } end,
       desc = '[v]im [c]onfig',
     },
 
