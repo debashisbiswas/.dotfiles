@@ -21,5 +21,4 @@ vim.keymap.set('n', '<leader>so', '<Cmd>source<CR>', { desc = 'Source current fi
 vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'source line', silent = true })
 vim.keymap.set('v', '<leader>x', ':lua<CR>', { desc = 'source selection', silent = true })
 
-vim.keymap.set('n', '<leader>bb', function() require('fzf-lua').buffers() end, { desc = 'Buffers', silent = true })
 vim.keymap.set('n', '<leader>bs', '<Cmd>write<CR>', { desc = 'Write buffer', silent = true })
