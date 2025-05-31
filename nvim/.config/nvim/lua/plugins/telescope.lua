@@ -86,7 +86,11 @@ return {
 
     {
       '<leader>vc',
-      function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' } end,
+      function()
+        require('telescope.builtin').find_files(
+          require('telescope.themes').get_dropdown { cwd = vim.fn.stdpath 'config' }
+        )
+      end,
       desc = '[v]im [c]onfig',
     },
 
