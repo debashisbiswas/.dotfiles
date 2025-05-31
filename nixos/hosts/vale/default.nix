@@ -81,6 +81,7 @@ in
       "signal"
       "spotify"
       "tailscale"
+      "ticktick"
       "visual-studio-code"
       "wezterm"
       "zed"
