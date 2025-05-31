@@ -175,3 +175,14 @@
 (use-package! mixed-pitch
   :hook
   (markdown-mode . mixed-pitch-mode))
+
+(defun violet/sudo (command)
+  (let ((default-directory "/sudo::/"))
+    (compile command)))
+
+(defun violet/rebuild-macos-system ()
+  (interactive)
+  (violet/sudo (concat "darwin-rebuild --flake \"/Users/violet/.dotfiles/nixos#" (system-name) "\" switch")))
+
+(if (featurep :system 'macos)
+    (map! :leader :desc "rebuild nix system flake" :n "s r" #'violet/rebuild-macos-system))
