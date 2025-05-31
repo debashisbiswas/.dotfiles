@@ -180,9 +180,13 @@
   (let ((default-directory "/sudo::/"))
     (compile command)))
 
-(defun violet/rebuild-macos-system ()
-  (interactive)
-  (violet/sudo (concat "darwin-rebuild --flake \"/Users/violet/.dotfiles/nixos#" (system-name) "\" switch")))
+;; TODO: handle other platforms
+(defun violet/get-rebuild-command ()
+  "darwin-rebuild")
 
-(if (featurep :system 'macos)
-    (map! :leader :desc "rebuild nix system flake" :n "s r" #'violet/rebuild-macos-system))
+(defun violet/rebuild-system ()
+  (interactive)
+  (let ((rebuild-command (violet/get-rebuild-command)) (dotfiles (getenv "DOTFILES")))
+    (violet/sudo (concat rebuild-command " --flake \"" dotfiles "/nixos#" (system-name) "\" switch"))))
+
+(map! :leader :desc "Rebuild system" :n "s r" #'violet/rebuild-system)
