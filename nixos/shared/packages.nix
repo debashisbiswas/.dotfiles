@@ -39,7 +39,6 @@
     fzf
     zip
     unzip
-    gcc
     gh
     git
     glow
@@ -67,4 +66,3 @@
     zk
   ];
 }
-
