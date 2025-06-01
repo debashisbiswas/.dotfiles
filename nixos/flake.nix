@@ -26,10 +26,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    homebrew-emacsmacport = {
-      url = "github:railwaycat/homebrew-emacsmacport";
-      flake = false;
-    };
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:

@@ -52,7 +52,6 @@ in
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-      "homebrew/homebrew-emacsmacport" = inputs.homebrew-emacsmacport;
     };
     mutableTaps = false;
     autoMigrate = true;
@@ -73,7 +72,6 @@ in
       "brave-browser"
       "discord"
       "docker"
-      "emacs-mac"
       "flutter"
       "google-chrome"
       "obsidian"

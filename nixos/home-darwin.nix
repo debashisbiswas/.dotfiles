@@ -15,15 +15,20 @@ in
   };
 
   home.packages = with pkgs; [
-    # libvterm
-    cmake
-    glibtool
-
     # emacs - dired
     coreutils-prefixed
   ];
 
   fonts.fontconfig.enable = true;
-  programs.home-manager.enable = true;
-}
 
+  programs = {
+    home-manager.enable = true;
+
+    # https://github.com/NixOS/nixpkgs/issues/395169
+    emacs = {
+      enable = true;
+      package = pkgs.emacs-pgtk;
+      extraPackages = epkgs: [ epkgs.vterm ];
+    };
+  };
+}

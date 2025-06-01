@@ -101,22 +101,6 @@
         "type": "github"
       }
     },
-    "homebrew-emacsmacport": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740958294,
-        "narHash": "sha256-it9/wfMXyhPU8ciWuObE/UoRWcSVQPVQQdpuzTLdhfw=",
-        "owner": "railwaycat",
-        "repo": "homebrew-emacsmacport",
-        "rev": "804172d07d320bbc5f1d9087dd0a4e68db4a4c08",
-        "type": "github"
-      },
-      "original": {
-        "owner": "railwaycat",
-        "repo": "homebrew-emacsmacport",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -179,7 +163,6 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-emacsmacport": "homebrew-emacsmacport",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"
