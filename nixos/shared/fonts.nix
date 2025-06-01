@@ -1,22 +1,27 @@
 { pkgs, ... }:
 
+let
+    iosevka-term = pkgs.iosevka.override { set = "Term"; };
+in
 {
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    work-sans
+    etBook
     fira
     fira-code
-    roboto-mono
+    ibm-plex
     iosevka
+    iosevka-term
+    libertine
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    roboto
+    roboto-mono
     takao
-    ibm-plex
-    etBook
     vollkorn
-    libertine
+    work-sans
   ];
 }
 

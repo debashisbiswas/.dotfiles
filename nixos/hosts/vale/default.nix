@@ -70,6 +70,7 @@ in
       "android-studio"
       "bitwarden"
       "brave-browser"
+      "claude"
       "discord"
       "docker"
       "flutter"

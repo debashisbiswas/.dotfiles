@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (let ((font-size (if (string= (getenv "IS_WORK_MACHINE") "true") 18 20)))
-  (setq doom-font (font-spec :family "Iosevka" :size font-size :weight 'normal)
+  (setq doom-font (font-spec :family "Iosevka Term" :size font-size :weight 'normal)
         doom-variable-pitch-font (font-spec :family "Noto Sans" :size font-size)))
 
 (unless (string= (getenv "IS_WORK_MACHINE") "true")
@@ -200,3 +200,33 @@
     (select-window (get-buffer-window "*compilation*"))))
 
 (map! :leader :desc "Rebuild system" :n "s r" #'violet/rebuild-system)
+
+(after! lua-mode
+  ;; From the stylua README:
+  ;; ---------------------------------------------------------------------------
+  ;; The CLI looks for a stylua.toml or .stylua.toml starting from the directory
+  ;; of the file being formatted. It will keep searching upwards until it
+  ;; reaches the current directory where the tool was executed. If not found, we
+  ;; search for an .editorconfig file, otherwise fall back to the default
+  ;; configuration. This feature can be disabled using --no-editorconfig. See
+  ;; EditorConfig for more details.
+  ;;
+  ;; By default, StyLua does not search further than the current directory. Use
+  ;; --search-parent-directories to recursively search parent directories. This
+  ;; will keep searching ancestors and, if not found, will then look in
+  ;; $XDG_CONFIG_HOME / $XDG_CONFIG_HOME/stylua / $HOME/.config and
+  ;; $HOME/.config/stylua.
+  ;; ---------------------------------------------------------------------------
+  ;;
+  ;; The important note here is that stylua's default is to look upwards *until
+  ;; the directory from which stylua was executed (cwd)*, rather than until the
+  ;; file's path! Apheleia isn't executing the formatter from the project root,
+  ;; so if we want the project config, we need to explicity ask stylua to look
+  ;; upwards from the file to find it.
+  ;;
+  ;; Apheleia includes apheleia-from-project-root which can help with this, but
+  ;; I'd rather use the tool's builtin behavior to avoid having to handle every
+  ;; case of stylua.toml, .stylua.toml, .editorconfig, etc
+  (set-formatter!
+    'stylua '("stylua" "--search-parent-directories" "-")
+    :modes '(lua-mode)))
