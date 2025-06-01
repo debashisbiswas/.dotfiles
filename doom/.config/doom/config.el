@@ -176,17 +176,27 @@
   :hook
   (markdown-mode . mixed-pitch-mode))
 
-(defun violet/sudo (command)
+(defun violet/sudocompile (command)
   (let ((default-directory "/sudo::/"))
     (compile command)))
 
-;; TODO: handle other platforms
-(defun violet/get-rebuild-command ()
-  "darwin-rebuild")
+(defun violet/on-wsl ()
+  (when (executable-find "uname")
+    (string-match-p "microsoft" (shell-command-to-string "uname -r"))))
 
 (defun violet/rebuild-system ()
   (interactive)
-  (let ((rebuild-command (violet/get-rebuild-command)) (dotfiles (getenv "DOTFILES")))
-    (violet/sudo (concat rebuild-command " --flake \"" dotfiles "/nixos#" (system-name) "\" switch"))))
+  (let* ((dotfiles (getenv "DOTFILES"))
+         (args (format "--flake \"%s/nixos#%s\" switch" dotfiles (system-name))))
+    (cond ((eq system-type 'darwin) (violet/sudocompile (format "darwin-rebuild %s" args)))
+          ((violet/on-wsl) (compile (format "home-manager %s" args)))
+          (t (violet/sudocompile (format "nixos-rebuild %s" args))))
+    (with-current-buffer "*compilation*"
+      (setq-local compilation-finish-functions
+                  (list (lambda (buffer status)
+                          (when (string-match-p "finished" status)
+                            (kill-buffer buffer)
+                            (message "System successfully rebuilt!"))))))
+    (select-window (get-buffer-window "*compilation*"))))
 
 (map! :leader :desc "Rebuild system" :n "s r" #'violet/rebuild-system)
