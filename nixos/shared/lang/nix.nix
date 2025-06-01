@@ -3,8 +3,7 @@
 {
   home.packages = with pkgs; [
     nixd
-    nixpkgs-fmt
-    nixfmt-classic
+    nixfmt-rfc-style
     nix-search-cli
   ];
 }

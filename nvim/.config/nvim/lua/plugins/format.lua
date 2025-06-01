@@ -39,7 +39,7 @@ return {
       astro = js_formatters,
       svelte = js_formatters,
 
-      nix = { 'nixpkgs_fmt' },
+      nix = { 'nixfmt' },
     },
   },
   config = function(_, opts)
