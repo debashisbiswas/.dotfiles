@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (let ((font-size (if (string= (getenv "IS_WORK_MACHINE") "true") 18 20)))
-  (setq doom-font (font-spec :family "Iosevka Term" :size font-size :weight 'normal)
+  (setq doom-font (font-spec :family "Iosevka" :size font-size :weight 'normal)
         doom-variable-pitch-font (font-spec :family "Noto Sans" :size font-size)))
 
 (unless (string= (getenv "IS_WORK_MACHINE") "true")
