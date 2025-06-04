@@ -201,6 +201,10 @@
 
 (map! :leader :desc "Rebuild system" :n "s r" #'violet/rebuild-system)
 
+(map! :leader :desc "[S]earch [f]iles" :n "s f" #'projectile-find-file)
+(map! :leader :desc "[S]earch [g]rep" :n "s g" #'+default/search-project)
+(map! :leader :desc "[S]earch [w]ord" :n "s w" #'+default/search-project-for-symbol-at-point)
+
 (after! lua-mode
   ;; From the stylua README:
   ;; ---------------------------------------------------------------------------
