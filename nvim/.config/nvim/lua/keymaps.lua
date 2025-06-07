@@ -22,3 +22,4 @@ vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'source line', silent
 vim.keymap.set('v', '<leader>x', ':lua<CR>', { desc = 'source selection', silent = true })
 
 vim.keymap.set('n', '<leader>bs', '<Cmd>write<CR>', { desc = 'Write buffer', silent = true })
+vim.keymap.set('n', '<leader>fs', '<Cmd>write<CR>', { desc = 'Write buffer', silent = true })
