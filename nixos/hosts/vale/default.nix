@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   user = "violet";
@@ -70,6 +75,7 @@ in
       "android-studio"
       "bitwarden"
       "brave-browser"
+      "calibre"
       "claude"
       "discord"
       "docker"
@@ -93,4 +99,3 @@ in
     users.violet = import ../../home-darwin.nix;
   };
 }
-
