@@ -11,6 +11,7 @@
     ./lang/elixir.nix
     ./lang/flutter.nix
     ./lang/go.nix
+    ./lang/latex.nix
     ./lang/lua.nix
     ./lang/nix.nix
     ./lang/python.nix
