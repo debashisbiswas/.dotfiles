@@ -93,6 +93,7 @@ in
       "ticktick"
       "visual-studio-code"
       "wezterm"
+      "jellyfin-media-player"
       "zed"
     ];
   };
