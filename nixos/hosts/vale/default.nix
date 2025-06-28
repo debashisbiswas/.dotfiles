@@ -71,6 +71,10 @@ in
     # https://github.com/zhaofengli/nix-homebrew/issues/5#issuecomment-1878798641
     taps = builtins.attrNames config.nix-homebrew.taps;
 
+    # TODO: docker was renamed to docker-desktop. There wasn't a warning, but
+    # an issue with docker re-installing itself. On every rebuild. Something
+    # similar happened with Tailscale. Use `brew list --versions` to see rename
+    # warnings for now. Is there a way to get warnings when rebuilding?
     casks = [
       "android-studio"
       "bitwarden"
@@ -78,14 +82,14 @@ in
       "calibre"
       "claude"
       "discord"
-      "docker"
+      "docker-desktop"
       "flutter"
       "google-chrome"
       "obsidian"
       "raycast"
       "signal"
       "spotify"
-      "tailscale"
+      "tailscale-app"
       "ticktick"
       "visual-studio-code"
       "wezterm"
