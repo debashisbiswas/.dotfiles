@@ -15,7 +15,10 @@
     package = pkgs.nixVersions.latest;
 
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       warn-dirty = false;
     };
   };
@@ -66,10 +69,9 @@
 
         # TODO: decrease touchpad scroll sensitivity
         # https://man.archlinux.org/man/libinput.4#SCROLL_PIXEL_DISTANCE
-        additionalOptions =
-          ''
-            Option "ScrollPixelDistance" "50"
-          '';
+        additionalOptions = ''
+          Option "ScrollPixelDistance" "50"
+        '';
       };
       # TODO: touchpad gestures
     };
@@ -140,7 +142,11 @@
   users.users.violet = {
     isNormalUser = true;
     description = "Debashis Biswas";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     shell = pkgs.fish;
   };
 
@@ -151,7 +157,9 @@
     };
   };
 
-  fonts = { enableDefaultPackages = true; };
+  fonts = {
+    enableDefaultPackages = true;
+  };
 
   environment.sessionVariables = {
     EDITOR = "nvim";
@@ -186,7 +194,10 @@
   ];
 
   services.gnome.gnome-keyring.enable = true;
-  services.dbus.packages = with pkgs; [ gnome-keyring gcr ];
+  services.dbus.packages = with pkgs; [
+    gnome-keyring
+    gcr
+  ];
 
   security.pam.services = {
     login.enableGnomeKeyring = true;
