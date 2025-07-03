@@ -53,6 +53,7 @@
 
   services = {
     displayManager = {
+      gdm.enable = true;
       defaultSession = "hyprland";
     };
 
@@ -78,8 +79,6 @@
       xkb.layout = "us";
 
       desktopManager.xterm.enable = false;
-
-      displayManager.gdm.enable = true;
 
       windowManager.i3 = {
         enable = true;
