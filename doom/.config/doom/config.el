@@ -92,6 +92,13 @@
 
 (require 'json)
 
+(defun violet/on-wsl ()
+  (when (executable-find "uname")
+    (string-match-p "microsoft" (shell-command-to-string "uname -r"))))
+
+(when (violet/on-wsl)
+  (load! "wsl-config"))
+
 ;; (setq scroll-margin 4)
 (map! :desc "dired" :n "-" #'dired-jump)
 
@@ -148,23 +155,6 @@
 
 (setq which-key-idle-secondary-delay 0)
 
-;; https://gist.github.com/yorickvP/6132f237fbc289a45c808d8d75e0e1fb
-(when (string= (getenv "IS_WORK_MACHINE") "true")
-  (setq wl-copy-process nil)
-  (defun wl-copy (text)
-    (setq wl-copy-process (make-process :name "wl-copy"
-                                        :buffer nil
-                                        :command '("wl-copy" "-f" "-n")
-                                        :connection-type 'pipe))
-    (process-send-string wl-copy-process text)
-    (process-send-eof wl-copy-process))
-  (defun wl-paste ()
-    (if (and wl-copy-process (process-live-p wl-copy-process))
-        nil ; should return nil if we're the current paste owner
-      (shell-command-to-string "wl-paste -n | tr -d \r")))
-  (setq interprogram-cut-function 'wl-copy)
-  (setq interprogram-paste-function 'wl-paste))
-
 (use-package! mixed-pitch
   :hook
   (markdown-mode . mixed-pitch-mode))
@@ -172,10 +162,6 @@
 (defun violet/sudocompile (command)
   (let ((default-directory "/sudo::/"))
     (compile command)))
-
-(defun violet/on-wsl ()
-  (when (executable-find "uname")
-    (string-match-p "microsoft" (shell-command-to-string "uname -r"))))
 
 (defun violet/rebuild-system ()
   (interactive)
