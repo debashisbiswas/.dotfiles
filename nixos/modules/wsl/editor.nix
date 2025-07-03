@@ -5,7 +5,6 @@
     neovim
 
     pandoc
-    texliveBasic
     ispell
     editorconfig-core-c
   ];
