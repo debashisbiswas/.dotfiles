@@ -1,4 +1,5 @@
 return {
+  'basedpyright',
   'clangd',
   'rust_analyzer',
   'vtsls',
@@ -37,17 +38,6 @@ return {
       html = {
         format = {
           indentInnerHtml = true,
-        },
-      },
-    },
-  },
-
-  {
-    'pyright',
-    settings = {
-      python = {
-        analysis = {
-          diagnosticMode = 'workspace',
         },
       },
     },
