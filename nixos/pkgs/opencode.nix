@@ -11,12 +11,12 @@
 }:
 
 let
-  version = "0.1.162";
+  version = "0.1.176";
   src = fetchFromGitHub {
     owner = "sst";
     repo = "opencode";
     tag = "v${version}";
-    hash = "sha256-GNF7SWMh9FZjmL3EV0pT6gsR3HeEWZ+SpNWaParRwho=";
+    hash = "sha256-AKC8nAOa+33nOGSNzlQdbw2ESy+fg0j1h0k29qCCzd8=";
   };
 
   opencode-tui = buildGoModule {
@@ -25,7 +25,7 @@ let
 
     sourceRoot = "source/packages/tui";
 
-    vendorHash = "sha256-jUxBlBP8eKyDXVvYIZhcrSMfUvGb8/mTPZiPxlCfwLs=";
+    vendorHash = "sha256-gkaxjMGoJfDX6QjDCn6SSyyO7/mRqYrh+IRhWeBzj48=";
 
     subPackages = [ "cmd/opencode" ];
 
@@ -39,10 +39,10 @@ let
   };
 
   opencode-node-modules-hash = {
-    "aarch64-darwin" = "sha256-nDX/e2bu9gDs5djfhLGrcTrNHIWDzhCyW1ltkQL36aw=";
-    "aarch64-linux" = "sha256-mtLgzjoRv++qCAg5utR/+DXI5FoZEWFb6yr5g90dOMc=";
-    "x86_64-darwin" = "sha256-zjFaHdEbqMMxsdCwzZ0NjOoo7wbA+VtRP/4Tbg3atyo=";
-    "x86_64-linux" = "sha256-4wo/VRUhY+Kii3zjkPWG6kayZ/DLUnkxXdViwHQ/Dp8=";
+    "aarch64-darwin" = "sha256-ZI4wJvBeSejhHjyRsYqpfUvJ959WU01JCW+2HIBs3Cg=";
+    "aarch64-linux" = "sha256-g/IyhBxVyU39rh2R9SfmHwBi4oMS12bo60Apbay06v0=";
+    "x86_64-darwin" = "sha256-ckWsqrwJEpL1ejrOSp5wTGwQYsDapLH3imNnSOEHQSw=";
+    "x86_64-linux" = "sha256-Q3zlrS7kuyKJReuIFqsqG5yfDuwLwBoCm0hUpJo9hSU=";
   };
   node_modules = stdenv.mkDerivation {
     name = "opencode-${version}-node-modules";
@@ -58,7 +58,14 @@ let
     dontConfigure = true;
 
     buildPhase = ''
-      bun install --no-progress --frozen-lockfile  --filter=opencode
+      export HOME=$(mktemp -d)
+      export BUN_INSTALL_CACHE_DIR=$(mktemp -d)
+
+      bun install \
+        --filter=opencode \
+        --force \
+        --frozen-lockfile \
+        --no-progress
     '';
 
     installPhase = ''
@@ -77,7 +84,7 @@ let
 
   modelsDevData = fetchurl {
     url = "https://models.dev/api.json";
-    sha256 = "0b4sz5cc7qnzcwcwpbj3ds4riv3hymdn0f5y14vsajknvswfnysj";
+    sha256 = "sha256-igxQOC+Hz2FnXIW/S4Px9WhRuBhcIQIHO+7U8jHU1TQ=";
   };
   bun-target = {
     "aarch64-darwin" = "bun-darwin-arm64";
@@ -106,13 +113,19 @@ stdenv.mkDerivation (finalAttrs: {
     runHook preBuild
 
     export MODELS_JSON="$(cat ${modelsDevData})"
-    bun build --define OPENCODE_VERSION="'${version}'" --compile --minify --target=${
-      bun-target.${stdenv.hostPlatform.system}
-    } --outfile=opencode ./packages/opencode/src/index.ts ${opencode-tui}/bin/opencode
-
+    bun build \
+      --define OPENCODE_VERSION="'${version}'" \
+      --compile \
+      --minify \
+      --target=${bun-target.${stdenv.hostPlatform.system}} \
+      --outfile=opencode \
+      ./packages/opencode/src/index.ts \
+      ${opencode-tui}/bin/opencode
 
     runHook postBuild
   '';
+
+  dontStrip = true;
 
   installPhase = ''
     runHook preInstall
