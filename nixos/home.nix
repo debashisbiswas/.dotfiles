@@ -25,6 +25,11 @@ in
   };
 
   home.packages = with pkgs; [
+    # TOOD: maybe this should be a shared package, but be careful not to
+    # override darwin's cc; there was an issue with this but I can't remember
+    # what it was
+    gcc
+
     # cli
     gphoto2
     home-manager
