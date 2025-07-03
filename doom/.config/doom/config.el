@@ -135,17 +135,10 @@
 (use-package! gptel
   :config
   (setq
-   gptel-model 'qwen2.5-coder:7b
-   gptel-backend (gptel-make-ollama "Ollama"
-                   :host "localhost:11434"
+   gptel-model 'claude-sonnet-4-20250514
+   gptel-backend (gptel-make-anthropic "Claude"
                    :stream t
-                   :models '(qwen2.5-coder:7b llama3.2:latest)))
-
-  (let ((anthropic-api-key (get-anthropic-key-from-doppler)))
-    (gptel-make-anthropic "Claude"
-      :stream t
-      :key anthropic-api-key)))
-
+                   :key 'get-anthropic-key-from-doppler)))
 
 (setq shell-file-name (executable-find "bash"))
 
