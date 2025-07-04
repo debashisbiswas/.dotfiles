@@ -57,6 +57,7 @@ in
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+      "sst/homebrew-tap" = inputs.sst-homebrew-tap;
     };
     mutableTaps = false;
     autoMigrate = true;
@@ -70,6 +71,10 @@ in
 
     # https://github.com/zhaofengli/nix-homebrew/issues/5#issuecomment-1878798641
     taps = builtins.attrNames config.nix-homebrew.taps;
+
+    brews = [
+      "sst/tap/opencode"
+    ];
 
     # TODO: docker was renamed to docker-desktop. There wasn't a warning, but
     # an issue with docker re-installing itself. On every rebuild. Something
