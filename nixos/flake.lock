@@ -156,6 +156,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1751776468,
+        "narHash": "sha256-UaUkI86ethU7XaGPOnpZbb4iBW2n6dtBxcMnmTE9jVE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "06081e801df96e17395af88f2504f0b2135be88a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "hardware": "hardware",
@@ -166,6 +182,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-master": "nixpkgs-master",
         "sst-homebrew-tap": "sst-homebrew-tap"
       }
     },

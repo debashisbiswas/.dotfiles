@@ -1,8 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
-let
-  opencode = pkgs.callPackage ../pkgs/opencode.nix { };
-in
 {
   home.packages =
     with pkgs;
@@ -11,6 +8,8 @@ in
       amp-cli
     ]
     ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
-      opencode
+      # TODO: remove nixpkgs-master once opencode is in nixpkgs unstable?
+      # opencode updates fast - we'll see how closely unstable can keep up
+      inputs.nixpkgs-master.legacyPackages.${pkgs.system}.opencode
     ];
 }
