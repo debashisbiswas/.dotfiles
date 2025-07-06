@@ -33,6 +33,8 @@ return {
 
     extensions = {
       ['ui-select'] = {
+        -- TODO: doesn't work on fresh install, this whole file errors when
+        -- evaluating here and lazy doesn't see telescope
         require('telescope.themes').get_cursor {},
       },
     },
