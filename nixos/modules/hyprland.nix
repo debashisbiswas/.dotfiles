@@ -1,3 +1,6 @@
+# Lots of nice things about Hyprland, including better gaming performance and
+# laptop support (trackpad, etc)
+
 { pkgs, ... }:
 
 {
