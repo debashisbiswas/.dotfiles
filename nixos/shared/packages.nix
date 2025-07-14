@@ -65,5 +65,11 @@
     unzip
     zip
     zk
+
+    # emacs - dirvish previews
+    # https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#install-dependencies-for-an-enhanced-preview-experience
+    vips
+    poppler_utils
+    ffmpegthumbnailer
   ];
 }
