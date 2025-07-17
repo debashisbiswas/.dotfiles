@@ -54,8 +54,6 @@
     postgresql
     tailscale
     turso-cli
-    # pulumi
-    # pulumiPackages.pulumi-language-nodejs
     railway
     repomix
     ripgrep
