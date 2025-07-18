@@ -33,6 +33,10 @@
       url = "github:sst/homebrew-tap";
       flake = false;
     };
+    nikitabobko-tap = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs =

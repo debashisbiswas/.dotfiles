@@ -58,6 +58,7 @@ in
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
       "sst/homebrew-tap" = inputs.sst-homebrew-tap;
+      "nikitabobko/homebrew-tap" = inputs.nikitabobko-tap;
     };
     mutableTaps = false;
     autoMigrate = true;
@@ -100,6 +101,7 @@ in
       "wezterm"
       "jellyfin-media-player"
       "zed"
+      "nikitabobko/tap/aerospace"
     ];
   };
 
