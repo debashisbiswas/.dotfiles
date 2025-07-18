@@ -199,24 +199,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-master": "nixpkgs-master",
-        "sst-homebrew-tap": "sst-homebrew-tap"
-      }
-    },
-    "sst-homebrew-tap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1751593601,
-        "narHash": "sha256-KL2/ycbfIqeRziBKp2NEWLq/rrdMOC3yihrppr1VCBo=",
-        "owner": "sst",
-        "repo": "homebrew-tap",
-        "rev": "137173568a7aa952c268d2f8583fc95e1de67bf3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sst",
-        "repo": "homebrew-tap",
-        "type": "github"
+        "nixpkgs-master": "nixpkgs-master"
       }
     }
   },

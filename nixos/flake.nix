@@ -29,10 +29,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    sst-homebrew-tap = {
-      url = "github:sst/homebrew-tap";
-      flake = false;
-    };
     nikitabobko-tap = {
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
