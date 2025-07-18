@@ -63,6 +63,7 @@ in
     autoMigrate = true;
   };
 
+  # To upgrade, update the homebrew flake inputs, rebuild, then `brew upgrade`
   homebrew = {
     enable = true;
     onActivation = {
