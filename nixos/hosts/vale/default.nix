@@ -102,6 +102,7 @@ in
       "jellyfin-media-player"
       "zed"
       "nikitabobko/tap/aerospace"
+      "acreom"
     ];
   };
 
