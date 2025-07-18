@@ -109,6 +109,7 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
     users.violet = import ../../home-darwin.nix;
   };
 }
