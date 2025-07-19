@@ -74,14 +74,14 @@
             " ",
             " "
         ],
-        "format": "<span color='#8ec07c' > {icon}</span>{capacity}%",
-        "format-critical": "<span color='#cc241d' > {icon}</span>{capacity}%",
-        "format-warning": "<span color='#d8a657' > {icon}</span>{capacity}%",
-        "format-full": "<span color='#8ec07c' > {icon}</span>{capacity}%",
-        "format-charging": "<span color='#8ec07c' >  </span>{capacity}%",
-        "format-charging-warning": "<span color='#d8a657' >  </span>{capacity}%",
-        "format-charging-critical": "<span color='#cc241d' >  </span>{capacity}%",
-        "format-plugged": "<span color='#8ec07c' >  </span>{capacity}%",
+        "format": "<span color='#34c759' > {icon}</span>{capacity}%",
+        "format-critical": "<span color='#ff3b30' > {icon}</span>{capacity}%",
+        "format-warning": "<span color='#ff9500' > {icon}</span>{capacity}%",
+        "format-full": "<span color='#34c759' > {icon}</span>{capacity}%",
+        "format-charging": "<span color='#34c759' >  </span>{capacity}%",
+        "format-charging-warning": "<span color='#ff9500' >  </span>{capacity}%",
+        "format-charging-critical": "<span color='#ff3b30' >  </span>{capacity}%",
+        "format-plugged": "<span color='#34c759' >  </span>{capacity}%",
         "tooltip": false
     },
     "clock": {
