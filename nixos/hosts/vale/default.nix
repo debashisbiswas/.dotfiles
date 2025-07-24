@@ -99,6 +99,7 @@ in
       "zed"
       "nikitabobko/tap/aerospace"
       "acreom"
+      "zoom"
     ];
   };
 
