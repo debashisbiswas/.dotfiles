@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 WHISPER_SERVER="https://vale.queue-mixolydian.ts.net/inference"
-tailscale ping vale
 
 cleanup_and_exit() {
     echo "Recording cancelled" >&2
