@@ -87,7 +87,6 @@ in
     swww
     waybar
     wl-clipboard
-    wl-clipboard
     wlsunset
   ];
 
@@ -115,6 +114,11 @@ in
 
   programs = {
     home-manager.enable = true;
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     emacs = {
       enable = true;
