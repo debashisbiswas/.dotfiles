@@ -25,7 +25,6 @@ in
 {
   home.packages = with pkgs; [
     claude-code
-    amp-cli
     opencode-latest
   ];
 }
