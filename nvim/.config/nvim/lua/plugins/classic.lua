@@ -11,6 +11,7 @@ return {
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
   'tpope/vim-dispatch',
+  'tpope/vim-abolish',
 
   {
     'junegunn/vim-easy-align',
