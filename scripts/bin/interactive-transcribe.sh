@@ -13,13 +13,11 @@ TRANSCRIBE_EXIT_CODE=$?
 
 if [ $TRANSCRIBE_EXIT_CODE -ne 0 ]; then
     rm -f "$TEMP_OUTPUT"
-    exit 0
+    exit $TRANSCRIBE_EXIT_CODE
 fi
 
 TRANSCRIPTION=$(cat "$TEMP_OUTPUT")
 rm -f "$TEMP_OUTPUT"
-
-clear
 
 echo "----------------------------------------"
 echo "$TRANSCRIPTION"

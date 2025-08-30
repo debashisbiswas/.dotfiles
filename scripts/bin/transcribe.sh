@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WHISPER_SERVER="https://vale.queue-mixolydian.ts.net/inference"
+TRANSCRIPTION_SERVER="https://vale.queue-mixolydian.ts.net/transcribe"
 
 cleanup_and_exit() {
     echo "Recording cancelled" >&2
@@ -10,9 +10,9 @@ cleanup_and_exit() {
 
 trap cleanup_and_exit SIGINT SIGTERM
 
-echo "Checking inference server..." >&2
-if ! curl -s --max-time 5 --head "$WHISPER_SERVER" >/dev/null; then
-    echo "Inference server is not available" >&2
+echo "Checking transcription server..." >&2
+if ! curl -s --max-time 5 --head "$TRANSCRIPTION_SERVER" >/dev/null; then
+    echo "Transcription server is not available" >&2
     exit 1
 fi
 
@@ -31,12 +31,9 @@ FFMPEG_EXIT_CODE=$?
 
 if [ $FFMPEG_EXIT_CODE -eq 0 ] || [ $FFMPEG_EXIT_CODE -eq 255 ]; then
     echo "Transcribing..." >&2
-    curl -s "$WHISPER_SERVER" \
-          -H "Content-Type: multipart/form-data" \
-          -F file="@$TEMP_FILE" \
-          -F temperature="0.0" \
-          -F temperature_inc="0.2" \
-          -F response_format="text"
+    curl -s "$TRANSCRIPTION_SERVER" \
+          -X POST \
+          -F file="@$TEMP_FILE"
     rm $TEMP_FILE
 else
     echo "Recording failed" >&2
