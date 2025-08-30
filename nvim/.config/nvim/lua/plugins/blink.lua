@@ -3,13 +3,11 @@ return {
   lazy = false, -- lazy loading handled internally
   version = 'v0.*',
 
-  dependencies = { 'kristijanhusak/vim-dadbod-completion' },
-
   opts = {
     keymap = { preset = 'default' },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'dadbod' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
       providers = {
         lazydev = {
           name = 'LazyDev',
@@ -17,7 +15,6 @@ return {
           -- make lazydev completions top priority (see `:h blink.cmp`)
           score_offset = 100,
         },
-        dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
       },
     },
 
