@@ -25,6 +25,11 @@ vim.wo.signcolumn = 'yes'
 
 vim.o.completeopt = 'menuone,noselect'
 
+vim.diagnostic.config {
+  float = { source = true },
+  jump = { float = true },
+}
+
 -- this fixes some treesitter errors on windows
 if vim.fn.exists 'shellslash' ~= 0 then vim.o.shellslash = true end
 

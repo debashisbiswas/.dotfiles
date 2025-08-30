@@ -17,8 +17,6 @@ return {
         return orig_util_open_floating_preview(contents, syntax, opts, ...)
       end
 
-      vim.diagnostic.config { float = { source = true } }
-
       local on_attach = function(client, bufnr)
         local nmap = function(keys, func, desc)
           if desc then desc = 'LSP: ' .. desc end
