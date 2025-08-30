@@ -13,7 +13,7 @@ return {
   'cssls',
   'sourcekit',
   'dartls',
-  'ltex',
+  'ltex_plus',
 
   {
     'tailwindcss',
