@@ -1,26 +1,548 @@
-require 'sets'
-require 'autocommands'
-require 'keymaps'
-
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
-      { '\nPress any key to exit...' },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+local path_package = vim.fn.stdpath 'data' .. '/site'
+local mini_path = path_package .. '/pack/deps/start/mini.nvim'
+if not vim.loop.fs_stat(mini_path) then
+  vim.cmd 'echo "Installing `mini.nvim`" | redraw'
+  local clone_cmd = {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    -- Uncomment next line to use 'stable' branch
+    -- '--branch', 'stable',
+    'https://github.com/nvim-mini/mini.nvim',
+    mini_path,
+  }
+  vim.fn.system(clone_cmd)
+  vim.cmd 'packadd mini.nvim | helptags ALL'
+  vim.cmd 'echo "Installed `mini.nvim`" | redraw'
 end
-vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup {
-  spec = { { import = 'plugins' } },
-  install = { colorscheme = { 'default' } },
-  checker = { enabled = true, notify = false },
-  change_detection = { notify = false },
+------------------------------------------------------------
+-- Sets
+------------------------------------------------------------
+
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' m'
+
+vim.o.termguicolors = true
+
+vim.o.number = true
+vim.o.relativenumber = true
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
+vim.o.undofile = true
+
+vim.o.scrolloff = 5
+vim.o.cursorline = false
+
+vim.o.breakindent = true
+
+vim.opt.completeopt = { 'menuone', 'noselect' }
+
+vim.wo.signcolumn = 'yes'
+
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+vim.diagnostic.config {
+  float = { source = true },
+  jump = { float = true },
 }
+
+vim.keymap.set('n', '<leader>so', vim.cmd.source)
+vim.keymap.set('n', '<leader>fs', vim.cmd.update)
+vim.keymap.set('n', '<esc>', vim.cmd.nohlsearch)
+vim.keymap.set('n', '<leader>bd', '<Cmd>bdelete<CR>', { desc = 'Delete buffer' })
+vim.keymap.set('n', '<leader>bk', '<Cmd>bdelete<CR>', { desc = 'Kill buffer' })
+
+local config_group = vim.api.nvim_create_augroup('ConfigGroup', { clear = true })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = config_group,
+  pattern = '*',
+  callback = function() vim.highlight.on_yank { timeout = 100 } end,
+})
+
+require('mini.deps').setup()
+
+------------------------------------------------------------
+-- Completion
+------------------------------------------------------------
+
+MiniDeps.add {
+  source = 'Saghen/blink.cmp',
+  depends = { 'rafamadriz/friendly-snippets' },
+  checkout = 'v1.6.0',
+}
+
+require('blink-cmp').setup {
+  keymap = { preset = 'default' },
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+    providers = {
+      lazydev = {
+        name = 'LazyDev',
+        module = 'lazydev.integrations.blink',
+        -- make lazydev completions top priority (see `:h blink.cmp`)
+        score_offset = 100,
+      },
+    },
+  },
+
+  signature = { enabled = true },
+
+  completion = {
+    list = { selection = { auto_insert = true } },
+    accept = {
+      auto_brackets = { enabled = true },
+    },
+    menu = {
+      draw = {
+        treesitter = { 'lsp' },
+      },
+    },
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 0,
+      update_delay_ms = 50,
+    },
+  },
+}
+
+------------------------------------------------------------
+-- LSP
+------------------------------------------------------------
+
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+
+MiniDeps.add {
+  source = 'neovim/nvim-lspconfig',
+  depends = { 'b0o/schemastore.nvim' },
+}
+
+MiniDeps.add 'folke/lazydev.nvim'
+require('lazydev').setup {
+  library = {
+    -- See the configuration section for more details
+    -- Load luvit types when the `vim.uv` word is found
+    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+  },
+}
+
+-- Set up borders for LSP windows
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'rounded'
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+-- On attach
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = config_group,
+  callback = function(args)
+    -- :help gO, :help lsp-defaults
+    vim.keymap.set('n', 'gO', require('telescope.builtin').lsp_document_symbols)
+    vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions)
+  end,
+})
+
+-- Enable servers
+
+vim.lsp.enable 'astro'
+vim.lsp.enable 'basedpyright'
+vim.lsp.enable 'clangd'
+vim.lsp.enable 'cssls'
+vim.lsp.enable 'dartls'
+vim.lsp.enable 'eslint'
+vim.lsp.enable 'gleam'
+vim.lsp.enable 'gopls'
+vim.lsp.enable 'ltex_plus'
+vim.lsp.enable 'nixd'
+vim.lsp.enable 'rust_analyzer'
+vim.lsp.enable 'sourcekit'
+vim.lsp.enable 'svelte'
+vim.lsp.enable 'vtsls'
+vim.lsp.enable 'zls'
+
+vim.lsp.config('html', {
+  settings = {
+    html = {
+      format = {
+        indentInnerHtml = true,
+      },
+    },
+  },
+})
+vim.lsp.enable 'html'
+
+vim.lsp.config('tailwindcss', {
+  settings = {
+    tailwindCSS = {
+      includeLanguages = {
+        elixir = 'html-eex',
+        eelixir = 'html-eex',
+        heex = 'html-eex',
+      },
+    },
+  },
+})
+vim.lsp.enable 'tailwindcss'
+
+vim.lsp.config('emmet_language_server', {
+  filetypes = { 'css', 'html', 'javascriptreact', 'typescriptreact', 'heex' },
+})
+vim.lsp.enable 'emmet_language_server'
+
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+    },
+  },
+})
+vim.lsp.enable 'lua_ls'
+
+vim.lsp.config('elixirls', {
+  cmd = { 'elixir-ls' },
+})
+vim.lsp.enable 'elixirls'
+
+vim.lsp.config('jsonls', {
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+vim.lsp.enable 'jsonls'
+
+vim.lsp.config('yamlls', {
+  settings = {
+    yaml = {
+      schemaStore = {
+        -- You must disable built-in schemaStore support if you want to use
+        -- this plugin and its advanced options like `ignore`.
+        enable = false,
+      },
+      schemas = require('schemastore').yaml.schemas(),
+    },
+  },
+})
+vim.lsp.enable 'yamlls'
+
+------------------------------------------------------------
+-- Snippets
+------------------------------------------------------------
+
+MiniDeps.add {
+  source = 'L3MON4D3/LuaSnip',
+  depends = {
+    'rafamadriz/friendly-snippets',
+  },
+}
+
+local luasnip = require 'luasnip'
+luasnip.config.setup {}
+require('luasnip.loaders.from_vscode').lazy_load()
+vim.keymap.set({ 'i' }, '<C-K>', function() luasnip.expand_or_jump() end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<C-J>', function() luasnip.jump(-1) end, { silent = true })
+vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+  if luasnip.choice_active() then luasnip.change_choice(1) end
+end, { silent = true })
+
+------------------------------------------------------------
+-- Treesitter
+------------------------------------------------------------
+
+MiniDeps.add {
+  source = 'nvim-treesitter/nvim-treesitter',
+  checkout = 'master',
+  monitor = 'main',
+  hooks = { post_checkout = function() vim.cmd 'TSUpdate' end },
+  depends = {
+    'nvim-treesitter/nvim-treesitter-context',
+    'windwp/nvim-ts-autotag',
+    'RRethy/nvim-treesitter-endwise', -- Enables itself! No config needed.
+  },
+}
+
+require('treesitter-context').setup {
+  separator = '-',
+  max_lines = 1,
+}
+
+require('nvim-ts-autotag').setup {
+  aliases = {
+    ['elixir'] = 'html',
+  },
+}
+
+require('nvim-treesitter.configs').setup {
+  auto_install = true,
+  indent = { enable = true },
+  highlight = { enable = true },
+}
+
+------------------------------------------------------------
+-- Oil
+------------------------------------------------------------
+
+MiniDeps.add 'stevearc/oil.nvim'
+require('oil').setup { view_options = { show_hidden = true } }
+vim.keymap.set('n', '-', '<cmd>Oil<cr>')
+
+------------------------------------------------------------
+-- Picker
+------------------------------------------------------------
+
+MiniDeps.add {
+  source = 'nvim-telescope/telescope.nvim',
+  depends = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
+    {
+      source = 'isak102/telescope-git-file-history.nvim',
+      depends = {
+        'tpope/vim-fugitive',
+      },
+    },
+  },
+}
+
+require('telescope').setup {
+  defaults = {
+    layout_config = { prompt_position = 'top' },
+    sorting_strategy = 'ascending',
+    file_ignore_patterns = { 'node_modules', '.git' },
+  },
+
+  pickers = {
+    find_files = {
+      -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d
+      find_command = { 'rg', '--files', '--hidden', '--glob', '!.git' },
+    },
+    live_grep = {
+      additional_args = { '--hidden' },
+    },
+  },
+
+  extensions = {
+    ['ui-select'] = {
+      require('telescope.themes').get_cursor {},
+    },
+  },
+}
+
+require('telescope').load_extension 'git_file_history'
+require('telescope').load_extension 'ui-select'
+
+vim.api.nvim_set_hl(0, 'TelescopeMatching', { link = 'Statement' })
+vim.api.nvim_set_hl(0, 'TelescopeTitle', { link = 'Statement' })
+vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { link = 'Statement' })
+
+vim.keymap.set('n', '<leader>ss', '<cmd>Telescope builtin<cr>')
+vim.keymap.set('n', '<leader>sf', '<cmd>Telescope find_files<cr>')
+vim.keymap.set('n', '<leader>sh', '<cmd>Telescope help_tags<cr>')
+vim.keymap.set('n', '<leader>sw', '<cmd>Telescope grep_string<cr>')
+vim.keymap.set('n', '<leader>sg', '<cmd>Telescope live_grep<cr>')
+vim.keymap.set('n', '<leader>sd', '<cmd>Telescope diagnostics<cr>')
+vim.keymap.set('n', '<leader>sr', '<cmd>Telescope resume<cr>')
+
+vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
+vim.keymap.set('n', '<leader>ht', '<cmd>Telescope colorscheme enable_preview=true<cr>')
+vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<cr>')
+
+vim.keymap.set(
+  'n',
+  '<leader>/',
+  function()
+    require('telescope.builtin').current_buffer_fuzzy_find(
+      require('telescope.themes').get_dropdown { winblend = 10, previewer = true }
+    )
+  end
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>;',
+  function()
+    require('telescope.builtin').commands(require('telescope.themes').get_ivy {
+      winblend = 10,
+    })
+  end
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>vc',
+  function()
+    require('telescope.builtin').find_files(require('telescope.themes').get_dropdown { cwd = vim.fn.stdpath 'config' })
+  end
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>vs',
+  function() require('telescope.builtin').live_grep { cwd = vim.fn.stdpath 'config' } end
+)
+
+vim.keymap.set('n', '<leader>gh', function() require('telescope').extensions.git_file_history.git_file_history() end)
+
+------------------------------------------------------------
+-- UI
+------------------------------------------------------------
+
+MiniDeps.add 'EdenEast/nightfox.nvim'
+require('nightfox').setup {
+  options = { transparent = true },
+  palettes = {
+    carbonfox = {
+      sel0 = '#3a3a3a', -- Popup bg, visual selection bg
+    },
+  },
+}
+vim.cmd.colorscheme 'carbonfox'
+
+MiniDeps.add 'brenoprata10/nvim-highlight-colors'
+require('nvim-highlight-colors').setup {
+  render = 'background',
+  enable_tailwind = true,
+}
+
+require('mini.statusline').setup {
+  use_icons = false,
+}
+
+require('mini.notify').setup()
+
+------------------------------------------------------------
+-- The classics
+------------------------------------------------------------
+
+MiniDeps.add 'tpope/vim-repeat'
+MiniDeps.add 'tpope/vim-sleuth'
+MiniDeps.add 'tpope/vim-surround'
+MiniDeps.add 'tpope/vim-unimpaired'
+MiniDeps.add 'tpope/vim-dispatch'
+MiniDeps.add 'tpope/vim-abolish'
+
+------------------------------------------------------------
+-- Git
+------------------------------------------------------------
+
+MiniDeps.add 'tpope/vim-fugitive'
+MiniDeps.add 'airblade/vim-gitgutter'
+
+vim.o.updatetime = 250 -- vim-gitgitter update time
+
+vim.keymap.set('n', '<leader>gg', '<cmd>Git<cr>')
+vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<cr>')
+
+------------------------------------------------------------
+-- Editing
+------------------------------------------------------------
+
+MiniDeps.add 'windwp/nvim-autopairs'
+require('nvim-autopairs').setup {}
+
+------------------------------------------------------------
+-- Supermaven
+------------------------------------------------------------
+
+if not (os.getenv 'IS_WORK_MACHINE' == 'true') then
+  MiniDeps.add 'supermaven-inc/supermaven-nvim'
+
+  require('supermaven-nvim').setup {
+    keymaps = {
+      accept_suggestion = '<M-l>',
+      accept_word = '<M-j>',
+    },
+    ignore_filetypes = { 'markdown' },
+  }
+end
+
+------------------------------------------------------------
+-- Linting
+------------------------------------------------------------
+
+MiniDeps.add 'mfussenegger/nvim-lint'
+
+local lint = require 'lint'
+lint.linters_by_ft = {
+  python = { 'ruff' },
+}
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'TextChanged' }, {
+  group = config_group,
+  callback = function() lint.try_lint() end,
+})
+
+------------------------------------------------------------
+-- Formatting
+------------------------------------------------------------
+
+MiniDeps.add 'stevearc/conform.nvim'
+
+local js_formatters = { 'prettierd' }
+
+require('conform').setup {
+  default_format_opts = {
+    lsp_format = 'fallback',
+    async = true,
+  },
+  format_on_save = function(bufnr)
+    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
+    return {}
+  end,
+
+  formatters_by_ft = {
+    python = { 'ruff_fix', 'ruff_format' },
+
+    lua = { 'stylua' },
+    rust = { 'rustfmt' },
+
+    html = js_formatters,
+    css = js_formatters,
+    json = js_formatters,
+
+    typescript = js_formatters,
+    javascript = js_formatters,
+    typescriptreact = js_formatters,
+    javascriptreact = js_formatters,
+
+    astro = js_formatters,
+    svelte = js_formatters,
+
+    nix = { 'nixfmt' },
+  },
+}
+
+vim.api.nvim_create_user_command('FormatDisable', function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
+  desc = 'Disable autoformat-on-save',
+  bang = true,
+})
+
+vim.api.nvim_create_user_command('FormatEnable', function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, {
+  desc = 'Re-enable autoformat-on-save',
+})
