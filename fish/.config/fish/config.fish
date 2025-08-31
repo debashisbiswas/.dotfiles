@@ -1,3 +1,5 @@
+set -g fish_greeting ""
+
 set -gx DOTFILES "$HOME/.dotfiles"
 set -gx EDITOR nvim
 set -gx FLYCTL_INSTALL "$HOME/.fly"
