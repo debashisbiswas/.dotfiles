@@ -3,8 +3,6 @@ set -g fish_greeting ""
 set -gx DOTFILES "$HOME/.dotfiles"
 set -gx EDITOR nvim
 set -gx FLYCTL_INSTALL "$HOME/.fly"
-set -gx PYENV_ROOT $HOME/.pyenv
-set -gx VOLTA_HOME "$HOME/.volta"
 
 if test (hostname) = "AZ75LT2YBB3J3"
     set -gx IS_WORK_MACHINE true
@@ -19,9 +17,6 @@ fish_add_path -g "$HOME/bin"
 fish_add_path -g "$HOME/go/bin"
 fish_add_path -g "/usr/local/go/bin"
 fish_add_path -g "$FLYCTL_INSTALL/bin"
-fish_add_path -g "$PYENV_ROOT/shims"
-fish_add_path -g "$PYENV_ROOT/bin"
-fish_add_path -g "$VOLTA_HOME/bin"
 fish_add_path -g "$HOME/.sst/bin"
 fish_add_path -g "$HOME/.emacs.d/bin"
 fish_add_path -g "$HOME/.config/emacs/bin"
