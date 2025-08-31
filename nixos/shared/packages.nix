@@ -17,7 +17,6 @@
     ./lang/rust.nix
     ./lang/shell.nix
     ./lang/terraform.nix
-    ./lang/text.nix
     ./lang/web.nix
     ./lang/zig.nix
   ];

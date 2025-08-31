@@ -158,19 +158,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.lsp.enable 'astro'
 vim.lsp.enable 'basedpyright'
-vim.lsp.enable 'clangd'
 vim.lsp.enable 'cssls'
-vim.lsp.enable 'dartls'
 vim.lsp.enable 'eslint'
 vim.lsp.enable 'gleam'
 vim.lsp.enable 'gopls'
-vim.lsp.enable 'ltex_plus'
 vim.lsp.enable 'nixd'
 vim.lsp.enable 'rust_analyzer'
-vim.lsp.enable 'sourcekit'
 vim.lsp.enable 'svelte'
 vim.lsp.enable 'vtsls'
-vim.lsp.enable 'zls'
 
 vim.lsp.config('html', {
   settings = {
