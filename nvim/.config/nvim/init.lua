@@ -7,7 +7,8 @@ if not vim.loop.fs_stat(mini_path) then
     'clone',
     '--filter=blob:none',
     -- Uncomment next line to use 'stable' branch
-    -- '--branch', 'stable',
+    '--branch',
+    'stable',
     'https://github.com/nvim-mini/mini.nvim',
     mini_path,
   }
@@ -418,6 +419,8 @@ require('nvim-highlight-colors').setup {
 require('mini.statusline').setup {
   use_icons = false,
 }
+
+vim.o.showmode = false
 
 require('mini.notify').setup()
 
