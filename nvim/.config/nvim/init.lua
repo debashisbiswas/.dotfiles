@@ -408,7 +408,8 @@ require('nightfox').setup {
     },
   },
 }
-vim.cmd.colorscheme 'carbonfox'
+-- TODO: Slated for deletion. The default color scheme is nice.
+-- vim.cmd.colorscheme 'carbonfox'
 
 MiniDeps.add 'brenoprata10/nvim-highlight-colors'
 require('nvim-highlight-colors').setup {
