@@ -91,15 +91,16 @@ in
       "raycast"
       "signal"
       "spotify"
+      "superwhisper"
       "tailscale-app"
       "ticktick"
       "visual-studio-code"
       "wezterm"
       "jellyfin-media-player"
       "zed"
-      "nikitabobko/tap/aerospace"
-      "acreom"
       "zoom"
+
+      "nikitabobko/tap/aerospace"
     ];
   };
 
