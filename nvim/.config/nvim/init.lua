@@ -73,45 +73,7 @@ require('mini.deps').setup()
 -- Completion
 ------------------------------------------------------------
 
-MiniDeps.add {
-  source = 'Saghen/blink.cmp',
-  depends = { 'rafamadriz/friendly-snippets' },
-  checkout = 'v1.6.0',
-}
-
-require('blink-cmp').setup {
-  keymap = { preset = 'default' },
-  sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
-    providers = {
-      lazydev = {
-        name = 'LazyDev',
-        module = 'lazydev.integrations.blink',
-        -- make lazydev completions top priority (see `:h blink.cmp`)
-        score_offset = 100,
-      },
-    },
-  },
-
-  signature = { enabled = true },
-
-  completion = {
-    list = { selection = { auto_insert = true } },
-    accept = {
-      auto_brackets = { enabled = true },
-    },
-    menu = {
-      draw = {
-        treesitter = { 'lsp' },
-      },
-    },
-    documentation = {
-      auto_show = true,
-      auto_show_delay_ms = 0,
-      update_delay_ms = 50,
-    },
-  },
-}
+require('mini.completion').setup {}
 
 ------------------------------------------------------------
 -- LSP
@@ -241,23 +203,14 @@ vim.lsp.enable 'yamlls'
 -- Snippets
 ------------------------------------------------------------
 
-MiniDeps.add {
-  source = 'L3MON4D3/LuaSnip',
-  depends = {
-    'rafamadriz/friendly-snippets',
+local gen_loader = require('mini.snippets').gen_loader
+require('mini.snippets').setup {
+  snippets = {
+    gen_loader.from_lang(),
   },
 }
 
-local luasnip = require 'luasnip'
-luasnip.config.setup {}
-require('luasnip.loaders.from_vscode').lazy_load()
-vim.keymap.set({ 'i' }, '<C-K>', function() luasnip.expand_or_jump() end, { silent = true })
-vim.keymap.set({ 'i', 's' }, '<C-J>', function() luasnip.jump(-1) end, { silent = true })
-vim.keymap.set({ 'i', 's' }, '<C-L>', function()
-  if luasnip.choice_active() then luasnip.change_choice(1) end
-end, { silent = true })
-
-------------------------------------------------------------
+--------------------------------------------------------------
 -- Treesitter
 ------------------------------------------------------------
 
@@ -265,7 +218,7 @@ MiniDeps.add {
   source = 'nvim-treesitter/nvim-treesitter',
   checkout = 'master',
   monitor = 'main',
-  hooks = { post_checkout = function() vim.cmd 'TSUpdate' end },
+  hooks = { post_checkout = vim.cmd.TSUpdate },
   depends = {
     'nvim-treesitter/nvim-treesitter-context',
     'windwp/nvim-ts-autotag',
