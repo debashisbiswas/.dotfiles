@@ -353,17 +353,17 @@ vim.keymap.set('n', '<leader>gh', function() require('telescope').extensions.git
 -- UI
 ------------------------------------------------------------
 
-MiniDeps.add 'EdenEast/nightfox.nvim'
-require('nightfox').setup {
-  options = { transparent = true },
-  palettes = {
-    carbonfox = {
-      sel0 = '#3a3a3a', -- Popup bg, visual selection bg
-    },
+MiniDeps.add 'miikanissi/modus-themes.nvim'
+require('modus-themes').setup {
+  transparent = false,
+  line_nr_column_background = false,
+  sign_column_background = true,
+  styles = {
+    comments = { italic = false },
+    keywords = { italic = false },
   },
 }
--- TODO: Slated for deletion. The default color scheme is nice.
--- vim.cmd.colorscheme 'carbonfox'
+vim.cmd.colorscheme 'modus'
 
 MiniDeps.add 'brenoprata10/nvim-highlight-colors'
 require('nvim-highlight-colors').setup {
