@@ -409,6 +409,8 @@ vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<cr>')
 MiniDeps.add 'windwp/nvim-autopairs'
 require('nvim-autopairs').setup {}
 
+require('mini.align').setup {}
+
 ------------------------------------------------------------
 -- Supermaven
 ------------------------------------------------------------
