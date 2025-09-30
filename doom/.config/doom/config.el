@@ -155,10 +155,6 @@
 
 (setq which-key-idle-secondary-delay 0)
 
-(use-package! mixed-pitch
-  :hook
-  (markdown-mode . mixed-pitch-mode))
-
 (defun violet/sudocompile (command)
   (let ((default-directory "/sudo::/"))
     (compile command)))
