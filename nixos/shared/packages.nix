@@ -34,7 +34,6 @@
     direnv
     doppler
     editorconfig-core-c
-    eza
     fd
     ffmpeg
     fzf

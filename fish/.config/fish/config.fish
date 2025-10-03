@@ -42,14 +42,6 @@ if status is-interactive
         abbr v nvim
     end
 
-    function ls -d 'eza instead of ls'
-        if type -q eza
-            eza --group-directories-first --git $argv
-        else
-            command ls --color=auto $argv
-        end
-    end
-
     if type -q starship
         starship init fish | source
     end

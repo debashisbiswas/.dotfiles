@@ -20,7 +20,6 @@
     zip
 
     bat
-    eza
     fd
     fzf
     ripgrep
@@ -39,4 +38,3 @@
     };
   };
 }
-
