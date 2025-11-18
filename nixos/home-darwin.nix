@@ -17,6 +17,8 @@ in
   home.packages = with pkgs; [
     # emacs - dired
     coreutils-prefixed
+
+    sourcekit-lsp
   ];
 
   fonts.fontconfig.enable = true;

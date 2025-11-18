@@ -5,7 +5,6 @@
     ./ai.nix
     ./fonts.nix
 
-    ./lang/apple.nix
     ./lang/clojure.nix
     ./lang/data.nix
     ./lang/elixir.nix
