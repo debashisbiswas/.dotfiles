@@ -35,13 +35,15 @@
       enable = true;
       qemu = {
         package = pkgs.qemu_kvm;
-        ovmf.enable = true;
         swtpm.enable = true;
       };
     };
   };
 
-  users.users.violet.extraGroups = [ "libvirtd" "kvm" ];
+  users.users.violet.extraGroups = [
+    "libvirtd"
+    "kvm"
+  ];
   environment.systemPackages = with pkgs; [
     virt-manager
     pciutils
