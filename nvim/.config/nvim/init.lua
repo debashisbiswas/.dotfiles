@@ -59,6 +59,12 @@ vim.keymap.set('n', '<esc>', vim.cmd.nohlsearch)
 vim.keymap.set('n', '<leader>bd', '<Cmd>bdelete<CR>', { desc = 'Delete buffer' })
 vim.keymap.set('n', '<leader>bk', '<Cmd>bdelete<CR>', { desc = 'Kill buffer' })
 
+vim.keymap.set('n', '<leader>cp', function()
+  local path = vim.fn.expand '%'
+  vim.fn.setreg('+', path)
+  vim.notify('Copied path to clipboard: ' .. path)
+end, { desc = 'Copy path' })
+
 local config_group = vim.api.nvim_create_augroup('ConfigGroup', { clear = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
