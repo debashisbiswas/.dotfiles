@@ -32,6 +32,13 @@ local shortcuts = {
 			vim.system({ "xdg-open", "https://claude.ai" })
 		end,
 	},
+	{
+		key = "t",
+		text = "(t)icktick",
+		action = function()
+			vim.system({ "ticktick" })
+		end,
+	},
 }
 
 local function quit()
@@ -65,6 +72,5 @@ vim.bo.filetype = "violetmenu"
 vim.o.laststatus = 0
 vim.o.number = false
 vim.o.relativenumber = false
-vim.o.cursorline = true
 vim.o.showmode = false
 vim.bo.readonly = false
