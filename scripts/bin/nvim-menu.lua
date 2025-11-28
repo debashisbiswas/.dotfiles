@@ -39,6 +39,13 @@ local shortcuts = {
 			vim.system({ "ticktick" })
 		end,
 	},
+	{
+		key = "n",
+		text = "(n)otion",
+		action = function()
+			vim.system({ "xdg-open", "https://notion.so" })
+		end,
+	},
 }
 
 local function quit()
