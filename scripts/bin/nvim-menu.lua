@@ -46,6 +46,13 @@ local shortcuts = {
 			vim.system({ "xdg-open", "https://notion.so" })
 		end,
 	},
+	{
+		key = "e",
+		text = "(e)macs",
+		action = function()
+			vim.system({ "emacs" })
+		end,
+	},
 }
 
 local function quit()
