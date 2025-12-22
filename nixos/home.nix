@@ -45,7 +45,6 @@ in
     alacritty
     brave
     calibre
-    code-cursor
     vscode
     discord
     firefox

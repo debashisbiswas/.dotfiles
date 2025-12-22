@@ -25,7 +25,6 @@
     vim
     neovim
 
-    ansible
     awscli2
     bat
     btop
@@ -36,8 +35,6 @@
     fd
     ffmpeg
     fzf
-    zip
-    unzip
     gh
     git
     glow
@@ -46,14 +43,10 @@
     imagemagick
     jq
     mariadb
-    neofetch
     nmap
-    pandoc
     postgresql
     tailscale
-    turso-cli
     railway
-    repomix
     ripgrep
     sqlite
     starship
@@ -61,7 +54,6 @@
     tmux
     unzip
     zip
-    zk
 
     # emacs - dirvish previews
     # https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#install-dependencies-for-an-enhanced-preview-experience
