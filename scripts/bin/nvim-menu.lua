@@ -1,3 +1,12 @@
+local function focus_or_open(windowclass, args)
+	local focus_result = vim.system({ "hyprctl", "dispatch", "focuswindow", "class:" .. windowclass }):wait()
+	local focus_success = focus_result.stdout:gsub("\n", "") == "ok"
+
+	if not focus_success then
+		vim.system(args)
+	end
+end
+
 local shortcuts = {
 	{
 		key = "b",
@@ -17,12 +26,7 @@ local shortcuts = {
 		key = "o",
 		text = "(o)bsidian",
 		action = function()
-			local focus_result = vim.system({ "hyprctl", "dispatch", "focuswindow", "class:obsidian" }):wait()
-			local focus_success = focus_result.stdout:gsub("\n", "") == "ok"
-
-			if not focus_success then
-				vim.system({ "obsidian" })
-			end
+			focus_or_open("obsidian", { "obsidian" })
 		end,
 	},
 	{
@@ -51,6 +55,13 @@ local shortcuts = {
 		text = "(e)macs",
 		action = function()
 			vim.system({ "emacs" })
+		end,
+	},
+	{
+		key = "s",
+		text = "(s)potify",
+		action = function()
+			focus_or_open("spotify", { "spotify" })
 		end,
 	},
 }
