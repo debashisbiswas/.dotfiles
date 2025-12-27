@@ -22,8 +22,8 @@
 ;; accept. For example:
 ;;
 (let ((font-size (if (string= (getenv "IS_WORK_MACHINE") "true") 18 20)))
-  (setq doom-font (font-spec :family "Iosevka" :size font-size :weight 'normal)
-        doom-variable-pitch-font (font-spec :family "Noto Sans" :size font-size)))
+  (setq doom-font (font-spec :family "Sarasa Mono J" :size font-size :weight 'normal)
+        doom-variable-pitch-font (font-spec :family "Sarasa Gothic J" :size font-size)))
 
 (unless (string= (getenv "IS_WORK_MACHINE") "true")
   (doom/set-frame-opacity 95))
