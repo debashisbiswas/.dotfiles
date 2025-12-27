@@ -121,8 +121,12 @@ in
 
     emacs = {
       enable = true;
-      package = pkgs.emacs30-pgtk;
-      extraPackages = epkgs: with epkgs; [ vterm ];
+      package = pkgs.emacs-pgtk;
+      extraPackages =
+        epkgs: with epkgs; [
+          vterm
+          treesit-grammars.with-all-grammars
+        ];
     };
   };
 }
