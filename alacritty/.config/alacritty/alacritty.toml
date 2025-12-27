@@ -5,7 +5,7 @@ live_config_reload = true
 size = 15.0
 
 [font.normal]
-family = "Iosevka"
+family = "Sarasa Mono J"
 
 [window]
 option_as_alt = 'Both'

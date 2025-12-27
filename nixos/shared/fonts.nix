@@ -17,6 +17,7 @@
     noto-fonts-color-emoji
     roboto
     roboto-mono
+    sarasa-gothic
     takao
     vollkorn
     work-sans
