@@ -23,7 +23,7 @@
 ;;
 (let ((font-size (if (string= (getenv "IS_WORK_MACHINE") "true") 18 20)))
   (setq doom-font (font-spec :family "Sarasa Mono J" :size font-size :weight 'normal)
-        doom-variable-pitch-font (font-spec :family "Sarasa Gothic J" :size font-size)))
+        doom-variable-pitch-font (font-spec :family "Sarasa UI J" :size font-size)))
 
 (unless (string= (getenv "IS_WORK_MACHINE") "true")
   (doom/set-frame-opacity 95))
