@@ -83,6 +83,7 @@ in
     networkmanagerapplet
     nwg-look
     overskride # tuis are cool until you need to connect a bluetooth keyboard
+    swayosd
     swww
     waybar
     wl-clipboard
