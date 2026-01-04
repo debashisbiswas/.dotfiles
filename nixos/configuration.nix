@@ -104,7 +104,8 @@
     devmon.enable = true;
     gvfs.enable = true;
 
-    ollama.enable = true;
+    # Not using this at the moment!
+    ollama.enable = false;
   };
 
   virtualisation.docker = {

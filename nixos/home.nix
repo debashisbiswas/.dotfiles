@@ -60,9 +60,9 @@ in
     slack
     tana
     ticktick
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-volman
+    thunar
+    thunar-archive-plugin
+    thunar-volman
     zed-editor
 
     inotify-tools # elixir! only needed on linux
