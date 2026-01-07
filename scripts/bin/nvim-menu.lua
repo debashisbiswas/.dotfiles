@@ -40,7 +40,7 @@ local shortcuts = {
 		key = "t",
 		text = "(t)icktick",
 		action = function()
-			vim.system({ "ticktick" })
+			vim.system({ "xdg-open", "https://ticktick.com/webapp" })
 		end,
 	},
 	{
@@ -62,6 +62,13 @@ local shortcuts = {
 		text = "(s)potify",
 		action = function()
 			focus_or_open("spotify", { "spotify" })
+		end,
+	},
+	{
+		key = "d",
+		text = "(d)iscord",
+		action = function()
+			vim.system({ "discord" })
 		end,
 	},
 }
