@@ -53,6 +53,7 @@
     stow
     tmux
     unzip
+    wrangler
     zip
 
     # emacs - dirvish previews
