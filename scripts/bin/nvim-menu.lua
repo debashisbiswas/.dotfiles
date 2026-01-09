@@ -106,3 +106,6 @@ vim.o.number = false
 vim.o.relativenumber = false
 vim.o.showmode = false
 vim.bo.readonly = false
+
+-- Transparent background
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
