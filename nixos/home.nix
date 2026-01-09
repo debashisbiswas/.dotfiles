@@ -43,6 +43,7 @@ in
 
     # gui
     alacritty
+    anki
     brave
     calibre
     vscode
