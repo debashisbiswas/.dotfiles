@@ -9,6 +9,8 @@
     ./modules/hyprland.nix
     ./modules/print.nix
     ./modules/syncthing.nix
+
+    ./modules/niri.nix
   ];
 
   nix = {
