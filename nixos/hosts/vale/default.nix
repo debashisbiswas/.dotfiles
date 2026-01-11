@@ -87,6 +87,9 @@ in
       "docker-desktop"
       "flutter"
       "google-chrome"
+      "jellyfin-media-player"
+      "libreoffice"
+      "obs"
       "obsidian"
       "raycast"
       "signal"
@@ -96,7 +99,6 @@ in
       "ticktick"
       "visual-studio-code"
       "wezterm"
-      "jellyfin-media-player"
       "zed"
       "zoom"
 
