@@ -53,6 +53,8 @@ vim.diagnostic.config {
   jump = { float = true },
 }
 
+vim.o.winborder = 'rounded'
+
 vim.keymap.set('n', '<leader>so', vim.cmd.source)
 vim.keymap.set('n', '<leader>fs', vim.cmd.update)
 vim.keymap.set('n', '<esc>', vim.cmd.nohlsearch)
@@ -100,17 +102,6 @@ require('lazydev').setup {
     { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
   },
 }
-
--- Set up borders for LSP windows
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
-
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or 'rounded'
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
 
 -- On attach
 
