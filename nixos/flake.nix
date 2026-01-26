@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -33,6 +32,13 @@
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
     };
+
+    # Following dev branch directly until the official flake is in nixpkgs
+    # This project changes so fast that nixpkgs-unstable is usually behind
+    opencode = {
+      url = "github:anomalyco/opencode/dev";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -41,6 +47,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      opencode,
       ...
     }@inputs:
     let
