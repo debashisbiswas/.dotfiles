@@ -36,7 +36,7 @@
     # Following dev branch directly until the official flake is in nixpkgs
     # This project changes so fast that nixpkgs-unstable is usually behind
     opencode = {
-      url = "github:anomalyco/opencode/dev";
+      url = "github:anomalyco/opencode";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
