@@ -79,6 +79,7 @@ in
     # warnings for now. Is there a way to get warnings when rebuilding?
     casks = [
       "android-studio"
+      "anki"
       "bitwarden"
       "brave-browser"
       "calibre"
