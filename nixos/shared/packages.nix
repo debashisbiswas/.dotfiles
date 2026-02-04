@@ -55,6 +55,7 @@
     unzip
     wrangler
     zip
+    zoxide
 
     # emacs - dirvish previews
     # https://github.com/alexluigit/dirvish/blob/main/docs/CUSTOMIZING.org#install-dependencies-for-an-enhanced-preview-experience
