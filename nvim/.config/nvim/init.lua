@@ -79,6 +79,7 @@ vim.filetype.add {
   extension = {
     fnc = 'plsql',
     vw = 'plsql',
+    prc = 'plsql',
   },
 }
 
