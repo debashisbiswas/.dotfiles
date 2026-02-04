@@ -325,7 +325,8 @@ vim.keymap.set(
     require('telescope.builtin').current_buffer_fuzzy_find(
       require('telescope.themes').get_dropdown { winblend = 10, previewer = true }
     )
-  end
+  end,
+  { desc = 'buffer fuzzy find' }
 )
 
 vim.keymap.set(
@@ -335,7 +336,8 @@ vim.keymap.set(
     require('telescope.builtin').commands(require('telescope.themes').get_ivy {
       winblend = 10,
     })
-  end
+  end,
+  { desc = 'commands' }
 )
 
 vim.keymap.set(
@@ -343,13 +345,15 @@ vim.keymap.set(
   '<leader>vc',
   function()
     require('telescope.builtin').find_files(require('telescope.themes').get_dropdown { cwd = vim.fn.stdpath 'config' })
-  end
+  end,
+  { desc = 'vim config' }
 )
 
 vim.keymap.set(
   'n',
   '<leader>vs',
-  function() require('telescope.builtin').live_grep { cwd = vim.fn.stdpath 'config' } end
+  function() require('telescope.builtin').live_grep { cwd = vim.fn.stdpath 'config' } end,
+  { desc = 'search vim config' }
 )
 
 vim.keymap.set('n', '<leader>gh', function() require('telescope').extensions.git_file_history.git_file_history() end)
@@ -383,6 +387,49 @@ require('mini.statusline').setup {
 vim.o.showmode = false
 
 require('mini.notify').setup()
+
+local miniclue = require 'mini.clue'
+miniclue.setup {
+  triggers = {
+    -- Leader triggers
+    { mode = { 'n', 'x' }, keys = '<Leader>' },
+
+    -- `[` and `]` keys
+    { mode = 'n', keys = '[' },
+    { mode = 'n', keys = ']' },
+
+    -- Built-in completion
+    { mode = 'i', keys = '<C-x>' },
+
+    -- `g` key
+    { mode = { 'n', 'x' }, keys = 'g' },
+
+    -- Marks
+    { mode = { 'n', 'x' }, keys = "'" },
+    { mode = { 'n', 'x' }, keys = '`' },
+
+    -- Registers
+    { mode = { 'n', 'x' }, keys = '"' },
+    { mode = { 'i', 'c' }, keys = '<C-r>' },
+
+    -- Window commands
+    { mode = 'n', keys = '<C-w>' },
+
+    -- `z` key
+    { mode = { 'n', 'x' }, keys = 'z' },
+  },
+
+  clues = {
+    -- Enhance this by adding descriptions for <Leader> mapping groups
+    miniclue.gen_clues.square_brackets(),
+    miniclue.gen_clues.builtin_completion(),
+    miniclue.gen_clues.g(),
+    miniclue.gen_clues.marks(),
+    miniclue.gen_clues.registers(),
+    miniclue.gen_clues.windows(),
+    miniclue.gen_clues.z(),
+  },
+}
 
 ------------------------------------------------------------
 -- The classics
