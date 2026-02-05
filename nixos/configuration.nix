@@ -219,7 +219,6 @@
     fish.enable = true;
     dconf.enable = true;
     neovim.enable = true;
-    adb.enable = true;
     seahorse.enable = true;
 
     # https://nix.dev/guides/faq.html#how-to-run-non-nix-executables

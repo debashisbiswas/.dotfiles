@@ -31,6 +31,7 @@ in
     gcc
 
     # cli
+    android-tools
     gphoto2
     home-manager
     mpv
