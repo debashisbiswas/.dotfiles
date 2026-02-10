@@ -36,6 +36,7 @@
     ffmpeg
     fzf
     gh
+    ghq
     git
     glow
     gnumake
