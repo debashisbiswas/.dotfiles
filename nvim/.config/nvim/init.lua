@@ -449,6 +449,18 @@ MiniDeps.add 'tpope/vim-abolish'
 MiniDeps.add 'tpope/vim-fugitive'
 MiniDeps.add 'airblade/vim-gitgutter'
 
+MiniDeps.add {
+  source = 'NeogitOrg/neogit',
+  depends = {
+    'nvim-lua/plenary.nvim', -- required
+    'sindrets/diffview.nvim', -- optional - Diff integration
+
+    'nvim-telescope/telescope.nvim', -- optional
+  },
+}
+
+vim.keymap.set('n', '<leader>ng', '<cmd>Neogit<cr>', { desc = 'Neogit' })
+
 vim.o.updatetime = 250 -- vim-gitgitter update time
 
 vim.keymap.set('n', '<leader>gg', '<cmd>Git<cr>')
