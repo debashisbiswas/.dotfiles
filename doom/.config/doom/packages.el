@@ -55,3 +55,5 @@
 (package! sqlplus :disable (not (is-work-machine)))
 (package! nov :disable (is-work-machine))
 (package! mixed-pitch)
+
+(package! ef-themes)
