@@ -57,3 +57,9 @@
 (package! mixed-pitch)
 
 (package! ef-themes)
+(package! nibelung-theme
+  :recipe (:host github
+           :repo "veschin/nibelung-theme"))
+(package! sandcastle-theme
+  :recipe (:host github
+           :repo "habamax/sandcastle-theme"))
