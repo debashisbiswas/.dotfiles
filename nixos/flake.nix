@@ -47,7 +47,6 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      opencode,
       ...
     }@inputs:
     let
