@@ -65,6 +65,12 @@
           modules = [ ./hosts/lumine ];
           specialArgs = { inherit inputs outputs; };
         };
+
+        vexahlia = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/vexahlia ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
 
       darwinConfigurations = {
