@@ -67,6 +67,7 @@ end
 
 if type -q nix
     abbr ns "nix shell nixpkgs#"
+    abbr nr "nix run nixpkgs#"
 end
 
 if type -q docker
