@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
+    inputs.home-manager.nixosModules.default
+
     ./hardware-configuration.nix
   ];
 
@@ -34,6 +36,7 @@
       "networkmanager"
       "wheel"
     ];
+    linger = true;
   };
 
   nix = {
@@ -54,6 +57,11 @@
   ];
 
   services.tailscale.enable = true;
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users.violet = import ./home.nix;
+  };
 
   system.stateVersion = "25.11";
 }
