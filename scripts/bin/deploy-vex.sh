@@ -4,6 +4,6 @@ set -euxo pipefail
 
 nix run nixpkgs#nixos-rebuild -- switch \
   --flake "$DOTFILES/nixos#vexahlia" \
-  --target-host violet@vexahlia.queue-mixolydian.ts.net \
-  --build-host violet@vexahlia.queue-mixolydian.ts.net \
+  --target-host violet@vexahlia \
+  --build-host violet@vexahlia \
   --ask-sudo-password
