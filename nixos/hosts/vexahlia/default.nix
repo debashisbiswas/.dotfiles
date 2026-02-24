@@ -64,6 +64,8 @@
 
   services.tailscale.enable = true;
 
+  services.jellyfin.enable = true;
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.violet = import ./home.nix;
