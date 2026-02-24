@@ -64,7 +64,17 @@
 
   services.tailscale.enable = true;
 
-  services.jellyfin.enable = true;
+  services.jellyfin =
+    let
+      jellyfin-base = "/srv/jellyfin";
+    in
+    {
+      enable = true;
+      dataDir = jellyfin-base;
+      configDir = "${jellyfin-base}/config";
+      cacheDir = "${jellyfin-base}/cache";
+      logDir = "${jellyfin-base}/log";
+    };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
