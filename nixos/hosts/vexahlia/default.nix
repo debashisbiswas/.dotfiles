@@ -1,5 +1,8 @@
 { pkgs, inputs, ... }:
 
+let
+  username = "violet";
+in
 {
   imports = [
     inputs.home-manager.nixosModules.default
@@ -29,7 +32,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  users.users.violet = {
+  users.users.${username} = {
     isNormalUser = true;
     description = "Debashis Biswas";
     extraGroups = [
@@ -70,6 +73,8 @@
     in
     {
       enable = true;
+      user = username;
+
       dataDir = jellyfin-base;
       configDir = "${jellyfin-base}/config";
       cacheDir = "${jellyfin-base}/cache";
@@ -78,7 +83,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users.violet = import ./home.nix;
+    users.${username} = import ./home.nix;
   };
 
   system.stateVersion = "25.11";
