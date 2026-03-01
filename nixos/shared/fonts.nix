@@ -19,6 +19,7 @@
     roboto-mono
     sarasa-gothic
     takao
+    udev-gothic
     vollkorn
     work-sans
   ];
