@@ -1,6 +1,6 @@
 # reload with ctrl-shift-, (cmd-shift-, )
 
-theme = One Half Dark
+theme = Catppuccin Mocha
 font-family = "Iosevka"
 font-size = 15
 

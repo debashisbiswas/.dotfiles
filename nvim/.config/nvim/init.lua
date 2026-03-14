@@ -381,7 +381,18 @@ require('onehalf').setup {
   },
 }
 
-vim.cmd.colorscheme 'onehalfdark'
+MiniDeps.add { source = 'catppuccin/nvim', name = 'catppuccin' }
+
+require('catppuccin').setup {
+  background = {
+    light = 'latte',
+    dark = 'mocha',
+  },
+  transparent_background = true,
+  no_italic = true,
+}
+
+vim.cmd.colorscheme 'catppuccin-nvim'
 
 MiniDeps.add 'brenoprata10/nvim-highlight-colors'
 require('nvim-highlight-colors').setup {
