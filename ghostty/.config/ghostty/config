@@ -1,10 +1,9 @@
-# reload with ctrl-shift-,
+# reload with ctrl-shift-, (cmd-shift-, )
 
-theme = GitHub Dark Default
+theme = One Half Dark
 font-family = "Iosevka"
 font-size = 15
 
-window-decoration = false
 window-padding-x = 6
 window-padding-balance = true
 cursor-invert-fg-bg = true

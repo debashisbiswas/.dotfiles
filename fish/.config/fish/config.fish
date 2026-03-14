@@ -22,7 +22,18 @@ fish_add_path -g "$HOME/.emacs.d/bin"
 fish_add_path -g "$HOME/.config/emacs/bin"
 
 if test (uname) = Darwin
-    eval (brew shellenv)
+    if type -q brew
+        eval (brew shellenv)
+
+        # https://docs.brew.sh/Shell-Completion
+        if test -d (brew --prefix)"/share/fish/completions"
+            set -p fish_complete_path (brew --prefix)/share/fish/completions
+        end
+
+        if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+            set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+        end
+    end
 end
 
 if status is-interactive

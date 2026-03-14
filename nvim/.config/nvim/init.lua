@@ -372,7 +372,16 @@ require('modus-themes').setup {
     keywords = { italic = false },
   },
 }
-vim.cmd.colorscheme 'modus'
+
+MiniDeps.add 'ClearAspect/onehalf'
+require('onehalf').setup {
+  transparency = true,
+  styles = {
+    comments = { italic = false },
+  },
+}
+
+vim.cmd.colorscheme 'onehalfdark'
 
 MiniDeps.add 'brenoprata10/nvim-highlight-colors'
 require('nvim-highlight-colors').setup {
