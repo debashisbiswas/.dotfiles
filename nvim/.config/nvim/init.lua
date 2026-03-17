@@ -77,6 +77,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.filetype.add {
   extension = {
+    musicxml = 'xml',
+
     fnc = 'plsql',
     vw = 'plsql',
     prc = 'plsql',
@@ -119,6 +121,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- :help gO, :help lsp-defaults
     vim.keymap.set('n', 'gO', require('telescope.builtin').lsp_document_symbols)
     vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions)
+    vim.keymap.set('n', 'grr', require('telescope.builtin').lsp_references)
   end,
 })
 
