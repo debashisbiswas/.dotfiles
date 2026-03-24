@@ -38,6 +38,7 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     linger = true;
   };
@@ -65,21 +66,31 @@ in
     vim
   ];
 
-  services.tailscale.enable = true;
-
-  services.jellyfin =
-    let
-      jellyfin-base = "/srv/jellyfin";
-    in
-    {
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
       enable = true;
-      user = username;
-
-      dataDir = jellyfin-base;
-      configDir = "${jellyfin-base}/config";
-      cacheDir = "${jellyfin-base}/cache";
-      logDir = "${jellyfin-base}/log";
+      setSocketVariable = true;
     };
+  };
+
+  services = {
+    tailscale.enable = true;
+
+    jellyfin =
+      let
+        jellyfin-base = "/srv/jellyfin";
+      in
+      {
+        enable = true;
+        user = username;
+
+        dataDir = jellyfin-base;
+        configDir = "${jellyfin-base}/config";
+        cacheDir = "${jellyfin-base}/cache";
+        logDir = "${jellyfin-base}/log";
+      };
+  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
