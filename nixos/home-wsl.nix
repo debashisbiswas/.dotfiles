@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   user = "dbiswas";
@@ -33,6 +33,7 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
   programs = {
     home-manager.enable = true;
