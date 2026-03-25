@@ -23,6 +23,8 @@
       ];
       warn-dirty = false;
     };
+
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
   nixpkgs.config.allowUnfree = true;

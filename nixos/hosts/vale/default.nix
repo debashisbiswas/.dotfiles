@@ -14,8 +14,18 @@ in
     inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
 
-  nix.settings.warn-dirty = false;
-  nixpkgs.config.allowUnfree = true;
+  nix = {
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    settings = {
+      experimental-features = "nix-command flakes";
+      warn-dirty = false;
+    };
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    hostPlatform = "aarch64-darwin";
+  };
 
   users.users.violet = {
     name = user;
@@ -27,16 +37,14 @@ in
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
   system.stateVersion = 6;
 
-  nix.settings.experimental-features = "nix-command flakes";
-
   environment.systemPackages = [
     # Essential system tools that should be available system-wide
   ];
 
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
-
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  programs = {
+    zsh.enable = true;
+    fish.enable = true;
+  };
 
   networking.hostName = "vale";
 
