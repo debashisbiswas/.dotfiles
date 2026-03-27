@@ -90,6 +90,13 @@ in
         cacheDir = "${jellyfin-base}/cache";
         logDir = "${jellyfin-base}/log";
       };
+    calibre-web = {
+      enable = true;
+      listen.ip = "0.0.0.0";
+      options = {
+        enableBookUploading = true;
+      };
+    };
   };
 
   home-manager = {
