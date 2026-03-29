@@ -90,14 +90,21 @@ in
         cacheDir = "${jellyfin-base}/cache";
         logDir = "${jellyfin-base}/log";
       };
+
     calibre-web = {
       enable = true;
+      user = username;
       listen.ip = "0.0.0.0";
       options = {
+        calibreLibrary = "/srv/calibre";
         enableBookUploading = true;
       };
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /srv/calibre 0775 ${username} users - -"
+  ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

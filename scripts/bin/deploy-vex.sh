@@ -9,4 +9,6 @@ NIX_SSHOPTS="-o ControlMaster=no -o ControlPath=none -o ControlPersist=no" \
 	--flake "$DOTFILES/nixos#vexahlia" \
 	--target-host root@vexahlia \
 	--build-host root@vexahlia \
-	--no-reexec
+	--no-reexec \
+	# --show-trace \
+	# --verbose
