@@ -13,6 +13,7 @@
         "clock"
     ],
     "modules-right": [
+        "mpris",
         "pulseaudio",
         "bluetooth",
         "battery",
@@ -93,6 +94,9 @@
             "on-click": "mode",
             "on-click-right": "mode"
         }
+    },
+    "mpris": {
+        "interval": 1
     },
     "bluetooth": {
         "format": " {status}",
