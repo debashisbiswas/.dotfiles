@@ -212,12 +212,14 @@ vim.lsp.enable 'yamlls'
 -- Snippets
 ------------------------------------------------------------
 
-local gen_loader = require('mini.snippets').gen_loader
-require('mini.snippets').setup {
-  snippets = {
-    gen_loader.from_lang(),
-  },
-}
+-- Disabled for now, the placeholder behavior is so annoying
+
+-- local gen_loader = require('mini.snippets').gen_loader
+-- require('mini.snippets').setup {
+--   snippets = {
+--     gen_loader.from_lang(),
+--   },
+-- }
 
 --------------------------------------------------------------
 -- Treesitter
