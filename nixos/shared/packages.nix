@@ -54,7 +54,6 @@
     stow
     tmux
     unzip
-    wrangler
     zip
     zoxide
 
