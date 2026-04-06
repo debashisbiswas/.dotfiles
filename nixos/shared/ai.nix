@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     amp-cli
-    claude-code
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
     codex
     inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi
