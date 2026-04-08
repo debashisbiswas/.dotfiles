@@ -57,6 +57,8 @@ if status is-interactive
         starship init fish | source
     end
 
+    abbr ng nvim +Neogit
+
     bind \cf arcane
 end
 
