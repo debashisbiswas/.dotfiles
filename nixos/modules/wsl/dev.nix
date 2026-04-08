@@ -27,8 +27,6 @@
     doppler
     gh
     starship
-
-    repomix
   ];
 
   programs = {
