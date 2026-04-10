@@ -25,6 +25,10 @@
     vim
     neovim
 
+    # This should be version v0.26.1 for nvim-treesitter compatibility, but the
+    # nixpkgs version is v0.25.10.
+    tree-sitter
+
     awscli2
     bat
     btop
