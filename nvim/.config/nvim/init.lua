@@ -247,8 +247,12 @@ require('nvim-ts-autotag').setup {
   },
 }
 
+-- Folds are cool, but they should be opt-in, not opt-out.
+vim.o.foldlevelstart = 99
+
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(ev)
+    -- https://www.reddit.com/r/neovim/comments/1sezoxf/nvimtreesitter_auto_install_parsers/
     local lang = vim.treesitter.language.get_lang(ev.match)
     local available_langs = require('nvim-treesitter').get_available()
     local is_available = vim.tbl_contains(available_langs, lang)
@@ -256,13 +260,14 @@ vim.api.nvim_create_autocmd('FileType', {
       local installed_langs = require('nvim-treesitter').get_installed()
       local installed = vim.tbl_contains(installed_langs, lang)
       if not installed then require('nvim-treesitter').install(lang):wait() end
+
       vim.treesitter.start()
 
       vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
       vim.wo[0][0].foldmethod = 'expr'
 
       -- experimental
-      -- require('nvim-treesitter').indentexpr()
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end
   end,
 })
