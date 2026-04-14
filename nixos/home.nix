@@ -75,6 +75,7 @@ in
     hunspell
 
     # desktop environment
+    awww
     bluetui
     brightnessctl
     clipse
@@ -85,7 +86,6 @@ in
     networkmanagerapplet
     nwg-look
     overskride # tuis are cool until you need to connect a bluetooth keyboard
-    swww
     waybar
     wl-clipboard
     wlsunset
