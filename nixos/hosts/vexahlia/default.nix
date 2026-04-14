@@ -102,6 +102,8 @@ in
     };
   };
 
+  networking.firewall.allowedTCPPorts = [ 8083 ]; # calibre-web
+
   systemd.tmpfiles.rules = [
     "d /srv/calibre 0775 ${username} users - -"
   ];
