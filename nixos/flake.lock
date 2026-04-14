@@ -292,26 +292,6 @@
         "type": "github"
       }
     },
-    "opencode": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776183900,
-        "narHash": "sha256-h7fzSz/VhP80m6C/jZ1SwITdPEbHWzv8Cf81EB1BebA=",
-        "owner": "anomalyco",
-        "repo": "opencode",
-        "rev": "a8f9f6b7059bc9edf8184f8ebddf32dd1c6030e8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anomalyco",
-        "repo": "opencode",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "hardware": "hardware",
@@ -323,8 +303,7 @@
         "nikitabobko-tap": "nikitabobko-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs",
-        "opencode": "opencode"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
