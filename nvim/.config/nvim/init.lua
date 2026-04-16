@@ -263,6 +263,8 @@ vim.api.nvim_create_autocmd('FileType', {
 
     -- install() -> await() acts as "ensure installed"; if it is already installed, install
     -- will silently succeed
+    -- TODO: If you change buffers before we get to await, it'll start treesitter in the wrong buffer.
+    -- Switching to Oil mid-install is a good example of this.
     require('nvim-treesitter').install(lang):await(function()
       vim.treesitter.start()
 
