@@ -256,14 +256,10 @@ vim.api.nvim_create_autocmd('FileType', {
     -- but I've customized it further.
     local lang = vim.treesitter.language.get_lang(ev.match)
     local available_langs = require('nvim-treesitter').get_available()
-    local available = vim.tbl_contains(available_langs, lang)
 
     -- If the language is unavailable, install() will log a warning, but await() will still
     -- resolve, so return early to avoid starting treesitter when the language is unavailable.
-    if not available then
-      vim.notify('skipping unavailable language: ' .. lang .. ' for match ' .. ev.match)
-      return
-    end
+    if not vim.tbl_contains(available_langs, lang) then return end
 
     -- install() -> await() acts as "ensure installed"; if it is already installed, install
     -- will silently succeed
