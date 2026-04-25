@@ -434,6 +434,7 @@ require('nvim-highlight-colors').setup {
 require('mini.statusline').setup {
   use_icons = false,
 }
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE' })
 
 vim.o.showmode = false
 
