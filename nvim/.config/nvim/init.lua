@@ -401,14 +401,6 @@ require('modus-themes').setup {
   },
 }
 
-MiniDeps.add 'ClearAspect/onehalf'
-require('onehalf').setup {
-  transparency = true,
-  styles = {
-    comments = { italic = false },
-  },
-}
-
 MiniDeps.add { source = 'catppuccin/nvim', name = 'catppuccin' }
 
 require('catppuccin').setup {
@@ -420,7 +412,18 @@ require('catppuccin').setup {
   no_italic = true,
 }
 
-vim.cmd.colorscheme 'catppuccin-nvim'
+MiniDeps.add 'EdenEast/nightfox.nvim'
+
+require('nightfox').setup {
+  options = { transparent = true },
+  palettes = {
+    carbonfox = {
+      sel0 = '#3a3a3a', -- Popup bg, visual selection bg
+    },
+  },
+}
+
+vim.cmd.colorscheme 'carbonfox'
 
 MiniDeps.add 'brenoprata10/nvim-highlight-colors'
 require('nvim-highlight-colors').setup {
