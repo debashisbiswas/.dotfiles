@@ -29,7 +29,7 @@ in
 
     # oracle
     oracle-instantclient
-    # sqlcl # Temporarily disabled - Oracle's download servers are broken
+    sqlcl
   ];
 
   nixpkgs.config.allowUnfree = true;
