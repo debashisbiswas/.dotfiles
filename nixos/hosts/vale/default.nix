@@ -85,6 +85,10 @@ in
     # an issue with docker re-installing itself. On every rebuild. Something
     # similar happened with Tailscale. Use `brew list --versions` to see rename
     # warnings for now. Is there a way to get warnings when rebuilding?
+    #
+    # If renamed casks (e.g. docker-desktop, tailscale-app) reinstall on
+    # every rebuild, remove stale legacy Caskroom dirs left from old tokens:
+    # `rm -rf /opt/homebrew/Caskroom/docker /opt/homebrew/Caskroom/tailscale`.
     casks = [
       "android-studio"
       "anki"
