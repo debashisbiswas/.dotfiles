@@ -1,6 +1,6 @@
 # reload with ctrl-shift-, (cmd-shift-, )
 
-theme = Catppuccin Mocha
+theme = Carbonfox
 font-family = "Iosevka"
 font-size = 22
 
