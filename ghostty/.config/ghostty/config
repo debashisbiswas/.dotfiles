@@ -2,7 +2,7 @@
 
 theme = Carbonfox
 font-family = "Iosevka"
-font-size = 22
+font-size = 20
 
 window-padding-x = 6
 window-padding-balance = true
