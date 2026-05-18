@@ -8,7 +8,8 @@ function arcane
         set -l session_name (string replace -a . _ (path basename $selected))
 
         if not tmux has-session -t=$session_name 2>/dev/null
-            tmux new-session -d -s $session_name -c $selected -n "editor" "nvim ."
+            tmux new-session -d -s $session_name -c $selected -n "editor"
+            tmux send-keys -t "$session_name:editor" "nvim ." C-m
             tmux new-window -t $session_name -c $selected -n "terminal"
         end
         
