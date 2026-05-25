@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TRANSCRIPTION_SERVER="https://vale.queue-mixolydian.ts.net/transcribe"
+TRANSCRIPTION_SERVER="localhost:8000/transcribe"
 
 cleanup_and_exit() {
     echo "Recording cancelled" >&2
