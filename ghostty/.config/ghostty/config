@@ -1,8 +1,8 @@
 # reload with ctrl-shift-, (cmd-shift-, )
 
 theme = Carbonfox
-font-family = "Iosevka"
-font-size = 20
+font-family = "Sarasa Mono J"
+font-size = 14
 
 window-padding-x = 6
 window-padding-balance = true
