@@ -1,0 +1,3 @@
+keybindings = [
+    { key = { Char = " " }, action = "SetDefault" }
+]
