@@ -40,6 +40,7 @@ in
     usbutils
     v4l-utils
     wally-cli
+    wiremix
     xclip
 
     # gui
