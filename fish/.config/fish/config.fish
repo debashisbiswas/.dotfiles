@@ -95,6 +95,10 @@ if type -q zoxide
     zoxide init fish | source
 end
 
+if type -q fzf
+    fzf --fish | source
+end
+
 alias wl "xdg-open 'https://www.youtube.com/playlist?list=WL'"
 
 abbr refresh "source ~/.config/fish/config.fish"

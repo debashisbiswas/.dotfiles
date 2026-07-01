@@ -32,6 +32,7 @@
     awscli2
     bat
     btop
+    delta
     dig
     direnv
     doppler
