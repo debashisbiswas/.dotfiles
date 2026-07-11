@@ -11,6 +11,8 @@
 
   networking.hostName = "lumine";
 
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
+
   services.fstrim.enable = true;
   modules.gaming.enable = false;
 
