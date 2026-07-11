@@ -17,6 +17,7 @@ in
     homeDirectory = "/home/${user}";
     stateVersion = "24.05";
     pointerCursor = {
+      enable = true;
       name = "phinger-cursors-light";
       package = pkgs.phinger-cursors;
       size = 12;

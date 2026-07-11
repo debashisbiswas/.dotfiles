@@ -2,9 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    elixir
-    erlang
+    beamPackages.elixir
+    beamPackages.erlang
     gleam
     elixir-ls
   ];
 }
+
