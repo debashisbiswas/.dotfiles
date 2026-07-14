@@ -14,7 +14,7 @@
   boot.kernelParams = [ "mem_sleep_default=deep" ];
 
   services.fstrim.enable = true;
-  modules.gaming.enable = false;
+  modules.gaming.enable = true;
 
   system.stateVersion = "23.11";
 }
