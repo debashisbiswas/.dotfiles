@@ -100,12 +100,19 @@ in
         enableBookUploading = true;
       };
     };
+
+    audiobookshelf = {
+      enable = true;
+      user = username;
+      host = "0.0.0.0";
+    };
   };
 
   networking.firewall.allowedTCPPorts = [ 8083 ]; # calibre-web
 
   systemd.tmpfiles.rules = [
     "d /srv/calibre 0775 ${username} users - -"
+    "d /srv/audiobookshelf 0775 ${username} users - -"
   ];
 
   home-manager = {
