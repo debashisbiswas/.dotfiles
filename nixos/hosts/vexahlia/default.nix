@@ -2,6 +2,7 @@
 
 let
   username = "violet";
+  calibre-library-path = "/srv/calibre";
 in
 {
   imports = [
@@ -97,7 +98,7 @@ in
       listen.ip = "0.0.0.0";
       openFirewall = true;
       options = {
-        calibreLibrary = "/srv/calibre";
+        calibreLibrary = calibre-library-path;
         enableBookUploading = true;
       };
     };
@@ -110,7 +111,7 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /srv/calibre 0775 ${username} users - -"
+    "d ${calibre-library-path} 0775 ${username} users - -"
     "d /srv/audiobookshelf 0775 ${username} users - -"
   ];
 
