@@ -95,6 +95,7 @@ in
       enable = true;
       user = username;
       listen.ip = "0.0.0.0";
+      openFirewall = true;
       options = {
         calibreLibrary = "/srv/calibre";
         enableBookUploading = true;
@@ -107,8 +108,6 @@ in
       host = "0.0.0.0";
     };
   };
-
-  networking.firewall.allowedTCPPorts = [ 8083 ]; # calibre-web
 
   systemd.tmpfiles.rules = [
     "d /srv/calibre 0775 ${username} users - -"
