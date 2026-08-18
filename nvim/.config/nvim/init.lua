@@ -122,6 +122,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gO', require('telescope.builtin').lsp_document_symbols)
     vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions)
     vim.keymap.set('n', 'grr', require('telescope.builtin').lsp_references)
+
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.name == 'nixd' then
+      if vim.lsp.inlay_hint then vim.lsp.inlay_hint.enable(true, { bufnr = args.buf }) end
+    end
   end,
 })
 
