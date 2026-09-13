@@ -107,6 +107,7 @@ in
       "obs"
       "obsidian"
       "raycast"
+      "readest"
       "signal"
       "slack"
       "spotify"
