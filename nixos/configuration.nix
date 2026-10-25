@@ -191,18 +191,12 @@
     vim
     pulseaudio
 
-    # Keyring
-    gnome-keyring
+    # Keyring clients
     libsecret
     libgnome-keyring
-    gcr
   ];
 
   services.gnome.gnome-keyring.enable = true;
-  services.dbus.packages = with pkgs; [
-    gnome-keyring
-    gcr
-  ];
 
   security.pam.services = {
     login.enableGnomeKeyring = true;
