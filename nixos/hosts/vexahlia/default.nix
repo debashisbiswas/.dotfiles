@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   username = "violet";
@@ -88,11 +93,41 @@ in
       permitCertUid = "caddy";
     };
 
-    caddy = {
+    caddy.enable = true;
+
+    homer = {
       enable = true;
-      virtualHosts."vexahlia.queue-mixolydian.ts.net".extraConfig = ''
-        respond "Hello, world!"
-      '';
+      virtualHost = {
+        caddy.enable = true;
+        domain = "vexahlia.queue-mixolydian.ts.net";
+      };
+      settings = {
+        title = config.networking.hostName;
+        defaults.colorTheme = "auto";
+        services = [
+          {
+            name = "Services";
+            items = [
+              {
+                name = "Jellyfin";
+                url = "http://vexahlia:8096";
+              }
+              {
+                name = "Calibre Web";
+                url = "http://vexahlia:8083";
+              }
+              {
+                name = "Audiobookshelf";
+                url = "http://vexahlia:8000";
+              }
+              {
+                name = "Terminus";
+                url = "http://vexahlia:2300";
+              }
+            ];
+          }
+        ];
+      };
     };
 
     jellyfin =
