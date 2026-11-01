@@ -20,6 +20,7 @@ in
 
   networking.firewall = {
     allowedTCPPorts = [
+      443
       2300 # Terminus
     ];
   };
@@ -82,7 +83,17 @@ in
   };
 
   services = {
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      permitCertUid = "caddy";
+    };
+
+    caddy = {
+      enable = true;
+      virtualHosts."vexahlia.queue-mixolydian.ts.net".extraConfig = ''
+        respond "Hello, world!"
+      '';
+    };
 
     jellyfin =
       let
