@@ -18,6 +18,12 @@ in
   networking.hostName = "vexahlia";
   networking.networkmanager.enable = true;
 
+  networking.firewall = {
+    allowedTCPPorts = [
+      2300 # Terminus
+    ];
+  };
+
   time.timeZone = "America/Phoenix";
 
   i18n.defaultLocale = "en_US.UTF-8";
